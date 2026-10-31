@@ -1,0 +1,6 @@
+﻿projeto;tema;arquivo_para_ler;nota_1a5;o_que_deu_errado;como_evitar
+seed0/t0;Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?;treino/seed0/t0/resumo_para_feedback.md;;;
+seed0/t1;Do language models improve accuracy on MedQA when asked to perform differential diagnosis?;treino/seed0/t1/resumo_para_feedback.md;;;
+seed0/t2;Does gender role play affect the accuracy of language models on answering math questions?;treino/seed0/t2/resumo_para_feedback.md;;;
+seed0/t3;Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?;treino/seed0/t3/resumo_para_feedback.md;;;
+seed0/t4;Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?;treino/seed0/t4/resumo_para_feedback.md;;;

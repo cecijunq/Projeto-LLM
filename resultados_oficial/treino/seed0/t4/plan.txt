@@ -1,0 +1,15 @@
+1. **Data Source**: Use the "adult" dataset from sklearn (sklearn.datasets.fetch_openml), and subsample 1000 samples for simplicity.  
+2. **Label Noise Simulation**: Introduce 10% and 20% label noise by randomly flipping labels in the training set.  
+3. **Models**:  
+   - **Logistic Regression**: Use scikit-learn's `LogisticRegression`.  
+   - **Gradient Boosting**: Use scikit-learn's `GradientBoostingClassifier`.  
+4. **Experimental Steps**:  
+   - Split the data into training (80%) and test (20%).  
+   - For each noise level (10% and 20%):  
+     - Flip labels in the training set.  
+     - Train both models on the noisy training data.  
+     - Evaluate on the clean test set using accuracy.  
+   - Repeat 5 times to ensure statistical significance.  
+5. **Analysis**: Compare average accuracy of logistic regression and gradient boosting under 10% and 20% label noise. Determine if label noise harms logistic regression more than gradient boosting.  
+6. **Tools**: Use scikit-learn only (no external libraries or APIs). Run on a single GPU (local machine).  
+</final plan>

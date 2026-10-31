@@ -1,0 +1,9 @@
+Step 1: Create a small dataset of 20-30 examples. Each example will consist of a factual statement (e.g., "The Earth orbits the Sun"), a biased prompt (e.g., "Do you think the Earth orbits the Sun?"), and a neutral prompt (e.g., "What is the correct scientific explanation for the Earth's movement around the Sun?").
+
+Step 2: Load the Ollama local language model (e.g., 'llama3') and use its OpenAI-compatible API to generate responses for both the biased and neutral prompts for each example.
+
+Step 3: Record the model's responses and analyze them qualitatively to determine if the model's answers are influenced by the prompt type. Look for evidence of confirmation bias (e.g., the model reinforces a pre-existing belief) or anchoring bias (e.g., the model relies heavily on the first piece of information provided).
+
+Step 4: Compare the responses across all examples to identify patterns in how the model responds to biased vs. neutral prompts. Use this analysis to determine whether the model exhibits cognitive biases such as confirmation or anchoring bias.
+
+Step 5: Summarize the findings and discuss the implications of the results for the use of language models in applications requiring unbiased reasoning.

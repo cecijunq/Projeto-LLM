@@ -1,0 +1,647 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{lmodern}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, fit, backgrounds, calc, babel}
+\usepackage[hidelinks]{hyperref}
+
+\tikzset{
+  box/.style={draw=#1!70!black, fill=#1!12, rounded corners=3pt, align=center,
+              font=\small, inner sep=4pt, minimum height=9mm, text width=3cm},
+  box/.default=gray,
+  note/.style={font=\scriptsize, align=left, text width=6cm},
+  arr/.style={-{Stealth[length=2.5mm]}, thick},
+  lbl/.style={font=\scriptsize},
+  etapa/.style={font=\small\bfseries, align=center, text width=1.8cm},
+}
+
+\newcommand{\fase}[1]{\textsf{#1}}
+
+\title{Agent Laboratory com memória entre projetos\\[2pt]
+       \large Como o pipeline funciona e em que pé está o experimento}
+\author{Grupo 1 · Large Language Models (UFMG, 2026/2)\\
+        Arthur Siríaco, Cecília Junqueira e Déborah Yamamoto}
+\date{27 de outubro de 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Este documento explica, de ponta a ponta, o que o notebook
+\texttt{Projeto\_AgentLab\_Memoria\_Colab.ipynb} faz: como funciona o agente (a nossa
+reimplementação simplificada do Agent Laboratory), como a memória de lições é construída e
+consultada, qual é o protocolo experimental que responde às perguntas de pesquisa e quais
+métricas e testes saem no final. A última parte descreve o estado atual (27/10), com a
+análise da primeira rodada de treino, em que todos os projetos falharam, e o que falta decidir.
+\end{abstract}
+
+\tableofcontents
+
+%% =====================================================================
+\section{A ideia em uma página}
+
+O \textbf{Agent Laboratory} (Schmidgall et al., 2025) recebe uma ideia de pesquisa e, com
+vários agentes LLM, faz a revisão de literatura, roda experimentos e escreve um relatório.
+Ao fim de cada projeto, tudo o que ele aprendeu é descartado. O artigo relata três fatos que
+motivam o nosso trabalho:
+
+\begin{itemize}
+  \item o revisor automático é otimista demais: nota média 6,1/10, contra 3,8 dos humanos;
+  \item o feedback humano a cada etapa (modo \emph{co-pilot}) melhora a nota geral em $+0{,}58$;
+  \item os mesmos erros se repetem entre projetos (buscas em loop, experimentos com 0\% de acurácia).
+\end{itemize}
+
+A nossa proposta é dar ao agente uma \textbf{memória de lições que sobrevive entre projetos}:
+ao fim de cada projeto guardamos ``o que deu errado e como evitar'', e os projetos seguintes
+consultam essas lições.
+
+\begin{description}
+  \item[QP1.] Guardar lições de projetos anteriores faz o agente se sair melhor nos próximos?
+  \item[QP2.] Importa de onde vem a lição: do revisor automático (LLM) ou de humanos?
+\end{description}
+
+Comparamos três versões do \emph{mesmo} agente, e a hipótese é \textbf{C $>$ B $>$ A}:
+
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+Versão & Memória \\
+\midrule
+A & nenhuma (baseline: nossa reimplementação simplificada do Agent Laboratory) \\
+B & lições extraídas da revisão do \textbf{revisor LLM} \\
+C & lições extraídas do \textbf{feedback humano} (do grupo) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Por que A não é o código original.} Para que a diferença entre A e B meça só o
+efeito da memória, A, B e C precisam ser o mesmo código, com o mesmo modelo e a mesma
+configuração. Se A fosse o Agent Laboratory original, a comparação misturaria ``ter
+memória'' com ``trocar de implementação''. Além disso, o original foi feito para modelos
+grandes via API (gpt-4o, o1) e não caberia no prazo com um modelo de 7B numa T4.
+
+%% =====================================================================
+\section{O agente (versão A)}
+
+\subsection{Fases}
+
+O agente segue as fases do artigo (Figura~\ref{fig:fases}). Cada fase é conduzida por um ou
+dois papéis, todos interpretados pelo \emph{mesmo} LLM com prompts diferentes: estudante de
+doutorado (PhD), pós-doutorando (Postdoc), engenheiro de ML (MLE) e professor (usado como
+avaliador de código).
+
+Os agentes conversam por \textbf{comandos} em blocos de código, por exemplo
+\verb|```PLAN ... ```|. A função \texttt{extract\_command} aceita variações de formato,
+porque modelos pequenos raramente seguem o formato à risca. Uma resposta sem comando válido
+conta como \emph{comando inválido} e o agente recebe um exemplo do formato certo.
+
+A memória de curto prazo (o histórico do diálogo) é apagada no início de cada fase. Sem
+isso, o modelo tende a repetir comandos da fase anterior.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=5mm]
+  \node[box=blue]                   (lit)    {Revisão de literatura};
+  \node[box=orange, below=of lit]   (plan)   {Formulação do plano};
+  \node[box=orange, below=of plan]  (data)   {Preparação de dados};
+  \node[box=orange, below=of data]  (exp)    {Execução dos experimentos};
+  \node[box=orange, below=of exp]   (interp) {Interpretação dos resultados};
+  \node[box=teal,   below=of interp](rep)    {Escrita do relatório};
+  \node[box=teal,   below=of rep]   (ref)    {Refinamento};
+  \node[box=gray,   below=of ref]   (fim)    {Fim: \texttt{result.json}\\e arquivos do projeto};
+
+  \foreach \a/\b in {lit/plan, plan/data, data/exp, exp/interp, interp/rep, rep/ref, ref/fim}
+    \draw[arr] (\a) -- (\b);
+
+  % falhas críticas encerram o projeto
+  \node[box=red, left=10mm of exp, text width=2.3cm] (stop) {Projeto encerrado\\\scriptsize(sem relatório)};
+  \draw[arr, red!70!black, dashed] (data.west) -| node[lbl, pos=0.25, above] {falhou} (stop.north);
+  \draw[arr, red!70!black, dashed] (exp.west) -- node[lbl, above] {falhou} (stop.east);
+  \draw[arr, red!70!black, dashed] (stop.south) |- (fim.west);
+
+  % refinamento pode voltar a uma fase anterior
+  \draw[arr, dashed] (ref.east) -- ++(6mm,0) |- (plan.east);
+
+  % anotações
+  \node[note, right=12mm of lit]    {\textbf{PhD.} \texttt{SUMMARY} (busca no arXiv), \texttt{FULL\_TEXT},
+                                       \texttt{ADD\_PAPER}. Termina ao juntar \texttt{num\_papers} artigos.};
+  \node[note, right=12mm of plan]   {\textbf{PhD $\leftrightarrow$ Postdoc} em diálogo. O Postdoc
+                                       entrega o plano com \texttt{PLAN}.};
+  \node[note, right=12mm of data]   {\textbf{MLE $\leftrightarrow$ PhD}. Recebem uma lista de datasets
+                                       do HuggingFace. O MLE roda código; o PhD entrega com \texttt{SUBMIT\_CODE}.};
+  \node[note, right=12mm of exp]    {\textbf{mle-solver} (Figura~\ref{fig:mle}): gera, conserta,
+                                       pontua e melhora o código do experimento.};
+  \node[note, right=12mm of interp] {\textbf{PhD $\leftrightarrow$ Postdoc}. O Postdoc entrega com
+                                       \texttt{INTERPRETATION}.};
+  \node[note, right=12mm of rep]    {\textbf{paper-solver}: escreve 8 seções; o revisor LLM dá nota
+                                       (1--10) e o texto é refinado 2 vezes.};
+  \node[note, right=12mm of ref]    {PhD decide \texttt{FINISH} ou \texttt{REVISIT} (seta tracejada;
+                                       no máximo 1 vez).};
+\end{tikzpicture}
+\caption{Fases do agente. Cores seguem as três etapas do artigo: revisão de literatura (azul),
+experimentação (laranja) e escrita (verde). Cada fase de diálogo tem no máximo
+\texttt{max\_steps} passos. Se a preparação de dados ou os experimentos falham, o projeto
+é encerrado sem relatório.}
+\label{fig:fases}
+\end{figure}
+
+\subsection{O mle-solver}
+
+A fase de experimentos não é um diálogo, e sim um laço de busca por código
+(Figura~\ref{fig:mle}). O código de preparação de dados é colado no início de todo
+programa. Quando o experimento precisa de um LLM (por exemplo, para medir viés), o código
+gerado chama o próprio modelo local pelo Ollama, com no máximo 50 exemplos.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=8mm and 7mm]
+  \node[box=orange, text width=2.3cm]                (gen)   {Gerar código inicial\\\scriptsize(\texttt{REPLACE}, até 5 tentativas)};
+  \node[box=orange, text width=2.3cm, right=of gen]  (run)   {Executar\\\scriptsize(subprocesso com timeout)};
+  \node[box=orange, text width=2.3cm, right=of run]  (score) {Professor dá nota\\\scriptsize(0 a 1: segue o plano?)};
+  \node[box=orange, text width=2.3cm, right=of score](pool)  {Pool dos\\2 melhores};
+  \node[box=red,    text width=2.3cm, above=of run]  (fix)   {Reparo automático\\\scriptsize(até 2 vezes)};
+  \node[box=orange, text width=2.3cm, below=of score](edit)  {Sorteia do pool e melhora\\\scriptsize(\texttt{REPLACE}/\texttt{EDIT} + reflexão)};
+  \node[box=gray,   text width=2.3cm, above=of pool] (out)   {Melhor código\\e sua saída};
+
+  \draw[arr] (gen) -- (run);
+  \draw[arr] (run) -- node[lbl, above] {ok} (score);
+  \draw[arr] (run) -- node[lbl, left] {erro} (fix);
+  \draw[arr] (fix.east) -| node[lbl, pos=0.25, above] {consertou} (score.north);
+  \draw[arr] (score) -- (pool);
+  \draw[arr] (pool.south) |- node[lbl, pos=0.25, right] {\texttt{mle\_steps} vezes} (edit.east);
+  \draw[arr] (edit.west) -| (run.south);
+  \draw[arr] (pool) -- node[lbl, right] {ao fim} (out);
+\end{tikzpicture}
+\caption{mle-solver. O sorteio no pool usa o gerador \texttt{random} do Python, que agora é
+semeado por (seed, tema) para que A, B e C façam as mesmas escolhas.}
+\label{fig:mle}
+\end{figure}
+
+\subsection{Relatório e revisor automático}
+
+O paper-solver escreve, uma por vez, as seções Abstract, Introduction, Background, Related
+Work, Methods, Experimental Setup, Results e Discussion, sempre com o plano, o código, os
+resultados e a interpretação no contexto. Depois, o \textbf{revisor LLM} (prompt no estilo
+NeurIPS) devolve notas de 1 a 4 em vários critérios, uma nota geral \texttt{Overall} de 1 a
+10, pontos fracos e uma decisão. Em 2 rodadas de refinamento, uma seção sorteada é
+reescrita para atacar os pontos fracos, e a nova versão só fica se a nota não cair.
+
+Essa revisão é o que alimenta a memória B. Projeto sem relatório não tem revisão.
+
+%% =====================================================================
+\section{A memória de lições}
+
+\subsection{Construção (uma vez, depois do treino)}
+
+A memória é construída \emph{offline}, a partir dos projetos de treino já terminados
+(Figura~\ref{fig:memoria}, parte de cima). Para cada projeto, a função
+\texttt{extract\_lessons} recebe:
+
+\begin{itemize}
+  \item o tema;
+  \item os \textbf{fatos do projeto} (\texttt{project\_facts}): quais fases deram certo, as
+        falhas detectadas, um trecho do plano, a saída do experimento e erros de código.
+        Esses fatos são \emph{iguais} para B e C;
+  \item o \textbf{feedback}: em B, a revisão do LLM formatada (notas, decisão, pontos
+        fracos); em C, a nota de 1 a 5 do grupo, ``o que deu errado'' e ``como evitar''.
+\end{itemize}
+
+O LLM devolve até 4 lições no formato
+\{\emph{problema}, \emph{como evitar}, \emph{fase}, \emph{importância} 0--1\}. Lições quase
+iguais (similaridade $\geq 0{,}9$) são fundidas e a importância da existente sobe um
+pouco. As lições ficam legíveis em \texttt{memoria/licoes\_B\_seed0.md} e
+\texttt{licoes\_C\_seed0.md}.
+
+O ponto central da QP2: B e C usam \textbf{os mesmos projetos, o mesmo extrator, o mesmo
+prompt e a mesma seed}. A única coisa que muda é o texto do feedback.
+
+\subsection{Uso (nos testes B e C, somente leitura)}
+
+No começo de cada fase (e em cada chamada do mle-solver e do paper-solver) o agente busca
+as lições mais relevantes e as coloca no prompt, num bloco ``MEMÓRIA DE LONGO PRAZO''. Cada
+lição $m$ recebe uma nota
+
+\[
+  s(m) = 0{,}6\,\mathrm{sim}(q, m) + 0{,}25\,\mathrm{imp}(m) + 0{,}15\,\gamma^{\Delta(m)}
+       + 0{,}1\,\mathbf{1}[\text{fase}(m) = \text{fase atual}],
+\]
+
+onde $q$ é a consulta (tema, mais o plano ou o erro, conforme a fase), $\mathrm{sim}$ é o
+cosseno entre embeddings (\texttt{sentence-transformers}, ou TF-IDF se a biblioteca não
+estiver instalada), $\mathrm{imp}$ é a importância dada pelo extrator e
+$\gamma^{\Delta} $ é a recência ($\gamma = 0{,}9$). Entram as $k = 6$ melhores (5 na escrita
+do relatório). Lições muito diferentes do tema são descartadas, exceto as da própria fase,
+porque uma lição como ``carregue só um subconjunto pequeno do dataset'' vale para qualquer
+tema.
+
+No teste a memória é \textbf{somente leitura}: nada é gravado, e o contador de projetos não
+avança. Por isso a recência fica constante e a ordem dos temas não muda o que é recuperado.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=8mm and 10mm]
+  % construção
+  \node[box=violet, text width=2.5cm]               (proj) {Projeto de treino\\\scriptsize\texttt{result.json}};
+  \node[box=violet, text width=2.5cm, below=of proj](fb)   {Feedback\\\scriptsize revisor LLM (B) ou grupo (C)};
+  \coordinate (mid) at ($(proj.east)!0.5!(fb.east)$);
+  \node[box=violet, text width=2.5cm, right=10mm of mid] (ext) {\texttt{extract\_lessons}\\\scriptsize mesmo LLM e seed em B e C};
+  \node[box=violet, text width=2.5cm, right=of ext] (les)  {Até 4 lições\\\scriptsize problema, como evitar, fase, importância};
+  \node[box=violet, text width=2.5cm, right=of les] (store){\texttt{store\_lessons}\\\scriptsize funde lições parecidas};
+
+  \draw[arr] (proj.east) -- node[lbl, above, sloped] {fatos} (ext);
+  \draw[arr] (fb.east) -- (ext);
+  \draw[arr] (ext) -- (les);
+  \draw[arr] (les) -- (store);
+
+  % uso
+  \node[box=gray,   text width=2.5cm, below=26mm of store] (json)  {\texttt{memoria/B\_seed0.json}\\\scriptsize ou \texttt{C\_seed0.json}};
+  \node[box=teal,   text width=2.5cm, left=of json]        (ret)   {\texttt{retrieve}\\\scriptsize nota $s(m)$, top-$k$};
+  \node[box=teal,   text width=2.5cm, left=of ret]         (prm)   {Bloco no prompt\\\scriptsize ``MEMÓRIA DE LONGO PRAZO''};
+  \node[box=teal,   text width=2.5cm, left=of prm]         (agt)   {Agente\\\scriptsize PhD, Postdoc, MLE, solvers};
+  \node[box=teal,   text width=2.5cm, below=of ret]        (q)     {Consulta\\\scriptsize tema + fase (+ plano/erro)};
+
+  \draw[arr] (store) -- node[lbl, right] {grava} (json);
+  \draw[arr] (json) -- node[lbl, above] {lê} (ret);
+  \draw[arr] (q) -- (ret);
+  \draw[arr] (ret) -- (prm);
+  \draw[arr] (prm) -- (agt);
+
+  \begin{scope}[on background layer]
+    \node[draw=gray, dashed, rounded corners, inner sep=3mm, fit=(proj)(fb)(ext)(les)(store),
+          label={[anchor=south west, font=\footnotesize\bfseries]north west:{Construção (uma vez, depois do treino)}}] {};
+    \node[draw=gray, dashed, rounded corners, inner sep=3mm, fit=(json)(ret)(prm)(agt)(q),
+          label={[anchor=south west, font=\footnotesize\bfseries]north west:{Uso nos testes B e C (somente leitura)}}] {};
+  \end{scope}
+\end{tikzpicture}
+\caption{Ciclo da memória. Em cima, a construção offline a partir dos projetos de treino; embaixo,
+a consulta durante os testes.}
+\label{fig:memoria}
+\end{figure}
+
+%% =====================================================================
+\section{Protocolo experimental}
+
+Os 10 temas estão em \texttt{topics.json}: 5 de treino e 5 de teste, misturando avaliação de
+LLMs, visão computacional e ML clássico. Cinco deles vêm da Seção 4.1 do artigo. O
+protocolo tem cinco etapas (Figura~\ref{fig:protocolo}), cada uma um subcomando de
+\texttt{projeto.py}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+  \tikzset{p/.style={box=#1, text width=2.8cm}, p/.default=gray}
+
+  \node[p=blue]   (T)  at (0,0)      {5 temas de treino\\\scriptsize rodam 1 vez, sem memória};
+  \node[p=blue]   (R)  at (0,-1.7)   {Relatórios e\\\scriptsize revisões LLM, \texttt{resumo\_para\_feedback.md}};
+  \node[p=orange] (LR) at (-3.6,-3.5){Revisão do LLM\\\scriptsize(nota 1--10, pontos fracos)};
+  \node[p=green]  (H)  at (3.6,-3.5) {Feedback do grupo\\\scriptsize\texttt{feedback\_humano.csv}};
+  \node[p=orange] (MB) at (-3.6,-5.3){Memória B};
+  \node[p=green]  (MC) at (3.6,-5.3) {Memória C};
+  \node[note, text width=3cm, align=center] (nota) at (0,-4.4)
+        {mesmo extrator e mesma seed:\\só o texto do feedback muda};
+  \node[p=gray]   (TT) at (0,-6.1)   {5 temas de teste};
+  \node[p=orange] (B)  at (-3.6,-7.6){Teste B\\\scriptsize lê a memória B};
+  \node[p=blue]   (A)  at (0,-7.6)   {Teste A\\\scriptsize sem memória};
+  \node[p=green]  (C)  at (3.6,-7.6) {Teste C\\\scriptsize lê a memória C};
+  \node[p=violet] (CG) at (0,-9.4)   {Avaliação humana cega\\\scriptsize R01--R15 embaralhados, notas 1--5};
+  \node[p=violet] (AN) at (0,-11.2)  {Análise\\\scriptsize notas, falhas, custo, testes estatísticos};
+
+  \draw[arr] (T) -- (R);
+  \draw[arr] (R) -- (LR);
+  \draw[arr] (R) -- (H);
+  \draw[arr] (LR) -- (MB);
+  \draw[arr] (H) -- (MC);
+  \draw[arr] (MB) -- node[lbl, left] {congelada} (B);
+  \draw[arr] (MC) -- node[lbl, right] {congelada} (C);
+  \draw[arr] (TT) -- (A);
+  \draw[arr] (TT) -- (B.north east);
+  \draw[arr] (TT) -- (C.north west);
+  \draw[arr] (A) -- (CG);
+  \draw[arr] (B.south) -- (CG);
+  \draw[arr] (C.south) -- (CG);
+  \draw[arr] (CG) -- (AN);
+  \draw[arr, dashed, gray] (R.east) -- (6.3,-1.7) --
+        node[lbl, right, text width=1.4cm] {falhas do treino (base das ``falhas repetidas'')} (6.3,-11.2) -- (AN.east);
+
+  \node[etapa] at (-6.6,-0.85) {1 · Treino};
+  \node[etapa] at (-6.6,-4.4)  {2 · Memórias};
+  \node[etapa] at (-6.6,-7.0)  {3 · Teste};
+  \node[etapa] at (-6.6,-9.4)  {4 · Avaliação};
+  \node[etapa] at (-6.6,-11.2) {5 · Análise};
+\end{tikzpicture}
+\caption{Protocolo experimental. Treino e memórias produzem B e C a partir dos mesmos projetos;
+os testes rodam os mesmos 5 temas nas três versões.}
+\label{fig:protocolo}
+\end{figure}
+
+\subsection{Invariantes e como o código os garante}
+
+Estas regras tornam a comparação justa. A coluna da direita diz onde cada uma está no código.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\toprule
+Invariante & Como é garantido \\
+\midrule
+Mesmo modelo, passos e configuração em A, B e C &
+  \texttt{ARGS} único na célula 0.1. Cada \texttt{result.json} grava \texttt{config}, e o
+  \texttt{projeto.py} para com erro se encontrar resultado de outra configuração. \\
+B e C com os mesmos projetos e o mesmo extrator &
+  \texttt{cmd\_memoria} usa \texttt{extract\_lessons} com a seed \texttt{777000 + s} nas duas fontes. \\
+Memória somente leitura no teste &
+  \texttt{LongTermMemory(read\_only=True)}: \texttt{add} e \texttt{save} não fazem nada. \\
+Mesma seed por (seed, tema) &
+  Seed do LLM \texttt{500000 + 100s + i} nas três versões, e \texttt{random.seed} com o mesmo valor. \\
+Avaliação cega &
+  Relatórios copiados como \texttt{R01.md}, \ldots\ em ordem aleatória; a chave fica em
+  \texttt{.chave.json}, que só deve ser aberta depois das notas. \\
+Falhas são dado &
+  Etapas retomáveis: projeto com \texttt{result.json} é pulado, inclusive se falhou. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Configuração}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Parâmetro & \texttt{MODO\_RAPIDO = True} (validação) & \texttt{False} (final) \\
+\midrule
+\texttt{num\_papers} (artigos na revisão) & 3 & 5 \\
+\texttt{max\_steps} (passos por fase de diálogo) & 10 & 20 \\
+\texttt{mle\_steps} (melhorias no mle-solver) & 2 & 3 \\
+\midrule
+Modelo & \multicolumn{2}{c}{\texttt{qwen2.5:7b} via Ollama (alternativa: \texttt{qwen2.5:14b})} \\
+Contexto & \multicolumn{2}{c}{16\,384 tokens} \\
+Hardware & \multicolumn{2}{c}{Google Colab, GPU T4 (15 GB)} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%% =====================================================================
+\section{Métricas e análise}
+
+\subsection{Qualidade}
+
+\begin{itemize}
+  \item \textbf{Nota humana} (principal): cada integrante dá, sem saber a versão, notas de 1 a 5 em
+        \emph{qualidade experimental}, \emph{qualidade do relatório} e \emph{utilidade}
+        (critérios da Seção 4.1 do artigo). A nota humana é a média dos três.
+  \item \textbf{Nota do revisor LLM} (\texttt{Overall}, 1--10) e \textbf{nota do mle-solver} (0--1):
+        automáticas, mas o artigo mostra que o revisor é otimista.
+\end{itemize}
+
+\subsection{Falhas por etapa}
+
+O módulo \texttt{failures.py} classifica automaticamente o que deu errado em cada projeto, como
+pares (fase, categoria). Uma falha de teste é \textbf{repetida} quando o mesmo par já ocorreu
+no treino, ou seja, a memória teve a chance de ensinar a evitá-la.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+Categoria & Quando é registrada \\
+\midrule
+\texttt{fase\_falhou} & a fase não terminou com sucesso \\
+\texttt{formato\_invalido} & o modelo respondeu sem um comando válido \\
+\texttt{busca\_em\_loop} & a revisão de literatura gastou todos os passos \\
+\texttt{dataset\_inexistente} & tentou carregar um dataset que não existe ou exige script \\
+\texttt{dependencia\_ausente} & \texttt{ModuleNotFoundError}, \texttt{ImportError} \\
+\texttt{timeout} & o código passou do tempo limite \\
+\texttt{erro\_de\_sintaxe} & \texttt{SyntaxError}, \texttt{IndentationError} \\
+\texttt{falta\_de\_memoria} & falta de memória (CPU ou GPU) \\
+\texttt{erro\_de\_execucao} & \texttt{KeyError}, \texttt{ValueError}, \texttt{TypeError} etc. \\
+\texttt{outro\_erro} & qualquer outro erro de código \\
+\texttt{acuracia\_zero} & o experimento reportou 0\% de acurácia \\
+\texttt{sem\_relatorio} & o projeto terminou sem relatório \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Custo}
+
+Tokens (de entrada e de saída) e tempo por projeto. B e C gastam mais tokens de entrada por
+natureza, porque as lições entram no prompt; a pergunta é se esse custo se paga em qualidade
+ou em menos falhas.
+
+\subsection{Testes estatísticos}
+
+As comparações são \emph{pareadas}: o mesmo tema com a mesma seed nas três versões.
+
+\begin{itemize}
+  \item \textbf{Friedman} (A $\times$ B $\times$ C): há diferença entre as três versões?
+  \item \textbf{Wilcoxon pareado} (B vs.\ A, C vs.\ A, C vs.\ B): qual par difere?
+  \item \textbf{Spearman} entre a nota do revisor LLM e a nota humana: o revisor concorda com os humanos?
+\end{itemize}
+
+\paragraph{Limitação de poder estatístico.} Com 1 seed $\times$ 5 temas, há 5 pares. No
+Wilcoxon com $n = 5$ existem só $2^5 = 32$ combinações de sinais, então o menor p-valor
+possível é $2/32 = 0{,}0625$ no teste bilateral (o padrão do código) e $1/32 \approx 0{,}031$
+no unilateral. Ou seja: no teste bilateral \textbf{nenhum resultado pode ser significativo a
+5\%}, mesmo que a memória melhore os 5 temas. Por isso os p-valores são indicativos, e a
+análise qualitativa (as lições geradas e as falhas repetidas) tem peso grande no relatório.
+Usar \texttt{SEEDS = 2} dobra os pares, se houver tempo de GPU.
+
+%% =====================================================================
+\section{Estado atual (27/10)}
+
+\subsection{O que já funciona}
+
+\begin{itemize}
+  \item O fluxo inteiro (treino, memória, testes, avaliação cega e análise) passa com
+        \texttt{--mock}, que simula o LLM.
+  \item O modelo real responde no formato de comandos e a busca no arXiv funciona.
+  \item Mais cedo entraram três correções no notebook: a seed do \texttt{random} por (seed, tema), a
+        checagem de configuração em cada \texttt{result.json} e a descrição de A como
+        reimplementação. Elas foram testadas com \texttt{--mock}.
+\end{itemize}
+
+\subsection{A primeira rodada de treino: todos os projetos falharam}
+
+A primeira rodada de treino (ainda com \texttt{MODO\_RAPIDO = True}) terminou sem nenhum
+relatório:
+
+\begin{center}
+\small
+\begin{tabular}{lllr}
+\toprule
+Projeto & Onde parou & Sintoma no log & Tempo \
+\midrule
+t0 (vieses cognitivos) & \fase{data\_preparation} & 9 erros de sintaxe & 102 s \
+t1 (MedQA) & \fase{plan\_formulation} e \fase{data\_preparation} & 9 comandos inválidos & 244 s \
+t2 (gênero e matemática) & \fase{data\_preparation} & código não roda & 185 s \
+t3 (CoT no GSM8K) & \fase{running\_experiments} & nenhum código rodou & 648 s \
+t4 (ruído nos rótulos) & \fase{data\_preparation} & código não roda & 88 s \
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Causa principal.} O modelo escrevia a sequência \emph{barra-n} por extenso
+(os caracteres \texttt{\textbackslash} e \texttt{n}) em vez de quebrar a linha. A última
+resposta do t0, por exemplo, chegou numa linha só:
+
+\begin{small}
+\begin{verbatim}
+```SUBMIT_CODE\nimport datasets\nconfirmation_bias_dataset = ...
+\end{verbatim}
+\end{small}
+
+Para o Python, isso é \texttt{SyntaxError} antes de qualquer outra coisa. O mesmo aparece
+no plano e nos artigos salvos. A origem estava nos nossos prompts: os exemplos de comando
+tinham sido escritos com \texttt{\textbackslash\textbackslash n} no código Python, então o
+modelo via, literalmente, \verb|```PLAN\n<plan>\n```| e imitava. O teste com
+\texttt{--mock} não detectou o problema porque o LLM simulado sempre responde com quebras de
+linha reais. A Figura~\ref{fig:falha} mostra a cadeia.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=4mm]
+  \tikzset{c/.style={box=#1, text width=11cm}, c/.default=gray}
+  \node[c=gray]              (c1) {Os prompts mostravam os comandos como \verb|```PLAN\n<plan>\n```|, com barra-n por extenso.};
+  \node[c=gray, below=of c1] (c2) {O modelo imita: escreve o código inteiro numa linha, separado por barra-n.};
+  \node[c=red,  below=of c2] (c3) {O código entregue com \texttt{SUBMIT\_CODE} (ou \texttt{REPLACE}, no mle-solver) dá \texttt{SyntaxError}.};
+  \node[c=red,  below=of c3] (c4) {O agente tenta de novo até esgotar os passos; a fase crítica falha e o projeto é encerrado.};
+  \node[c=red,  below=of c4] (c5) {Sem experimento, sem relatório, \textbf{sem revisão do LLM}: a memória B não teria o que aprender.};
+  \foreach \a/\b in {c1/c2, c2/c3, c3/c4, c4/c5} \draw[arr] (\a) -- (\b);
+\end{tikzpicture}
+\caption{Cadeia de causas das falhas da primeira rodada de treino.}
+\label{fig:falha}
+\end{figure}
+
+\paragraph{Correções aplicadas em seguida.} Todas valem igualmente para A, B e C:
+\begin{enumerate}
+  \item os exemplos de comando nos prompts passaram a ter quebras de linha reais
+        (\texttt{agents.py}, \texttt{solvers.py} e \texttt{laboratory.py});
+  \item \texttt{extract\_command} converte a barra-n por extenso em quebra de linha quando o
+        conteúdo vem numa linha só, e aceita o comando sem crases no começo da resposta
+        (caso do t1, que escreveu \texttt{PLAN} sem os três crases);
+  \item o PhD é instruído a entregar o código de preparação de dados como script completo,
+        com imports, porque esse código roda sozinho. Em t1, t2 e t4 ele chamava
+        \texttt{load\_dataset} sem importá-lo.
+\end{enumerate}
+O fluxo continua passando com \texttt{--mock}, e o código do t0, depois de convertido, compila.
+A rodada de validação precisa ser refeita para confirmar que o modelo real chega ao
+relatório.
+
+\paragraph{Problema secundário: escolha de datasets.} Os datasets escolhidos também eram
+ruins: o t0 inventou \texttt{confirmation\_bias}; o t1 escolheu \texttt{bigbio/med\_qa},
+que exige script de carregamento; o t4 escolheu um dataset de churn do HuggingFace quando um
+dataset embutido do sklearn bastaria. Temas que medem o comportamento de LLMs pedem
+exemplos feitos à mão, e não um dataset pronto. Na segunda rodada, com as quebras de linha
+corrigidas, o t0 ainda falhou na preparação de dados por esse motivo: escolheu
+\texttt{textattack/movie\_reviews}, que não tem relação com viés cognitivo. Por isso, os prompts de
+\fase{data\_preparation}, a lista de \texttt{suggest\_datasets} e a mensagem de erro passaram a
+oferecer uma terceira opção: uma lista de 20 a 50 exemplos escritos no próprio código, para temas
+sobre o comportamento de LLMs. Também passaram a sugerir \texttt{train[:500]} quando o dataset não
+tem o split \texttt{test}.
+
+\paragraph{Problema de ambiente: nomes curtos de datasets.} Com \texttt{datasets 4.8.5} e
+\texttt{huggingface\_hub 1.33.0} (versões do Colab), \verb|load_dataset('rotten_tomatoes')| falha com
+\texttt{HfUriError}, enquanto \verb|load_dataset('cornell-movie-review-data/rotten_tomatoes')| funciona. Ou seja,
+o acesso ao HuggingFace está ok, mas todo dataset clássico com nome curto (\texttt{imdb}, \texttt{gsm8k},
+\texttt{sst2}\ldots) quebra, mesmo quando o agente escolhe bem. Em vez de fixar versões antigas, os prompts
+passaram a exigir o ID completo \texttt{organização/nome} e a listar os IDs completos dos datasets mais
+comuns. A célula 0.7 ganhou um teste de carregamento de dataset.
+
+\paragraph{Plano inviável.} O plano do t0 na segunda rodada pedia os modelos \texttt{gpt2} e
+\texttt{davinci} (API paga da OpenAI) e um dataset inexistente. O prompt da fase de plano passou a pedir
+uma fonte de dados viável e, em temas sobre LLMs, o teste do modelo local, sem APIs pagas.
+
+\paragraph{Terceira rodada: plano vazio e mle-solver sem memória do erro.} Com as correções acima,
+o t0 passou pela preparação de dados, mas falhou nos experimentos: 15 execuções, 15 erros, nenhum reparo
+bem-sucedido, sempre o mesmo \texttt{ValueError} (rótulos com forma \texttt{(1, 500)}). Havia duas causas no
+mle-solver: as 5 tentativas iniciais não viam o erro da tentativa anterior, e o reparo não via o código de
+preparação de dados. Ambas foram corrigidas. A raiz, porém, era o plano: uma única frase (``carregue o
+dataset BiasInStories e siga para o passo 2''), aceita no primeiro passo, que levou a usar o SST-2 num tema
+de viés cognitivo. Agora um \texttt{PLAN} com menos de 300 caracteres é recusado e o agente recebe a lista
+do que um plano precisa conter (fonte de dados, modelos, comparação, métrica e passos).
+
+\subsection{Pendências}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{clX}
+\toprule
+\# & Pendência & O que fazer \\
+\midrule
+1 & Configuração final & Decidir modelo, \texttt{MAX\_STEPS}, \texttt{MODO\_RAPIDO = False} e
+    \texttt{SEEDS}. Apagar \texttt{treino/} e \texttt{teste/} feitos na configuração de validação
+    (a checagem de configuração impede misturar). \\
+2 & Validar as correções & Refazer a rodada de treino de validação e conferir se os projetos chegam ao relatório. \\
+2b & Datasets para temas de LLM & Exemplos feitos à mão já permitidos; conferir na próxima rodada se o agente usa essa opção. \\
+3 & Timeout nas chamadas ao LLM & Usar \texttt{OpenAI(..., timeout=180)} em \texttt{llm.py}. Uma
+    chamada travada no Ollama já prendeu o treino uma vez. \\
+4 & Wilcoxon unilateral & Usar \texttt{alternative='greater'}, coerente com a hipótese C $>$ B $>$ A. \\
+5 & Poder estatístico & Considerar \texttt{SEEDS = 2}; dar peso à análise qualitativa. \\
+6 & Relatório final & Deixar claro que A é uma reimplementação simplificada. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Cronograma}
+
+\begin{itemize}
+  \item \textbf{Atrasado (era 23/10):} treino completo, memória B, testes A e B.
+  \item \textbf{13/11 (entrega final):} feedback humano e memória C, teste C, avaliação cega,
+        análise e relatório.
+\end{itemize}
+
+%% =====================================================================
+\appendix
+\section{Onde ficam os arquivos}
+
+O notebook grava o código em \texttt{/content/agent\_lab} (é preciso rodar a Parte 0 a cada
+sessão) e os resultados no Google Drive:
+
+\begin{verbatim}
+/content/drive/MyDrive/agent_lab_projeto/
+  treino/seed0/t0..t4/        projetos de treino
+      result.json              métricas, falhas, revisão, config
+      resumo_para_feedback.md  tudo que o grupo lê para dar feedback
+      report.md, report.tex    relatório
+      llm_calls.jsonl          todas as respostas brutas do modelo
+  feedback_humano.csv          feedback do grupo (entrada da memória C)
+  memoria/
+      B_seed0.json, C_seed0.json
+      licoes_B_seed0.md, licoes_C_seed0.md
+  teste/{A,B,C}/seed0/t0..t4/  projetos de teste
+  avaliacao_cega/
+      relatorios/R01.md ...    relatórios anonimizados
+      planilha_modelo.csv      modelo de planilha de notas
+      avaliacao_<nome>.csv     notas de cada avaliador
+      .chave.json              não abrir antes de terminar as notas
+  analise/
+      resumo.md, projetos_teste.csv, avaliacoes_humanas.csv,
+      grafico_resultados.png
+\end{verbatim}
+
+\section{Comandos de cada etapa}
+
+\begin{verbatim}
+python projeto.py treino                  # 5 temas de treino, sem memória
+python projeto.py memoria --fonte llm     # memória B
+python projeto.py teste --versao A        # sem memória
+python projeto.py teste --versao B        # memória B congelada
+  (o grupo preenche feedback_humano.csv)
+python projeto.py memoria --fonte humano  # memória C
+python projeto.py teste --versao C
+python projeto.py avaliacao-cega          # relatórios anonimizados
+  (cada integrante dá as notas)
+python projeto.py analise                 # tabelas, gráfico e testes
+\end{verbatim}
+
+Qualquer etapa aceita \texttt{--mock} para testar o fluxo sem LLM.
+
+\end{document}
