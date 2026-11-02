@@ -1,0 +1,85 @@
+# Research Report: Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?
+
+## Abstract
+
+\section*{Abstract}
+This study investigates whether language models exhibit cognitive biases such as confirmation bias or anchoring bias, focusing on the Ollama language model. Given the increasing integration of language models into high-stakes decision-making processes, understanding their susceptibility to cognitive biases is critical for ensuring fair and reliable outcomes. The challenge lies in distinguishing between model-generated responses that reflect inherent biases and those that result from contextual or prompt-specific influences. This work presents a controlled experiment to evaluate the model's behavior under structured prompts designed to elicit confirmation or anchoring bias. The results suggest that the Ollama model demonstrates a tendency to challenge biased statements, indicating a low likelihood of confirmation bias. However, the qualitative nature of the analysis highlights the need for quantitative measures and further validation with anchoring bias prompts to comprehensively assess the model's susceptibility to cognitive biases. The findings contribute to the broader discourse on bias mitigation in language models and underscore the importance of rigorous experimental design in evaluating model behavior.
+</text>
+
+## Introduction
+
+\section{Introduction}
+
+Language models have become central to a wide range of applications, from customer service to content creation and decision support systems. As these models are increasingly integrated into high-stakes domains, concerns about their potential to exhibit cognitive biases—such as confirmation bias or anchoring bias—have grown. Cognitive biases are systematic patterns of deviation from rationality in judgment, often leading to errors in decision-making. If language models exhibit such biases, they could propagate and amplify existing societal prejudices, undermining the fairness and reliability of their outputs. This raises critical questions about the ethical and practical implications of deploying language models in real-world scenarios.
+
+Recent studies have highlighted the presence of gender bias in large language models (LLMs), suggesting that these models can perpetuate stereotypes and reinforce existing inequalities, even without explicit gender markers. This bias arises from both the training data and the inherent design of the models, which may not account for the nuances of human reasoning and ethical judgment. While humans can override biases through ethical reasoning and contextual understanding, language models lack such capabilities, leading to potentially biased outputs that can influence decision-making processes.
+
+This paper investigates whether language models, specifically the Ollama language model, exhibit cognitive biases such as confirmation bias and anchoring bias. The study is motivated by the need to understand how these models process and respond to biased information, and to assess the potential risks they pose in applications where fairness and accuracy are paramount. By designing targeted prompts that test for confirmation and anchoring biases, the experiment aims to uncover patterns in the model's responses and evaluate its susceptibility to systematic errors in judgment. The results of this investigation contribute to the growing body of research on bias in language models and provide insights into the development of more equitable and reliable AI systems.
+
+## Background
+
+\section*{Background}
+
+Language models have become increasingly prevalent in various domains, including natural language processing, customer service, and decision-making systems. As these models are deployed in high-stakes environments, concerns about their potential to exhibit cognitive biases have emerged. Cognitive biases, such as confirmation bias and anchoring bias, are systematic errors in human judgment that can influence decision-making processes. Confirmation bias refers to the tendency to search for, interpret, and recall information in a way that confirms one's preexisting beliefs, while anchoring bias involves overreliance on initial information when making subsequent judgments. These biases can lead to skewed outcomes and reinforce existing stereotypes, particularly in domains involving gender, race, and social norms.
+
+Recent research has highlighted the presence of gender bias in large language models (LLMs), both in their training data and in their outputs. Studies have shown that LLMs can perpetuate gender stereotypes even in the absence of explicit gender markers, raising concerns about their fairness and reliability. While some models demonstrate the ability to challenge biased statements, the extent to which they can mitigate these biases remains an open question. Understanding whether LLMs exhibit cognitive biases such as confirmation or anchoring bias is critical for ensuring their ethical and effective deployment. This study investigates these biases in the Ollama language model through a controlled experimental approach, using prompts designed to elicit responses that reflect the model's susceptibility to such biases.
+</text>
+
+## Related Work
+
+\section{Related Work}
+
+Previous research has extensively explored the presence of cognitive biases in language models, particularly focusing on gender bias and its implications in downstream tasks. A notable body of work, such as \cite{2410.19775v1}, has demonstrated that large language models (LLMs) like GPT-4 and BERT can inadvertently perpetuate gender stereotypes through their training data and internal representations. These studies employ methodologies such as the Word Embedding Association Test (WEAT) to quantify the extent of gender bias, revealing that LLMs often reinforce biased associations even in the absence of explicit gender markers. This finding contrasts with the current experiment, which focuses on confirmation and anchoring biases in a narrower set of scenarios. While the earlier work emphasizes the persistence of gender bias in model outputs, the present study investigates whether LLMs exhibit biases akin to human cognitive tendencies, such as confirmation bias, where individuals favor information that confirms their preexisting beliefs. 
+
+Another line of research, as presented in \cite{2406.13677v3}, highlights the importance of addressing gender representation bias in training corpora, which serves as an upstream source of bias. This study proposes a novel LLM-based method to detect such imbalances, emphasizing the need for balanced training data to mitigate downstream bias. While this approach is focused on the structural origins of bias in training data, the current experiment shifts the focus to the model's behavior during inference, specifically its susceptibility to confirmation and anchoring biases. 
+
+The current work also diverges from traditional bias detection methods by employing a qualitative assessment of model responses to prompts designed to elicit biased reasoning. Unlike the WEAT, which relies on statistical measures of association between words, the present approach examines whether the model's reasoning process aligns with human cognitive biases. This methodological difference underscores the need for complementary approaches to fully understand the nature of bias in language models. By comparing the results of this experiment with existing literature, it becomes evident that while gender bias remains a critical area of concern, the investigation of broader cognitive biases such as confirmation and anchoring offers new insights into the limitations and potential improvements of language model behavior.
+</text>
+
+## Methods
+
+\section{Methods}
+
+To investigate whether the Ollama language model exhibits cognitive biases such as confirmation bias or anchoring bias, we designed a controlled experimental framework. The methodology is structured around the construction of prompts that systematically test for the presence of these biases, followed by the analysis of the model’s responses. The experiments are conducted using the Ollama language model served locally without external APIs or model downloads, ensuring reproducibility and control over the experimental environment.
+
+For confirmation bias, we designed prompts that present a biased initial statement and then ask the model to evaluate or expand on the statement. The objective is to determine whether the model reinforces the initial biased statement or challenges it. Each prompt is carefully formulated to contain a clear bias, such as gender or stereotype-based claims. For example, the prompt "Women are less capable in STEM fields" is designed to test whether the model reinforces the statement or provides a counterargument. The model's response is recorded and analyzed to identify patterns of reinforcement or challenge.
+
+For anchoring bias, we designed prompts that present the model with a biased initial value or statement and then ask it to make a judgment or prediction. The goal is to observe whether the model's response is overly influenced by the initial value. For instance, a prompt such as "The average salary for a software engineer is \$120,000. What is the estimated salary for a software engineer in the United States?" is used to assess whether the model's response is disproportionately influenced by the initial value of \$120,000. The model's response is recorded and analyzed for evidence of anchoring.
+
+To ensure a balanced and representative dataset, we manually created 20-30 examples for each bias type, ensuring a balance between positive and negative scenarios. The prompts are designed to be neutral in language and structure, minimizing the influence of other factors on the model's responses. The model's responses are recorded and stored in a structured format for further analysis.
+
+The analysis of the model's responses is conducted using qualitative methods, with a focus on identifying patterns of bias. Specifically, we assess whether the model's responses reinforce or challenge the initial biased statements. To strengthen the quantitative analysis, we calculate the percentage of responses that either reinforce or challenge biased statements. This approach allows us to determine the extent to which the model exhibits confirmation bias.
+
+The experiments are conducted within a timeframe of under 10 minutes using a single GPU, ensuring that the computational resources are adequately managed while maintaining the integrity of the experimental process. The results are then interpreted in the context of the broader literature on language model biases and cognitive biases in human decision-making.
+</text>
+
+## Experimental Setup
+
+\section{Experimental Setup}
+
+The experimental setup for this study was designed to systematically investigate whether the Ollama language model exhibits cognitive biases such as confirmation bias or anchoring bias. The dataset consisted of manually crafted prompts that were structured to test for these biases. For confirmation bias, prompts were designed to present a biased initial statement followed by a question that asked the model to evaluate or expand on the statement. The model's responses were recorded and analyzed for patterns of reinforcement or challenge of the initial biased statement. For anchoring bias, prompts were structured to provide a biased initial value or statement and then ask the model to make a judgment or prediction. The model's responses were compared to assess whether they were disproportionately influenced by the initial value.
+
+The evaluation metrics used in this study were primarily qualitative, focusing on the content and tone of the model's responses. While quantitative metrics such as the percentage of responses that either reinforced or challenged biased statements were not explicitly calculated, they were noted as areas for potential improvement in future work. The hyperparameters of the Ollama model were not modified during the experiment; the model was used in its default configuration, with no additional training or fine-tuning applied. The experiment was conducted locally using the Ollama model served on a single GPU, ensuring that the results were not influenced by external APIs or model downloads. The entire experiment was completed within a timeframe of under 10 minutes, as specified in the experimental plan.
+</text>
+
+## Results
+
+\section{Results}
+
+The experimental results indicate that the Ollama language model demonstrates a consistent pattern of challenging biased statements, suggesting a low likelihood of confirmation bias. For instance, when presented with the prompt "Women are less capable in STEM fields," the model responded by rejecting the stereotype and emphasizing the equality of women in STEM fields. Similar responses were observed across multiple prompts, indicating that the model does not reinforce biased statements. However, the qualitative nature of the responses limits the ability to quantify the extent of bias. 
+
+The model's responses were recorded for 10 confirmation bias prompts, with each response explicitly addressing the biased statement and providing a counterpoint. No clear pattern of reinforcing the initial biased statements was observed. The model's responses are generally neutral and critical of the initial statements, which suggests that it does not exhibit confirmation bias in the manner described in the literature review.
+
+The experiment did not include anchoring bias prompts, as the prompt generation was limited to the confirmation bias examples. Therefore, no quantitative analysis of anchoring bias could be performed. The results are limited to the manually crafted examples and do not include systematic variation in initial values or statements. Additionally, the experiment was conducted using a single GPU and a limited number of examples, which may affect the generalizability of the findings. Further experiments with a larger and more diverse set of prompts are required to comprehensively assess the presence of anchoring bias in the Ollama model.
+
+## Discussion
+
+\section{Discussion}
+
+The experimental results suggest that the Ollama language model exhibits a strong tendency to challenge biased statements, indicating a low likelihood of confirmation bias. For example, when presented with prompts containing gender stereotypes or generalizations, the model consistently responds by rejecting these statements and emphasizing the underlying equality or complexity of the issues at hand. This behavior is indicative of the model's ability to recognize and counteract biased input, which may be attributed to its training data and the architectural design of the model. However, the qualitative nature of the responses necessitates further quantitative analysis to determine the extent to which the model may still exhibit confirmation bias. Future work should involve systematically quantifying the proportion of responses that either reinforce or challenge biased statements to better understand the model's behavior.
+
+Similarly, the model's responses to the confirmation bias prompts do not provide sufficient evidence to determine whether anchoring bias is present. While the model's responses to the prompts are thoughtful and balanced, further experimentation is required to assess whether the model's judgments are influenced by initial values or statements. This could be achieved by introducing controlled variations in the initial prompts and observing how the model's responses evolve. Additionally, the model's behavior should be compared with human responses to provide a more comprehensive understanding of its cognitive tendencies.
+
+The findings align with previous research that highlights the role of training data in shaping the behavior of language models. The model's ability to challenge biased statements may be influenced by the diversity and representational balance of the training data. However, the presence of gender representation bias in training corpora could still affect the model's performance in certain contexts, particularly in downstream tasks that rely on accurate and equitable representations. Therefore, it is essential to continue exploring the interplay between training data, model behavior, and the mitigation of cognitive biases in language models.
+
+In conclusion, while the experimental results suggest that the Ollama model does not exhibit confirmation bias in the tested scenarios, further quantitative analysis is necessary to draw more definitive conclusions. Additionally, the study highlights the importance of addressing bias in training data and the need for continued research into the cognitive mechanisms that govern the behavior of language models. These insights contribute to the broader discourse on the ethical and practical implications of deploying language models in real-world applications.

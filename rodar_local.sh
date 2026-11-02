@@ -4,11 +4,12 @@
 #   ./rodar_local.sh memoria --fonte llm
 #   ./rodar_local.sh teste --versao A
 #   ./rodar_local.sh treino --mock          (fluxo sem LLM)
-# Variáveis opcionais: MODELO (padrão qwen3-nothink:8b), MODO_RAPIDO (padrão 0), SAIDA (pasta dos resultados).
+# Variáveis opcionais: MODELO (padrão qwen3-nothink:8b), MODO_RAPIDO (padrão 0), SEEDS (padrão 3), SAIDA (pasta dos resultados).
 set -euo pipefail
 cd "$(dirname "$0")"
 MODELO="${MODELO:-qwen3-nothink:8b}"
 MODO_RAPIDO="${MODO_RAPIDO:-0}"
+SEEDS="${SEEDS:-3}"
 SAIDA="${SAIDA:-$PWD/resultados_local}"
 if [ "$MODO_RAPIDO" = 1 ]; then NUM_PAPERS=3 MAX_STEPS=10 MLE_STEPS=2; else NUM_PAPERS=5 MAX_STEPS=20 MLE_STEPS=3; fi
 
@@ -33,4 +34,4 @@ fi
 
 cd agent_lab
 exec ../.venv/bin/python -u projeto.py "$@" --model "$MODELO" --base_url http://127.0.0.1:11434/v1 \
-  --seeds 1 --num_papers "$NUM_PAPERS" --max_steps "$MAX_STEPS" --mle_steps "$MLE_STEPS" --out "$SAIDA" --verbose
+  --seeds "$SEEDS" --num_papers "$NUM_PAPERS" --max_steps "$MAX_STEPS" --mle_steps "$MLE_STEPS" --out "$SAIDA" --verbose

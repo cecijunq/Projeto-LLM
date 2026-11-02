@@ -1,0 +1,19 @@
+{
+  "objective": "Investigate whether chain-of-thought (CoT) prompting improves the accuracy of a small language model on grade-school math problems from the GSM8K dataset.",
+  "methodology": {
+    "dataset": "gsm8k (from HuggingFace)",
+    "model": "Ollama-local model (via OpenAI-compatible API)",
+    "steps": [
+      "Load the GSM8K dataset and split into training (80%) and test (20%) sets.",
+      "Evaluate the model's performance on the test set using standard prompting.",
+      "Repeat the evaluation using CoT prompting, where each problem is followed by a step-by-step reasoning process.",
+      "Compare the accuracy of the model under both prompting conditions."
+    ]
+  },
+  "resources": {
+    "data": "Small dataset (GSM8K) from HuggingFace",
+    "model": "Ollama-local model (no external APIs or model downloads)",
+    "time": "A few minutes on one GPU"
+  },
+  "analysis": "Compare the model's accuracy with and without CoT prompting to determine if CoT improves performance on GSM8K."
+}

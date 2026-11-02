@@ -1,0 +1,73 @@
+First few examples:
+{'question': ['A patient presents with fever, cough, and shortness of breath. What are the possible diagnoses?', 'A patient has abdominal pain, nausea, and vomiting. What are the possible diagnoses?', 'A patient presents with chest pain, shortness of breath, and sweating. What are the possible diagnoses?'], 'answer': ['Pneumonia, Tuberculosis, Bronchitis, Asthma', 'Gastritis, Gastroenteritis, Pancreatitis, Appendicitis', 'Myocardial Infarction, Pneumothorax, Pericarditis, Pulmonary Embolism']}
+=== experiment output ===
+First few examples:
+{'question': ['A patient presents with fever, cough, and shortness of breath. What are the possible diagnoses?', 'A patient has abdominal pain, nausea, and vomiting. What are the possible diagnoses?', 'A patient presents with chest pain, shortness of breath, and sweating. What are the possible diagnoses?'], 'answer': ['Pneumonia, Tuberculosis, Bronchitis, Asthma', 'Gastritis, Gastroenteritis, Pancreatitis, Appendicitis', 'Myocardial Infarction, Pneumothorax, Pericarditis, Pulmonary Embolism']}
+
+Results without differential diagnosis prompt:
+Question: A patient presents with fever, cough, and shortness of breath. What are the possible diagnoses?
+Model Response: A patient presenting with **fever, cough, and shortness of breath** could have a variety of possible diagnoses, ranging from **common respiratory infections** to **more serious conditions**. Here is a list of possible diagnoses, organized by severity and likelihood:
+
+---
+
+### ✅ **Common Causes (Most Likely)**
+1. **Community-Acquired Pneumonia (CAP)**
+   - Common in adults and children
+   - Often caused by *Streptococcus pneumoniae*, *Mycoplasma pneumoniae*, or viral agents
+   - Symptoms: fever, cough, shortness of breath, chest pain, fatigue
+
+2. **Viral Upper Respiratory Infection (URI)**
+   - May progress to bronchitis or pneumonia
+   - Common in the winter months
+   - Symptoms: fever, cough, shortness of breath, sore throat, runny nose
+
+3. **Acute Bronch
+...[saída truncada]...
+. **Acute Coronary Syndrome (ACS)**
+   - Unstable angina
+   - Myocardial infarction (STEMI/NSTEMI)
+   - Coronary artery spasm
+
+2. **Arrhythmias**
+   - Atrial fibrillation (with or without rapid ventricular response)
+   - Ventricular tachycardia
+   - Supraventricular tachycardia (SVT)
+   - Atrial flutter
+   - Sinus tachycardia
+   - Bradycardia (e.g., sick sinus syndrome)
+   - Long QT syndrome
+   - Brugada syndrome
+   - Wolff-Parkinson-White (WPW) syndrome
+
+3. **Heart Failure**
+   - Acute decompensated heart failure
+   - Chronic heart failure with decompensation
+   - Per
+Correct Answer: Atrial Fibrillation, Hypertension, Myocardial Infarction, Pericarditis
+--------------------------------------------------------------------------------
+Question: A patient has chronic diarrhea, weight loss, and abdominal pain. What are the possible diagnoses?
+Model Response: When a patient presents with **chronic diarrhea, weight loss, and abdominal pain**, the differential diagnosis is broad and includes both **infectious**, **inflammatory**, **malabsorptive**, and **neoplastic** conditions. Below is a comprehensive list of **potential differential diagnoses**, grouped by etiology for clarity:
+
+---
+
+### 🔍 **1. Inflammatory Bowel Disease (IBD)**
+- **Crohn’s Disease**
+- **Ulcerative Colitis**
+- **Indeterminate Colitis**
+- **Granulocytic Enteritis (Lofgren’s Syndrome)**
+
+---
+
+### 🔍 **2. Infections (Chronic or Recurrent)**
+- **Whipple’s Disease**
+- **Lyme Disease (GI manifestations)**
+- **Tuberculosis (Gastrointestinal TB)**
+- **Amoebiasis (Chronic)** – especially in endemic areas
+- **Giardiasis** – can be chronic and cause malabsorption
+- **Cryptosporidiosis**
+- **Isospora belli**
+- **Microsporidiosis**
+- **Cyclospora cayetanensis**
+- **Helicobacter pylori** – can cause chronic gastritis and GI symptoms
+Correct Answer: Irritable Bowel Syndrome, Inflammatory Bowel Disease, Lactose Intolerance, Celiac Disease
+--------------------------------------------------------------------------------

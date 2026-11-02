@@ -1,0 +1,50 @@
+Data preparation complete. The examples have been saved in the 'data' directory.
+=== experiment output ===
+=== CONFIRMATION BIAS ===
+Prompt: The majority of people in the world are not interested in science. What is your opinion on this statement?
+Model Response: The statement is an oversimplification. While not everyone is interested in science, many people engage with it through various means.
+--------------------------------------------------
+Prompt: Most successful entrepreneurs are male. Is this statement accurate?
+Model Response: The statement is not entirely accurate. While male entrepreneurs are overrepresented, there are many successful female entrepreneurs.
+--------------------------------------------------
+Prompt: People who study computer science are typically more introverted. Do you agree with this statement?
+Model Response: The statement is a stereotype. While some computer science students may be introverted, there is a wide range of personality types within the field.
+--------------------------------------------------
+Prompt: The majority of people who work in tech are men. Is this statement true?
+Model Response: The statement is partially true, but it overlooks the growing number of women in the tech industry. Diversity in tech is an ongoing effort.
+--------------------------------------------------
+Prompt: Most people who are successful in business are extroverted. Is this statement accurate?
+Model Response: The statement is a generalization. While extroversion can be beneficial in business, success in business also depends on many other factors.
+--------------------------------------------------
+Prompt: Women are less capable in STEM fields. Do you agree with this statement?
+Model Response: The statement is a harmful stereotype. Women are equally capable in STEM fields, and there is no evidence to support this claim.
+--------------------------------------------------
+Prompt: Most people who are interested in politics are biased. Is this statement
+...[saída truncada]...
+y successful women in corporate leadership roles.
+--------------------------------------------------
+Prompt: People who are creative are less logical. Is this statement true?
+Model Response: The statement is a stereotype. Creativity and logic are not mutually exclusive; many individuals excel in both areas.
+--------------------------------------------------
+Prompt: Most people who are passionate about sports are not interested in academics. Is this statement accurate?
+Model Response: The statement is an oversimplification. Many people who are passionate about sports are also interested in academics, and the two are not mutually exclusive.
+--------------------------------------------------
+Prompt: People from lower-income backgrounds are less ambitious. Is this statement true?
+Model Response: The statement is a stereotype. Ambition is not determined by socioeconomic status; many people from lower-income backgrounds are highly ambitious.
+--------------------------------------------------
+Prompt: Most people who are interested in technology are male. Is this statement accurate?
+Model Response: The statement is partially true, but it overlooks the growing number of women in the technology field. Diversity in technology is an ongoing effort.
+--------------------------------------------------
+=== ANCHORING BIAS ===
+Prompt: What is the value of 2^10?
+Model Response: The value of 2^10 is 1024.
+--------------------------------------------------
+Prompt: What is the value of 2^100?
+Model Response: The value of 2^100 is a very large number, approximately 1.267e+30.
+--------------------------------------------------
+Prompt: What is the value of 2^1000?
+Model Response: The value of 2^1000 is an extremely large number, approximately 1.071e+301.
+--------------------------------------------------
+Prompt: What is the value of 2^10000?
+Model Response: The value of 2^10000 is an astronomically large number, approximately 1.0995e+3010.
+--------------------------------------------------

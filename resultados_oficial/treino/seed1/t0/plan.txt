@@ -1,0 +1,10 @@
+1. **Objective**: Investigate whether language models exhibit cognitive biases such as confirmation bias or anchoring bias using the Ollama language model.
+2. **Method**:
+   - **Confirmation Bias**: Design prompts that present a biased initial statement, then ask the model to evaluate or expand on the statement. Observe if the model reinforces the initial biased statement.
+   - **Anchoring Bias**: Present the model with a biased initial value or statement and then ask it to make a judgment or prediction. Observe if the model's response is overly influenced by the initial value.
+   - **Data**: Manually create 20-30 examples for each bias type, ensuring a balanced representation of positive and negative scenarios.
+   - **Procedure**: Run the prompts on the Ollama model, recording the model's responses. Analyze the responses for patterns of bias.
+3. **Analysis**: Compare the model's responses to the prompts to identify whether the model exhibits confirmation or anchoring bias. Use qualitative analysis to assess the model's behavior.
+4. **Tools**: Use only the Ollama model served locally (no external APIs or model downloads).
+5. **Timeframe**: Complete the experiment in under 10 minutes using a single GPU.
+</final plan>

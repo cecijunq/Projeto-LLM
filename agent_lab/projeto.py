@@ -177,7 +177,10 @@ def cmd_memoria(args):
     for s in range(args.seeds):
         mem_path = os.path.join(args.out, "memoria", f"{letra}_seed{s}.json")
         if os.path.exists(mem_path):
-            os.remove(mem_path)  # reconstrói do zero (a etapa é determinística dado o feedback)
+            if not args.refazer:  # memória já usada em testes: reconstruir poderia mudar o que A/B/C leram
+                print(f"[pulando] {mem_path} (já existe; use --refazer para reconstruir)")
+                continue
+            os.remove(mem_path)
         mem = LongTermMemory(mem_path, embedder=Embedder(use_dense=not args.mock))
         mem.start_run()
         llm = make_llm(args, 777_000 + s)  # mesma seed para B e C: o extrator se comporta igual
@@ -443,7 +446,7 @@ def main():
     ap.add_argument("--max_steps", type=int, default=20)
     ap.add_argument("--mle_steps", type=int, default=3)
     ap.add_argument("--mock", action="store_true", help="LLM, feedback e notas simulados (teste do fluxo)")
-    ap.add_argument("--refazer", action="store_true", help="avaliacao-cega: gerar de novo")
+    ap.add_argument("--refazer", action="store_true", help="memoria/avaliacao-cega: gerar de novo")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args()
 

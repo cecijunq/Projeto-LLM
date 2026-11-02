@@ -1,0 +1,12 @@
+1. **Objective**: Investigate whether language models improve accuracy on MedQA when performing differential diagnosis.
+2. **Dataset**: Use the MedQA dataset to formulate differential diagnosis questions.
+3. **Baseline**: Use a rule-based system or expert knowledge-based approach as the baseline for comparison.
+4. **LLM Setup**: Use Ollama to serve the language model (e.g., Llama 3) locally without downloading additional models.
+5. **Steps**:
+   - Load the MedQA dataset.
+   - Extract differential diagnosis questions from the dataset.
+   - Query the LLM for answers using Ollama's API.
+   - Compare the LLM's responses with the correct answers.
+   - Calculate accuracy metrics for both the LLM and the baseline.
+6. **Evaluation**: Analyze the results to determine if the LLM improves accuracy on MedQA for differential diagnosis.
+</final plan>
