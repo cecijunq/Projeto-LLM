@@ -15,6 +15,8 @@ import re
 import time
 from dataclasses import dataclass, asdict
 
+from . import correcoes
+
 
 @dataclass
 class Usage:
@@ -200,5 +202,5 @@ def extract_command(text: str, command: str) -> str | None:
             first, _, rest = content.partition("\n")
             if _PLACEHOLDER.fullmatch(first.strip()):  # copiou o '<final python code>' do exemplo de comando
                 content = rest.strip()
-            return content
+            return correcoes.limpa(content)
     return None

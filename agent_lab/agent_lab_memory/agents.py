@@ -8,6 +8,8 @@ Os textos dos prompts são versões condensadas/adaptadas dos do Apêndice B.
 """
 from __future__ import annotations
 
+from . import correcoes
+
 ROLE = {
     "phd": "a computer science PhD student at a top university",
     "postdoc": "a computer science postdoctoral researcher at a top university",
@@ -77,7 +79,7 @@ class Agent:
 
     def system_prompt(self, phase: str) -> str:
         return (f"You are {ROLE[self.kind]}.\n"
-                f"Task instructions: {PHASE_TASK.get((self.kind, phase), '')}\n"
+                f"Task instructions: {PHASE_TASK.get((self.kind, phase), '')}{correcoes.tarefa(self.kind, phase)}\n"
                 f"Commands available:\n{PHASE_COMMANDS.get((self.kind, phase), '')}\n{CMD_FORMAT}")
 
     def step(self, topic: str, phase: str, step: int, max_steps: int, feedback: str = "",

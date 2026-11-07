@@ -1,0 +1,277 @@
+{
+  "run_counter": 1,
+  "items": [
+    {
+      "content": "Problem: Failed to install required libraries, leading to repeated runtime errors. | How to avoid: Check if required libraries are installed in the environment before running the code. If a library is not available, either install it or use an alternative that is available.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "data_preparation",
+      "importance": 0.9,
+      "id": "dbe5b6be44",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928237.6313405,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t0"
+      }
+    },
+    {
+      "content": "Problem: Incorrectly used a local language model (e.g., Ollama) without verifying its availability in the environment. | How to avoid: Verify the availability of the chosen model and its dependencies in the environment before attempting to use it. Prefer models that are known to be compatible with the current setup.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "data_preparation",
+      "importance": 0.8,
+      "id": "ffc14c4957",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928240.3542297,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t0"
+      }
+    },
+    {
+      "content": "Problem: Used an unnecessary library for data preparation, which caused dependency issues. | How to avoid: Ensure that only necessary libraries are used during data preparation. Avoid integrating models or APIs during this phase unless absolutely required.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "data_preparation",
+      "importance": 0.7,
+      "id": "5c106d9fc4",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928240.3684142,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t0"
+      }
+    },
+    {
+      "content": "Problem: Failed to adapt the approach when encountering repeated errors, leading to a failed experiment. | How to avoid: If an error persists despite multiple attempts, consider changing the approach or using an alternative method to avoid getting stuck in a dead end.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "running_experiments",
+      "importance": 0.6,
+      "id": "7d6d838a6f",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928240.3794084,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t0"
+      }
+    },
+    {
+      "content": "Problem: The experiment failed to test the research question by comparing a fine-tuned model with random guessing instead of comparing the same LLM with and without differential diagnosis prompts. | How to avoid: For research questions of the form 'does asking X to the model improve Y?', compare the same LLM with and without the prompt X, using the same questions and metric. Avoid fine-tuning models if not explicitly required.",
+      "kind": "insight",
+      "topic": "Do language models improve accuracy on MedQA when asked to perform differential diagnosis?",
+      "phase": "running_experiments",
+      "importance": 0.9,
+      "id": "09fe02a48a",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928259.6197138,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t1"
+      }
+    },
+    {
+      "content": "Problem: The code contained invalid syntax due to incorrect use of <final python code> and </final python code> tags, leading to a SyntaxError. | How to avoid: Write only Python code within the code block without using <final python code> or </final python code> tags. Ensure that the code is properly formatted and free of syntax errors.",
+      "kind": "insight",
+      "topic": "Do language models improve accuracy on MedQA when asked to perform differential diagnosis?",
+      "phase": "data_preparation",
+      "importance": 0.8,
+      "id": "9b16d731a1",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928259.6326337,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t1"
+      }
+    },
+    {
+      "content": "Problem: The experiment failed to measure accuracy correctly due to improper comparison of model responses with the ground truth. | How to avoid: For math questions, explicitly instruct the model to end responses with 'Answer: <number>', extract the last number using regex, and compare it numerically with the ground truth. Avoid using string comparison or token-based truncation.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "running_experiments",
+      "importance": 0.95,
+      "id": "3c27d6f417",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928283.1349697,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t2"
+      }
+    },
+    {
+      "content": "Problem: The experiment design lacked sufficient conditions to test gender role effects, using only one gender role condition. | How to avoid: To test gender role effects, include at least three conditions: neutral, male, and female, using the same math questions across all conditions.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "plan_formulation",
+      "importance": 0.85,
+      "id": "a7cbf337db",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928283.1466868,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t2"
+      }
+    },
+    {
+      "content": "Problem: The experiment did not validate the accuracy calculation before interpreting results, leading to incorrect conclusions. | How to avoid: Before interpreting results, manually inspect a few model responses against the ground truth to ensure the accuracy calculation is valid. Be skeptical of 0% or 100% accuracy across conditions.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "results_interpretation",
+      "importance": 0.8,
+      "id": "436bf3ef4e",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928283.1583562,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t2"
+      }
+    },
+    {
+      "content": "Problem: The code had a syntax error and timeout issues, leading to incomplete or incorrect experimental results. | How to avoid: Ensure the code is syntactically correct and optimize it for speed by using smaller data subsets and efficient API calls. Set reasonable timeouts and monitor execution time during development.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "running_experiments",
+      "importance": 0.75,
+      "id": "88e94696e1",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928283.1695628,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t2"
+      }
+    },
+    {
+      "content": "Problem: The code incorrectly compares the full model response with the complete solution, leading to 0% accuracy. | How to avoid: Extract the final answer from the model's response by parsing the number after '####' in the GSM8K dataset. Ensure the model is instructed to end with 'Answer: <number>' and compare only the extracted number.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "results_interpretation",
+      "importance": 0.9,
+      "id": "9f86b405aa",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928307.039394,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t3"
+      }
+    },
+    {
+      "content": "Problem: The experiment failed to measure the effect of chain-of-thought prompting due to incorrect implementation and data handling. | How to avoid: Ensure that the CoT prompting is properly implemented with sufficient tokens to allow the model to generate full reasoning. Validate that the experiment design correctly isolates the effect of CoT by comparing it against a baseline with the same setup.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "running_experiments",
+      "importance": 0.8,
+      "id": "2cc7afd9ea",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928307.0546913,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t3"
+      }
+    },
+    {
+      "content": "Problem: The code had syntax errors and runtime errors due to poor code quality and lack of testing. | How to avoid: Implement code with proper syntax and conduct thorough testing before running experiments. Use linters and code formatters to catch syntax errors early and ensure the code is robust and reliable.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "data_preparation",
+      "importance": 0.7,
+      "id": "36a9af77ad",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928307.0726128,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t3"
+      }
+    },
+    {
+      "content": "Problem: Missing baseline without label noise makes it impossible to assess the impact of noise on models. | How to avoid: Include a baseline experiment with 0% label noise and compare the performance drop of each model relative to their clean accuracy.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "results_interpretation",
+      "importance": 0.95,
+      "id": "2ccd9f6e47",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928332.6290774,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t4"
+      }
+    },
+    {
+      "content": "Problem: The dataset used in the code does not match the one specified in the plan, leading to incorrect results. | How to avoid: Ensure that the code strictly follows the dataset specified in the plan, including the correct number of samples and data source.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "data_preparation",
+      "importance": 0.85,
+      "id": "a0a0e5e9a1",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928332.6988244,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t4"
+      }
+    },
+    {
+      "content": "Problem: The experiments lacked a fixed random seed and statistical testing, leading to unreliable results. | How to avoid: Fix the random seed using np.random.seed() and perform statistical tests (e.g., paired t-test) to validate the significance of results before drawing conclusions.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "running_experiments",
+      "importance": 0.8,
+      "id": "b78d191257",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928332.715225,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t4"
+      }
+    },
+    {
+      "content": "Problem: The experiment results were inconsistent due to lack of reproducibility and insufficient test size. | How to avoid: Use a fixed random seed, ensure a sufficiently large test set (at least 200 examples), and repeat the experiment multiple times to ensure reproducibility and reliability of results.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "running_experiments",
+      "importance": 0.75,
+      "id": "c9906dd5a2",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793928332.7326636,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t4"
+      }
+    }
+  ]
+}

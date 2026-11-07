@@ -2,16 +2,16 @@
   "run_counter": 1,
   "items": [
     {
-      "content": "Problem: Missing dependencies in data preparation phase caused the project to fail to run. | How to avoid: Ensure all required libraries and dependencies are installed before starting the data preparation phase. Use a requirements.txt file or package manager to install dependencies systematically.",
+      "content": "Problem: Missing dependencies in data preparation phase caused the project to fail to run. | How to avoid: Ensure all required libraries and dependencies are installed before starting the data preparation phase. Use a requirements.txt file or a package manager to install dependencies systematically.",
       "kind": "insight",
       "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
       "phase": "data_preparation",
       "importance": 0.9,
-      "id": "95296e5c17",
+      "id": "c2ff422202",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326296.7167525,
+      "created_at": 1793927870.8717632,
       "metadata": {
         "source": "llm",
         "project": "seed0/t0"
@@ -23,43 +23,43 @@
       "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
       "phase": "data_preparation",
       "importance": 0.8,
-      "id": "01828b880f",
+      "id": "7722e0010c",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326299.1029012,
+      "created_at": 1793927876.6857152,
       "metadata": {
         "source": "llm",
         "project": "seed0/t0"
       }
     },
     {
-      "content": "Problem: The literature review was in an invalid format, which may have led to incomplete understanding of the topic. | How to avoid: Use a standardized format for the literature review, such as a structured summary or annotated bibliography, to ensure clarity and completeness.",
+      "content": "Problem: The literature review was in an invalid format, which may have led to incomplete or incorrect understanding of the topic. | How to avoid: Use a standardized format for the literature review, such as a structured summary or annotated bibliography, to ensure clarity and completeness.",
       "kind": "insight",
       "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
       "phase": "literature_review",
       "importance": 0.7,
-      "id": "213018ca2f",
+      "id": "5abea6befd",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326299.1125193,
+      "created_at": 1793927876.706551,
       "metadata": {
         "source": "llm",
         "project": "seed0/t0"
       }
     },
     {
-      "content": "Problem: The project did not produce a report due to the failure to complete the data preparation phase. | How to avoid: Ensure that all critical phases, including data preparation, are completed before attempting to write the report. Use automated checks to confirm phase completion.",
+      "content": "Problem: The project did not produce a final report due to the failure to complete the data preparation phase. | How to avoid: Ensure that all phases are completed before finalizing the project. If a phase is not completed, address the issues immediately to avoid project abandonment.",
       "kind": "insight",
       "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
       "phase": "data_preparation",
       "importance": 0.8,
-      "id": "f9bd6474d4",
+      "id": "3eacbab517",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326299.1211748,
+      "created_at": 1793927876.729754,
       "metadata": {
         "source": "llm",
         "project": "seed0/t0"
@@ -71,11 +71,11 @@
       "topic": "Do language models improve accuracy on MedQA when asked to perform differential diagnosis?",
       "phase": "running_experiments",
       "importance": 0.9,
-      "id": "61ebbc71e2",
+      "id": "eb1b4fca88",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326314.985489,
+      "created_at": 1793927902.0627003,
       "metadata": {
         "source": "llm",
         "project": "seed0/t1"
@@ -87,46 +87,174 @@
       "topic": "Do language models improve accuracy on MedQA when asked to perform differential diagnosis?",
       "phase": "running_experiments",
       "importance": 0.8,
-      "id": "bb0e18dfc3",
+      "id": "c58af0314d",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326314.997756,
+      "created_at": 1793927902.078972,
       "metadata": {
         "source": "llm",
         "project": "seed0/t1"
       }
     },
     {
-      "content": "Problem: The project did not reach the report writing stage, likely due to failed experiments. | How to avoid: Ensure all experimental phases are completed successfully before proceeding to report writing, and address any failures promptly.",
+      "content": "Problem: The project did not reach the report writing stage, limiting the ability to communicate findings. | How to avoid: Ensure all phases are completed, including report writing, to effectively communicate results and lessons learned.",
       "kind": "insight",
       "topic": "Do language models improve accuracy on MedQA when asked to perform differential diagnosis?",
       "phase": "report_writing",
       "importance": 0.7,
-      "id": "dfdf88271b",
+      "id": "216e8a078b",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326315.0103424,
+      "created_at": 1793927902.092877,
       "metadata": {
         "source": "llm",
         "project": "seed0/t1"
       }
     },
     {
-      "content": "Problem: The literature review was conducted in a loop, indicating inefficiency or lack of focus. | How to avoid: Use structured search strategies and maintain a clear research question to avoid redundant or unproductive literature searches.",
+      "content": "Problem: The literature review was conducted in a loop, suggesting inefficiency or lack of focus. | How to avoid: Use structured search strategies and maintain a clear research question to avoid redundant or unproductive literature review.",
       "kind": "insight",
       "topic": "Do language models improve accuracy on MedQA when asked to perform differential diagnosis?",
       "phase": "literature_review",
       "importance": 0.6,
-      "id": "1d648dec11",
+      "id": "5ae189e23f",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326315.0191383,
+      "created_at": 1793927902.1088333,
       "metadata": {
         "source": "llm",
         "project": "seed0/t1"
+      }
+    },
+    {
+      "content": "Problem: The experiment did not include a control group or baseline comparison, making it difficult to isolate the effect of gender role prompts. | How to avoid: Include a control group or baseline comparison (e.g., neutral prompts without gender role framing) to ensure the results reflect the effect of the prompts rather than other factors.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "plan_formulation",
+      "importance": 0.9,
+      "id": "10b797dfa7",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793927937.965864,
+      "metadata": {
+        "source": "llm",
+        "project": "seed0/t2"
+      }
+    },
+    {
+      "content": "Problem: The experiment reported zero accuracy in both conditions, which may indicate issues with the model's capability rather than the prompts' effect. | How to avoid: Validate the model's baseline performance before testing prompts. Use a simpler or more accessible dataset to ensure the model can answer the questions correctly.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "running_experiments",
+      "importance": 0.8,
+      "id": "cd7aa60bf1",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793927937.9850335,
+      "metadata": {
+        "source": "llm",
+        "project": "seed0/t2"
+      }
+    },
+    {
+      "content": "Problem: The experiment lacked statistical analysis and error bars, making it hard to assess the reliability of the results. | How to avoid: Include statistical analysis (e.g., confidence intervals, error bars) and use a sufficiently large sample size to ensure the results are reliable and generalizable.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "results_interpretation",
+      "importance": 0.7,
+      "id": "d245b61117",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793927938.005815,
+      "metadata": {
+        "source": "llm",
+        "project": "seed0/t2"
+      }
+    },
+    {
+      "content": "Problem: The methodology was incomplete, with no description of prompt parsing, model fine-tuning, or evaluation pipeline. | How to avoid: Provide a detailed description of the prompt implementation, model configuration, and evaluation pipeline to ensure reproducibility and transparency.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "plan_formulation",
+      "importance": 0.8,
+      "id": "279f125643",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793927938.0272634,
+      "metadata": {
+        "source": "llm",
+        "project": "seed0/t2"
+      }
+    },
+    {
+      "content": "Problem: Insufficient model and API validation led to unproductive results with zero accuracy. | How to avoid: Validate model and API configurations thoroughly before running experiments. Ensure the model is accessible and the API is correctly set up with proper authentication and rate limits.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "running_experiments",
+      "importance": 0.9,
+      "id": "ba6518b180",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793927970.5895698,
+      "metadata": {
+        "source": "llm",
+        "project": "seed0/t3"
+      }
+    },
+    {
+      "content": "Problem: Lack of detailed dataset formatting and representation caused unreliable results. | How to avoid: Ensure the dataset is correctly formatted and representative of the problem domain. Verify that the subset used is suitable for the task and matches the expected input format for the model.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "data_preparation",
+      "importance": 0.8,
+      "id": "c646aff4f9",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793927970.6045206,
+      "metadata": {
+        "source": "llm",
+        "project": "seed0/t3"
+      }
+    },
+    {
+      "content": "Problem: Insufficient citation of datasets and models limits the reproducibility and contribution of the work. | How to avoid: Properly cite all datasets and models used in the research. Reference prior work to demonstrate the novelty and relevance of the study.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "literature_review",
+      "importance": 0.7,
+      "id": "ad65508c79",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793927970.870089,
+      "metadata": {
+        "source": "llm",
+        "project": "seed0/t3"
+      }
+    },
+    {
+      "content": "Problem: Unanalyzed zero accuracy results lack depth and fail to explore alternative explanations. | How to avoid: Analyze unproductive results in depth. Investigate potential causes such as model limitations, data issues, or implementation errors. Discuss alternative explanations for the results.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "results_interpretation",
+      "importance": 0.8,
+      "id": "5a9a1806e9",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793927970.8886058,
+      "metadata": {
+        "source": "llm",
+        "project": "seed0/t3"
       }
     },
     {
@@ -135,59 +263,59 @@
       "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
       "phase": "data_preparation",
       "importance": 0.9,
-      "id": "d048adf50e",
+      "id": "ab823e14cf",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326373.686372,
+      "created_at": 1793927992.0917575,
       "metadata": {
         "source": "llm",
         "project": "seed0/t4"
       }
     },
     {
-      "content": "Problem: Lack of statistical analysis (e.g., confidence intervals, hypothesis testing) limits the validity of results. | How to avoid: Include statistical tests and confidence intervals to assess the significance of performance differences between models.",
+      "content": "Problem: Lack of statistical analysis (e.g., confidence intervals, hypothesis testing) limits the validity of results. | How to avoid: Include statistical analysis such as confidence intervals, hypothesis testing, or p-values to assess the significance of observed performance differences.",
       "kind": "insight",
       "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
       "phase": "results_interpretation",
       "importance": 0.8,
-      "id": "964d3a2f8f",
+      "id": "eeaf71a9e0",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326373.6971996,
+      "created_at": 1793927992.1080518,
       "metadata": {
         "source": "llm",
         "project": "seed0/t4"
       }
     },
     {
-      "content": "Problem: Simple label noise simulation methods may not reflect real-world noise scenarios. | How to avoid: Use more realistic noise simulation techniques, such as class-dependent or instance-dependent noise, to better reflect real-world label noise.",
+      "content": "Problem: Simple label noise simulation may not reflect real-world noise scenarios, limiting the practical relevance of findings. | How to avoid: Use more realistic label noise simulation methods, such as class-dependent or instance-dependent noise, to better reflect real-world scenarios.",
       "kind": "insight",
       "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
       "phase": "data_preparation",
       "importance": 0.7,
-      "id": "d35ebbe29a",
+      "id": "5817564da0",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326373.7112439,
+      "created_at": 1793927992.1223927,
       "metadata": {
         "source": "llm",
         "project": "seed0/t4"
       }
     },
     {
-      "content": "Problem: Syntax errors in code can prevent experiments from running and producing results. | How to avoid: Thoroughly test and debug code before running experiments to ensure that syntax errors are resolved and the code executes correctly.",
+      "content": "Problem: Syntax errors in the code can prevent experiments from running and producing results. | How to avoid: Thoroughly test and debug code before running experiments to ensure that syntax errors are resolved and the code executes correctly.",
       "kind": "insight",
       "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
       "phase": "running_experiments",
       "importance": 0.6,
-      "id": "a517bbbea1",
+      "id": "2e90fd1951",
       "created_run": 1,
       "last_access_run": 1,
       "access_count": 0,
-      "created_at": 1793326373.7238033,
+      "created_at": 1793927992.140576,
       "metadata": {
         "source": "llm",
         "project": "seed0/t4"

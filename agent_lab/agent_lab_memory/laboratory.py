@@ -19,6 +19,7 @@ import os
 import re
 import time
 
+from . import correcoes
 from .agents import Agent
 from .llm import extract_command
 from .failures import detect_failures
@@ -211,14 +212,17 @@ class AgentLaboratory:
         fb_mle = fb_phd = ""
         seen_errors: list[str] = []  # última linha de cada erro de submissão, para detectar insistência
         mle_code = ""  # código do MLE que já rodou: os modelos escrevem como células de notebook (usam variáveis anteriores)
+        last_failed = ""  # versão D: avisa quando o MLE reenvia o mesmo código que falhou
         for step in range(self.max_steps):
             rm = self.mle.step(self.topic, phase, step, self.max_steps, fb_mle, context, memory_context)
             if (code := extract_command(rm, "python")) is not None:
                 ok, out = execute_code(f"{mle_code}\n{code}".strip(), timeout=300)
                 if ok:
                     mle_code = f"{mle_code}\n{code}".strip()
+                aviso = "" if ok else correcoes.repetido(code, last_failed)
+                last_failed = "" if ok else code
                 fb_mle = (f"Code output (code that ran is kept, like notebook cells: your next code can use its "
-                          f"variables):\n{out}" if ok else f"Code output (this code was discarded):\n{out}")
+                          f"variables):\n{out}" if ok else f"{aviso}Code output (this code was discarded):\n{out}")
                 fb_phd = (f"The ML engineer's code ran successfully. If it prepares the data for the plan, submit it "
                           f"now with SUBMIT_CODE. Code:\n{mle_code[-1500:]}\nOutput:\n{out[-800:]}" if ok else
                           f"The ML engineer's code failed. Output:\n{out[:1500]}")
@@ -299,9 +303,11 @@ class AgentLaboratory:
         """PhD decide: FINISH ou voltar para um subtarefa (plan/experiment/interpretation)."""
         sys = ("You are a computer science PhD student who submitted a paper. Given the reviews, decide whether to "
                "finish or revisit an earlier stage. Reply ```FINISH\n``` or ```REVISIT\n<plan_formulation|"
-               "running_experiments|results_interpretation>\n```.")
+               "running_experiments|results_interpretation>\n```." + correcoes.refino())
         mem = self.mem("report_refinement")  # [MEMÓRIA]
-        resp = self.llm.query(sys, f"{mem}Review:\n{json.dumps(self.review)[:3000]}\nPlease decide now.")
+        res = (f"Results:\n{self.exp_results[-1500:]}\nInterpretation:\n{self.interpretation[:1000]}\n"
+               if correcoes.ativo() else "")  # versão D: decide vendo os resultados, não só a revisão
+        resp = self.llm.query(sys, f"{mem}{res}Review:\n{json.dumps(self.review)[:3000]}\nPlease decide now.")
         rev = extract_command(resp, "REVISIT")
         return rev.strip() if rev else "FINISH"
 
@@ -311,7 +317,11 @@ class AgentLaboratory:
         for ag in (self.phd, self.postdoc, self.mle):
             ag.reset()
         t0 = time.time()
-        ok = getattr(self, phase)()
+        try:
+            ok = getattr(self, phase)()
+        except RuntimeError as e:  # LLM não respondeu nem com retentativas: a fase falha, o lote continua
+            self.metrics["llm_error"] = f"{phase}: {e}"
+            ok = False
         self.metrics["phase_time"][phase] = round(time.time() - t0, 1)
         self.metrics["phase_success"][phase] = bool(ok)
         inv = self.metrics["invalid_commands"].get(phase, 0)
@@ -369,7 +379,8 @@ class AgentLaboratory:
             "workflow_success": round(sum(ps.values()) / max(1, len(ps)), 3),
             "usage": self.llm.usage.to_dict(), "elapsed_s": round(elapsed, 1), "metrics": self.metrics,
             "config": {"model": getattr(self.llm, "model", "mock"), "num_papers": self.num_papers,
-                       "max_steps": self.max_steps, "mle_steps": self.mle_steps},
+                       "max_steps": self.max_steps, "mle_steps": self.mle_steps}
+                      | ({"correcoes": True} if correcoes.ativo() else {}),
             "trace": {"plan": self.plan, "exp_results": self.exp_results[-3000:],
                       "interpretation": self.interpretation, "errors": self.errors[:30],
                       "n_papers": len(self.lit_review), "human_feedback": self.human_feedback},
