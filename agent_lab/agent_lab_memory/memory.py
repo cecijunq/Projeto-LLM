@@ -261,6 +261,22 @@ def project_facts(result: dict, max_chars: int = 2500) -> str:
     return txt[:max_chars]
 
 
+def _complete_objects(text: str) -> list[dict]:
+    """Objetos JSON completos dentro de um texto. O modelo às vezes corta a última lição ("importance" vira
+    "import") ou erra uma vírgula; antes, a lista inteira era descartada e o projeto ficava sem lições."""
+    dec, out, i = json.JSONDecoder(), [], text.find("{")
+    while i != -1:
+        try:
+            obj, end = dec.raw_decode(text, i)
+        except json.JSONDecodeError:
+            i = text.find("{", i + 1)
+            continue
+        if isinstance(obj, dict):
+            out.append(obj)
+        i = text.find("{", end)
+    return out
+
+
 def extract_lessons(llm, topic: str, facts: str, feedback: str, source: str) -> list[dict]:
     """Transforma feedback (do revisor LLM ou de humanos) em lições 'problema -> como evitar'.
     O MESMO extrator é usado para B e C; só muda o texto do feedback (QP2)."""
@@ -271,11 +287,7 @@ def extract_lessons(llm, topic: str, facts: str, feedback: str, source: str) -> 
     try:
         data = json.loads(body)
     except json.JSONDecodeError:
-        m = re.search(r"\[.*\]", body, re.DOTALL)
-        try:
-            data = json.loads(m.group(0)) if m else []
-        except json.JSONDecodeError:
-            data = []
+        data = _complete_objects(body)  # lista cortada ou com um item quebrado: fica com os objetos inteiros
     lessons = []
     for d in data if isinstance(data, list) else []:
         if not isinstance(d, dict):

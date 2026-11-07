@@ -106,13 +106,13 @@ CONFIG_KEYS = ("model", "num_papers", "max_steps", "mle_steps")
 
 def expected_config(args) -> dict:
     return {"model": "mock" if args.mock else args.model, "num_papers": args.num_papers,
-            "max_steps": args.max_steps, "mle_steps": args.mle_steps}
+            "max_steps": args.max_steps, "mle_steps": args.mle_steps} | ({"correcoes": True} if args.versao == "D" else {})
 
 
 def check_config(r: dict, args, d: str) -> None:
     """Invariante: treino e testes A, B e C com a MESMA configuração. Resultado de outra configuração aborta."""
-    got = {k: r.get("config", {}).get(k) for k in CONFIG_KEYS}
     exp = expected_config(args)
+    got = {k: r.get("config", {}).get(k) for k in exp}
     if got != exp:
         sys.exit(f"Configuração diferente em {d}\n  no resultado: {got}\n  atual:        {exp}\n"
                  "A comparação exige a mesma configuração: apague esse resultado (e os outros da configuração "
@@ -217,7 +217,7 @@ def cmd_teste(args):
     v = args.versao
 
     def memory_for_seed(s):
-        if v == "A":
+        if v in ("A", "D"):
             return None
         p = os.path.join(args.out, "memoria", f"{v}_seed{s}.json")
         if not os.path.exists(p):
@@ -303,7 +303,7 @@ def cmd_analise(args):
             rows.append({"versao": v, "seed": s, "t": i, "tema": teste[i][:60], "nota_llm": r.get("overall"),
                          "mle_score": r.get("mle_score"), "sucesso_etapas": r.get("workflow_success"),
                          "falhas": len(fs), "falhas_repetidas": sum((f["fase"], f["categoria"]) in vistas for f in fs),
-                         "tokens": u["prompt_tokens"] + u["completion_tokens"], "tempo_min": r["elapsed_s"] / 60})
+                         "tokens": None if u["prompt_tokens"] is None else u["prompt_tokens"] + u["completion_tokens"], "tempo_min": r["elapsed_s"] / 60})
     if not rows:
         sys.exit("Nenhum projeto de teste concluído.")
     df = pd.DataFrame(rows)
@@ -435,7 +435,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("etapa", choices=["treino", "memoria", "teste", "avaliacao-cega", "analise"])
     ap.add_argument("--fonte", choices=["llm", "humano"], help="etapa memoria: origem das lições")
-    ap.add_argument("--versao", choices=list(VERSOES), help="etapa teste: A, B ou C")
+    ap.add_argument("--versao", choices=list(VERSOES) + ["D"],
+                    help="etapa teste: A, B ou C; D = exploratória: A com as correções de correcoes.py (fora da análise)")
     ap.add_argument("--topics", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "topics.json"))
     ap.add_argument("--out", default="resultados_projeto")
     ap.add_argument("--seeds", type=int, default=1)
@@ -457,6 +458,8 @@ def main():
     os.makedirs(args.out, exist_ok=True)
     # o código gerado pelo agente usa o mesmo modelo quando o experimento precisa de um LLM
     os.environ["AGENTLAB_LLM_MODEL"] = args.model
+    if args.etapa == "teste" and args.versao == "D":
+        os.environ["AGENTLAB_CORRECOES"] = "1"
     if args.base_url:
         os.environ["AGENTLAB_LLM_BASE_URL"] = args.base_url
     {"treino": cmd_treino, "memoria": cmd_memoria, "teste": cmd_teste,

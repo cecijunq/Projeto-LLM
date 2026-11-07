@@ -8,6 +8,7 @@ import json
 import random
 import re
 
+from . import correcoes
 from .llm import extract_command
 from .tools import execute_code
 
@@ -60,7 +61,7 @@ class MLESolver:
 
     def _system(self, code_lines: list[str], last_output: str) -> str:
         code = "\n".join(f"{i} |{l}" for i, l in enumerate(code_lines)) or "(empty)"
-        return (f"{MLE_ROLE}\nTask instructions: {MLE_PHASE}\n"
+        return (f"{MLE_ROLE}\nTask instructions: {MLE_PHASE}{correcoes.avaliacao()}\n"
                 f"Insights from the literature review:\n{self.insights[:3000]}\n"
                 f"{self._memory_block(self.plan[:500] + last_output[-500:])}"
                 f"Reflection on previous attempts:\n{self.reflection}\n"
@@ -78,6 +79,9 @@ class MLESolver:
             self.stats["no_results"] = self.stats.get("no_results", 0) + 1
             ok, out = False, ("[ERRO] The code ran without errors but printed no results (no numbers in its output). "
                               "Print every result with its numeric value.\n" + out)
+        elif ok and correcoes.sem_metrica(exp_out):  # versão D: número solto (lista, df.head) não é resultado
+            self.stats["no_results"] = self.stats.get("no_results", 0) + 1
+            ok, out = False, correcoes.SEM_METRICA + out
         if not ok:
             self.stats["exec_errors"] += 1
         return ok, out
@@ -85,7 +89,7 @@ class MLESolver:
     def _repair(self, lines: list[str], error: str) -> tuple[bool, list[str], str]:
         for _ in range(self.n_repair):
             mem = self._memory_block(error[-800:])  # [MEMÓRIA] o reparo consulta erros já vistos
-            resp = self.llm.query(REPAIR_SYS + "\n" + mem, f"Error:\n{error[-2000:]}\n\nDataset code (runs before "
+            resp = self.llm.query(REPAIR_SYS + correcoes.reparo() + "\n" + mem, f"Error:\n{error[-2000:]}\n\nDataset code (runs before "
                                   f"this code; do not repeat it):\n{self.dataset_code[:2000]}\n\nCode:\n" + "\n".join(lines),
                                   temperature=0.8)
             fixed = extract_command(resp, "python")
