@@ -6,6 +6,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import time
 
 
 class ArxivSearch:
@@ -94,15 +95,70 @@ def execute_code(code: str, timeout: int = 600, workdir: str | None = None, max_
     path = os.path.join(workdir, "run.py")
     with open(path, "w", encoding="utf-8") as f:
         f.write(code)
-    try:
-        p = subprocess.run([sys.executable, path], cwd=workdir, capture_output=True,
-                           text=True, timeout=timeout)
-        out = (p.stdout or "") + (("\n[stderr]\n" + p.stderr) if p.stderr else "")
-        ok = p.returncode == 0
-    except subprocess.TimeoutExpired:
-        ok, out = False, (f"[ERRO] Timeout: the code ran for more than {timeout}s and was stopped. Make it much "
-                          "faster: use a small subset of the data (e.g. at most 2000 training examples, flattened "
-                          "features for sklearn) and at most 50 language model queries.")
+    # Saída vai para arquivo (não para a memória deste processo) e um vigia limita RAM e tamanho da saída do filho.
+    # Sem isso, código como print(list(permutations(10 itens))) estourava a RAM e o Linux matava o laboratório
+    # inteiro (teste C seed2/t4). Os limites só agem quando o projeto cairia de qualquer jeito.
+    out_path, err_path = os.path.join(workdir, "stdout.txt"), os.path.join(workdir, "stderr.txt")
+    killed = None
+    with open(out_path, "wb") as fo, open(err_path, "wb") as fe:
+        p = subprocess.Popen([sys.executable, path], cwd=workdir, stdout=fo, stderr=fe)
+        t0 = time.time()
+        while p.poll() is None:
+            if time.time() - t0 > timeout:
+                killed = "timeout"
+            elif _rss_mb(p.pid) > MAX_RSS_MB:
+                killed = "memory"
+            elif os.path.getsize(out_path) + os.path.getsize(err_path) > MAX_OUTPUT_MB * 2**20:
+                killed = "output"
+            if killed:
+                p.kill()
+                p.wait()
+                break
+            time.sleep(0.5)
+    out, err = _head_tail(out_path, max_chars), _head_tail(err_path, max_chars)
+    out = out + (("\n[stderr]\n" + err) if err else "")
+    ok = p.returncode == 0 and killed is None
+    if killed == "timeout":
+        out = (f"[ERRO] Timeout: the code ran for more than {timeout}s and was stopped. Make it much "
+               "faster: use a small subset of the data (e.g. at most 2000 training examples, flattened "
+               "features for sklearn) and at most 50 language model queries.")
+    elif killed == "memory":
+        out = (f"[ERRO] MemoryError: the code used more than {MAX_RSS_MB // 1024} GB of RAM and was stopped.\n"
+               f"Output before it was stopped:\n{out}")
+    elif killed == "output":
+        out = (f"[ERRO] The code printed more than {MAX_OUTPUT_MB} MB of output and was stopped.\n"
+               f"Output before it was stopped:\n{out}")
     if len(out) > max_chars:  # evita estourar o limite de tokens (falha citada no artigo)
         out = out[: max_chars // 2] + "\n...[saída truncada]...\n" + out[-max_chars // 2:]
     return ok, out
+
+
+MAX_RSS_MB = int(os.environ.get("AGENTLAB_MAX_RSS_MB", 6 * 1024))
+MAX_OUTPUT_MB = 50
+
+
+def _rss_mb(pid: int) -> float:
+    """RAM residente do processo e dos filhos dele (Linux); 0 se não der para ler."""
+    total, todo = 0, [pid]
+    while todo:
+        q = todo.pop()
+        try:
+            with open(f"/proc/{q}/status") as f:
+                total += next(int(l.split()[1]) for l in f if l.startswith("VmRSS:"))
+            with open(f"/proc/{q}/task/{q}/children") as f:
+                todo += [int(c) for c in f.read().split()]
+        except (OSError, StopIteration, ValueError):
+            pass
+    return total / 1024
+
+
+def _head_tail(path: str, max_chars: int) -> str:
+    """Lê só o começo e o fim do arquivo: a saída pode ter GBs."""
+    size = os.path.getsize(path)
+    with open(path, "rb") as f:
+        if size <= max_chars:
+            return f.read().decode("utf-8", "replace")
+        head = f.read(max_chars // 2)
+        f.seek(size - max_chars // 2)
+        return (head.decode("utf-8", "replace") + "\n...[saída truncada]...\n"
+                + f.read().decode("utf-8", "replace"))

@@ -120,15 +120,17 @@ def check_config(r: dict, args, d: str) -> None:
 
 
 def run_projects(args, topics: list[str], base: str, memory_for_seed, seed_offset: int):
+    total, k = args.seeds * len(topics), 0
     for s in range(args.seeds):
         memory = memory_for_seed(s)
         for i, topic in enumerate(topics):
+            k += 1
             d = os.path.join(base, f"seed{s}", f"t{i}")
             if (old := load_result(d)) is not None:
                 check_config(old, args, d)
                 print(f"[pulando] {d} (já concluído)")
                 continue
-            print(f"\n[rodando] {d}: {topic[:70]}", flush=True)
+            print(f"\n{'=' * 70}\n[projeto {k}/{total}] {d}: {topic[:70]}\n{'=' * 70}", flush=True)
             gen_seed = seed_offset + s * 100 + i
             random.seed(gen_seed)  # escolhas do mle-solver e do paper-solver iguais em A, B e C
             lab = AgentLaboratory(topic, make_llm(args, gen_seed), memory=memory,
