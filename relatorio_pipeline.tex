@@ -684,6 +684,61 @@ com chute aleatório num tema sobre pedir diagnóstico diferencial ao LLM); cond
 (``ancoragem'' sem âncora, ``chain-of-thought'' sem pedir raciocínio passo a passo); e amostras
 pequenas (30 exemplos de teste).
 
+\subsection{Por que os projetos falham}
+\label{sec:porque}
+
+Juntando os 60 projetos (treino e as três versões de teste, sem separar por versão), só 25
+(42\%) chegaram ao relatório. Os outros foram encerrados na preparação de dados (28) ou nos
+experimentos (7). A preparação de dados é, portanto, o principal ponto de bloqueio.
+
+\begin{center}
+\small
+\begin{tabular}{lr}
+\toprule
+Desfecho & Projetos \\
+\midrule
+Chegou ao relatório & 25 \\
+Encerrado em \fase{data\_preparation} & 28 \\
+Encerrado em \fase{running\_experiments} & 7 \\
+\midrule
+Total & 60 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{O agente fica preso no mesmo erro.} Dos 28 projetos encerrados na preparação de
+dados, 20 registraram erros de código. Em 13 deles, um único erro responde por pelo menos 70\%
+das tentativas, e em 9 o mesmo erro se repetiu 10 vezes ou mais. O erro dominante mais comum é
+\texttt{SyntaxError} (13 projetos), que em geral vem do formato da resposta, e não da lógica: o
+modelo copia o marcador \verb|</final python code>| do exemplo do prompt ou aninha crases dentro
+do comando, e reenvia o mesmo código sem perceber o problema. Os outros 8 projetos não
+registraram nenhum erro de código: o agente gastou os 20 passos em diálogo, sem rodar nem
+submeter código.
+
+\paragraph{Mais passos ajudariam pouco.} Entre os 32 projetos que passaram da preparação de
+dados, 19 conseguiram em até 5 passos, 4 entre 6 e 10, e 9 só entre 11 e 20 (4 deles depois
+do passo 15). Alguns projetos saem do erro tarde, então um limite maior salvaria alguns poucos;
+mas a maior parte das falhas é de agente travado, não de agente sem tempo. Não mudamos o limite
+durante o experimento, porque isso alteraria a configuração entre as versões.
+
+\paragraph{Revisão da literatura incompleta.} Em 22 dos 60 projetos, a revisão da literatura
+esgotou os 20 passos sem juntar os 5 artigos. Essa fase não encerra o projeto, mas a revisão
+fica menor do que o previsto.
+
+\paragraph{Esperado para um modelo de 8B.} O Agent Laboratory original foi pensado para modelos
+grandes via API. Modelos pequenos têm dificuldade conhecida em tarefas agênticas longas: seguir
+um formato de comando à risca, ler um traceback e mudar de estratégia, e manter o objetivo ao
+longo de muitos passos. % TODO(grupo): comparar com as taxas de sucesso por etapa relatadas no artigo.
+
+\paragraph{Consequência para a memória.} As lições guardadas são de alto nível (``verifique as
+dependências'', ``use amostras maiores'') e entram no prompt no início de cada fase. As falhas
+dominantes são de baixo nível e se repetem dentro do mesmo projeto. Uma lição lida no começo da
+fase não impede o modelo de reenviar o mesmo código quebrado várias vezes, o que limita o ganho
+possível de B e C sobre A. A versão D (Seção~\ref{sec:versaod}) ataca essas falhas no próprio
+sistema: avisa quando o código reenviado é igual ao que falhou, remove o marcador copiado do
+exemplo e explica como chamar o modelo local. Se for executada, permite comparar duas formas de
+aproveitar os mesmos erros do treino: lições na memória (B e C) e correções no sistema (D).
+
 \subsection{Correções feitas durante as execuções}
 
 \paragraph{Extrator de lições (05/11).} Quando o modelo cortava a última lição ou errava uma
@@ -714,6 +769,7 @@ availability of the chosen model''). Como B e C usam o mesmo extrator, a compara
 justa, mas isso pode reduzir a vantagem esperada de C e entra na discussão da QP2.
 
 \subsection{Versão D (exploratória)}
+\label{sec:versaod}
 
 A versão D é a versão A com correções do sistema tiradas dos erros vistos no treino
 (\texttt{correcoes.py}): instruções de como chamar o modelo local, de como montar cada tipo de
