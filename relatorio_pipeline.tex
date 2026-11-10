@@ -739,6 +739,55 @@ sistema: avisa quando o código reenviado é igual ao que falhou, remove o marca
 exemplo e explica como chamar o modelo local. Se for executada, permite comparar duas formas de
 aproveitar os mesmos erros do treino: lições na memória (B e C) e correções no sistema (D).
 
+\subsection{O que as memórias ensinam}
+\label{sec:licoes}
+
+Para ver se as lições atacam as falhas que de fato derrubam o agente, classificamos as 112 lições
+(58 em B, 54 em C) em seis categorias, por regras de palavras-chave conferidas uma a uma
+(\texttt{classificar\_licoes.py}; a lista completa está em
+\texttt{memoria/classificacao\_licoes.md}). Também repetimos a consulta dos testes nas duas fases
+de código (preparação de dados e experimentos) para os 5 temas $\times$ 3 seeds, e classificamos
+as lições que entram no prompt. As 426 falhas dos 45 projetos de teste (A, B e C somados) foram
+agrupadas pela categoria de lição que as atacaria.
+
+\begin{center}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+ & \multicolumn{2}{c}{Lições na memória} & \multicolumn{2}{c}{No prompt (fases de código)} & Falhas \\
+Categoria & B & C & B & C & nos testes \\
+\midrule
+Código e formato & 17\% & 17\% & 28\% & 16\% & 52\% \\
+Ambiente e modelo & 5\% & 11\% & 9\% & 16\% & 5\% \\
+Sintoma sem causa & 24\% & 7\% & 19\% & 2\% & 27\% \\
+Desenho experimental & 21\% & 30\% & 16\% & 34\% & 15\% \\
+Avaliação, análise e escrita & 26\% & 24\% & 15\% & 14\% & 1\% \\
+Dados & 7\% & 11\% & 12\% & 19\% & 0\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Descompasso entre lições e falhas.} Metade das falhas dos testes é de código e formato,
+mas só 17\% das lições, em B e em C, tratam disso. Metade das lições trata de desenho, análise e
+escrita, que só importam para projetos que chegam ao fim. A memória ensina a fazer um
+experimento melhor; o agente falha antes, ao escrever código que roda. (A contagem de falhas
+pesa as repetições: um mesmo \texttt{SyntaxError} reenviado 15 vezes conta 15.)
+
+\paragraph{B e C diferem no tipo de lição.} Um quarto das lições de B só repete que o projeto
+falhou (``o projeto não chegou à escrita do relatório''), sem causa nem ação; em C são 7\%. O
+revisor LLM lê o relatório, ou a falta dele, e não o processo, então tende a descrever o sintoma.
+O feedback humano produziu lições mais específicas: só C tem lições sobre o marcador
+\verb|</final python code>| copiado do exemplo (3 lições, que entram no prompt em 12 das 30
+consultas das fases de código), sobre reenviar código que já falhou (4 contra 1), sobre chamar
+um modelo que não existe e sobre comparar respostas por igualdade exata de texto.
+
+\paragraph{Mais específico não bastou.} Mesmo com lições mais específicas, C recupera
+\emph{menos} lições de código nas fases de código que B (16\% contra 28\%): as lições de desenho
+de C são mais parecidas com os temas e ganham a disputa por similaridade. E a seleção quase não
+filtra (\texttt{min\_sim = 0,05}): toda fase recebe 6 lições, de qualquer tema. Para a QP2, isso
+sugere que a origem do feedback muda o \emph{conteúdo} da memória, mas a recuperação por
+similaridade com o tema decide o que chega ao agente, e ela favorece o tipo de lição errado.
+
 \subsection{Correções feitas durante as execuções}
 
 \paragraph{Extrator de lições (05/11).} Quando o modelo cortava a última lição ou errava uma
