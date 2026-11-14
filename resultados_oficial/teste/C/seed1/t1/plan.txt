@@ -1,0 +1,15 @@
+The experiment will be implemented as follows:
+
+1. **Data Preparation**: Create a set of 20-50 hand-written multiple-choice questions. Each question will have variations in word order while maintaining the same meaning. The correct answer will be determined by cross-referencing the options with the factual content of the question.
+
+2. **API Interaction**: Use Ollama's API to interact with the local language model. For each question variation, send the prompt to the model and collect the response in real-time.
+
+3. **Evaluation**: Calculate the model's accuracy for each word order variation. Compare the accuracy across different versions of the same question to assess the model's sensitivity to word order changes.
+
+4. **Code Structure**:
+   - A Python script will be used to generate the questions and send prompts to Ollama's API.
+   - The script will collect and store the model's responses.
+   - The model's accuracy will be computed by comparing the selected option against the pre-determined correct answer for each question variation.
+
+This plan ensures dynamic response collection and accurate evaluation of the model's sensitivity to word order changes.
+</final plan>

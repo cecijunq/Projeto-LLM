@@ -1,0 +1,255 @@
+{
+  "topic": "Are language models sensitive to word order in multiple choice benchmarks?",
+  "with_memory": true,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 17,
+  "workflow_success": 0.667,
+  "usage": {
+    "calls": 63,
+    "prompt_tokens": 240774,
+    "completion_tokens": 7271
+  },
+  "elapsed_s": 1103.9,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 20,
+      "plan_formulation": 1,
+      "data_preparation": 20
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 315.7,
+      "plan_formulation": 40.8,
+      "data_preparation": 747.5
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "multiple choice questions",
+        "option reordering effects",
+        "semantic preservation tests"
+      ],
+      "found": 4,
+      "verified": 3
+    },
+    "repeated_data_errors": 16
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "The experiment will investigate whether language models are sensitive to word order in multiple-choice benchmarks. We will use the MMLU dataset, selecting a small subset of questions (e.g., 100 questions across different subjects). For each question, we will rephrase the answer options by altering the word order while preserving the semantic meaning. We will then evaluate the model's performance on both the original and rephrased options using the Ollama-served Llama 3.1 8B model. We will measure accuracy and compare the results to determine if there is a significant difference in performance due to word order changes. This experiment will be conducted in a few minutes on a single GPU, using only the local language model and minimal data.\n</final plan>",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_6i3ufvcr/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_vv8n17q2/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_crpf8k56/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_ocy133vh/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_6k0cpe7w/run.py\", line 15\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_jrrug6ul/run.py\", line 15\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_69xbu_5k/run.py\", line 15\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_jkg5iqb1/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_js7fpg88/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_hry563_9/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_98ybixtv/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_3ox63x0i/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_jqzo3qj2/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_p21jswqa/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_7u98fgb1/run.py\", line 39\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_dzje4ne0/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_4ykkcjko/run.py\", line 13\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      }
+    ],
+    "n_papers": 4,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "literature_review",
+      "categoria": "busca_em_loop"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ],
+  "memory_stats": {
+    "runs": 1,
+    "total": 18,
+    "episodic": 0,
+    "insight": 18,
+    "error": 0,
+    "literature": 0,
+    "feedback": 0
+  },
+  "memory_retrievals": [
+    {
+      "phase": "literature_review",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n",
+      "ids": [
+        "7bcf3b3c6c",
+        "de98fe4e0e",
+        "63fb06a2c0",
+        "a3c51115a7",
+        "2d27ae48ff",
+        "9058295310"
+      ]
+    },
+    {
+      "phase": "plan_formulation",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n",
+      "ids": [
+        "2d27ae48ff",
+        "c1a79cdc6e",
+        "b059380442",
+        "de98fe4e0e",
+        "63fb06a2c0",
+        "fd67a7bc6e"
+      ]
+    },
+    {
+      "phase": "data_preparation",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\nThe experiment will investigate whether language models are sensitive to word order in multiple-choice benchmarks. We will us",
+      "ids": [
+        "a3c51115a7",
+        "61bd23bb7a",
+        "374bbb619b",
+        "fca9399e9d",
+        "9058295310",
+        "de98fe4e0e"
+      ]
+    }
+  ]
+}

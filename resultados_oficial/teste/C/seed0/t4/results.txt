@@ -1,0 +1,8 @@
+Prompts have been saved to random_prompt.txt, class_sorted_prompt.txt, and baseline_prompt.txt.
+=== experiment output ===
+Random Order Accuracy: 0.0
+Class-Sorted Order Accuracy: 0.0
+Baseline Accuracy: 0.0
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

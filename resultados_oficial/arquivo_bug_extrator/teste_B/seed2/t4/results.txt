@@ -1,0 +1,63 @@
+=== experiment output ===
+Baseline Prompt Accuracy:
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - model 'llama3' not found
+Error with model llama3: Error code: 404 - m
+...[saída truncada]...
+el llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Error with model llama2: Error code: 404 - model 'llama2' not found
+Model: llama2, Accuracy: 0.00
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

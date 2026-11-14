@@ -1,0 +1,4 @@
+The zero accuracy in both subsets indicates a critical issue with the model's predictions or the evaluation setup. First, we need to verify whether the `label` column in the SST-2 dataset contains 0s and 1s, as the model's predictions are expected to be in this format. If the labels are in a different format (e.g., -1 and 1), this would explain the mismatch. 
+
+Second, we should manually test the `predict_sentiment` function with a few sample sentences (e.g., "This movie is great!" and "This movie is terrible!") to ensure that the model is returning "0" or "1" as expected. This will help determine whether the issue lies with the model's output parsing or the dataset labels. The next step is to address this issue before proceeding with further analysis.
+</interpretation>

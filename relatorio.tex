@@ -1,0 +1,137 @@
+%% Relatório final — Projeto LLM 2026/2 — Grupo 1
+%% Template: ACM sigconf (acmart), com os metadados de exemplo da ACM removidos.
+
+% Arquivo .bib gerado automaticamente a partir deste .tex (dispensa um .bib separado).
+\begin{filecontents*}[overwrite]{referencias.bib}
+@article{schmidgall2025agentlab,
+  title   = {Agent Laboratory: Using {LLM} Agents as Research Assistants},
+  author  = {Schmidgall, Samuel and Su, Yusheng and Wang, Ze and Sun, Ximeng
+             and Wu, Jialian and Yu, Xiaodong and Liu, Jiang and Moor, Michael
+             and Liu, Zicheng and Barsoum, Emad},
+  journal = {arXiv preprint arXiv:2501.04227},
+  year    = {2025}
+}
+\end{filecontents*}
+
+\documentclass[sigconf]{acmart}
+\usepackage[brazil]{babel}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+%% Remove o bloco de copyright/conferência e a "ACM Reference Format",
+%% que não se aplicam a um relatório de disciplina.
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Memória de Lições entre Projetos no Agent Laboratory}
+\subtitle{Relatório final --- Projeto LLM 2026/2, Grupo 1}
+
+\author{Déborah Yamamoto}
+\affiliation{%
+  \institution{DCC -- Universidade Federal de Minas Gerais}
+  \city{Belo Horizonte}
+  \state{MG}
+  \country{Brasil}}
+
+\author{Arthur SOBRENOME} % TODO: sobrenome do Arthur
+\affiliation{%
+  \institution{DCC -- Universidade Federal de Minas Gerais}
+  \city{Belo Horizonte}
+  \state{MG}
+  \country{Brasil}}
+
+\author{Cecília Junqueira}
+\affiliation{%
+  \institution{DCC -- Universidade Federal de Minas Gerais}
+  \city{Belo Horizonte}
+  \state{MG}
+  \country{Brasil}}
+
+\renewcommand{\shortauthors}{Yamamoto, SOBRENOME e Junqueira}
+
+% Rascunho de resumo — completar com os resultados.
+\begin{abstract}
+O Agent Laboratory é um sistema de múltiplos agentes LLM que conduz
+autonomamente um projeto de pesquisa, da revisão de literatura ao relatório,
+mas descarta ao fim de cada projeto todo o feedback recebido. Propomos uma
+memória de lições que sobrevive entre projetos: o feedback é condensado em
+lições do tipo ``o que deu errado e como evitar'' e reaproveitado nos projetos
+seguintes. Comparamos o sistema original com duas versões com memória, uma
+alimentada pelo revisor LLM e outra por feedback humano, para avaliar se
+guardar lições ajuda e se a origem da lição importa.
+% TODO: uma ou duas frases com os principais resultados.
+\end{abstract}
+
+\keywords{agentes LLM, memória, feedback humano, pesquisa automatizada}
+
+\maketitle
+
+\section{Problema e Motivação}
+
+O Agent Laboratory~\cite{schmidgall2025agentlab} é um sistema de múltiplos
+agentes LLM que recebe uma ideia de pesquisa e conduz, de forma autônoma, a
+revisão de literatura, a execução de experimentos e a redação do relatório.
+Ao longo de cada projeto, o sistema recebe feedback de revisores LLM e,
+opcionalmente, de um humano. Ao fim do projeto, porém, tudo o que foi
+aprendido é descartado: cada nova pesquisa começa do zero.
+
+Três evidências do próprio artigo motivam este trabalho. Primeiro, o
+revisor automático é otimista demais: ele atribui, em média, nota 6,1 (de 10)
+aos artigos gerados, contra 3,8 dada por revisores humanos. Segundo, o
+feedback humano a cada etapa (modo \emph{co-pilot}) eleva a nota geral em
+0,58 ponto, o que indica que o feedback certo melhora o agente. Terceiro, os
+autores relatam falhas que se repetem entre projetos, como buscas em
+\emph{loop} e experimentos que terminam com 0\% de acurácia. Se os erros se
+repetem e o feedback ajuda, mas o aprendizado não é guardado, há uma
+oportunidade clara de reaproveitar lições de um projeto no seguinte.
+
+Investigamos duas questões de pesquisa:
+\begin{itemize}
+  \item \textbf{QP1.} Guardar lições de projetos anteriores faz o agente se
+        sair melhor nos projetos seguintes?
+  \item \textbf{QP2.} Importa a origem da lição: o revisor automático ou um
+        humano?
+\end{itemize}
+
+\section{Abordagem}
+
+Mantemos o fluxo e o código aberto do Agent Laboratory, composto de três
+fases: (i)~\emph{literatura}, que busca e resume artigos;
+(ii)~\emph{experimentos}, que planeja, codifica e executa; e
+(iii)~\emph{relatório}, que escreve os resultados. Ao longo das fases, o
+sistema recebe \emph{feedback} de um revisor LLM ou de um humano.
+A única alteração é a adição de uma \textbf{memória de lições} que sobrevive
+entre projetos.
+
+Ao fim de cada projeto, o feedback recebido é condensado em lições no formato
+``o que deu errado e como evitar'' e gravado na memória. Quando um novo
+projeto começa, o agente consulta essa memória e passa a contar com as lições
+acumuladas nas etapas seguintes. Assim, a memória fecha o ciclo que o sistema
+original deixa aberto: o feedback, que antes só servia ao projeto corrente,
+passa a influenciar os próximos.
+% TODO: se couber, descrever em uma frase como as lições são recuperadas e
+% em quais prompts/etapas são inseridas.
+
+Para responder às questões de pesquisa, comparamos três versões do agente,
+que diferem apenas na memória e na origem das lições:
+\begin{itemize}
+  \item \textbf{A (baseline):} Agent Laboratory original, sem memória;
+  \item \textbf{B:} memória com lições extraídas do feedback do revisor LLM;
+  \item \textbf{C:} memória com lições extraídas do feedback humano (do grupo).
+\end{itemize}
+A comparação entre A e as versões com memória responde à QP1; a comparação
+entre B e C responde à QP2. Nossa hipótese é C~$>$~B~$>$~A. Consideramos
+plausível, porém, que B piore o agente em relação a A: como o revisor
+automático é otimista demais, as lições derivadas dele podem ser pouco
+informativas ou até enganosas, o que também seria um resultado relevante.
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{referencias}
+
+\end{document}

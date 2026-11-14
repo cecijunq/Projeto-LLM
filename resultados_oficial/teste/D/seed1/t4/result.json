@@ -1,0 +1,74 @@
+{
+  "topic": "Does the order of few-shot examples change the accuracy of a language model on text classification?",
+  "with_memory": false,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 0,
+  "workflow_success": 0.75,
+  "usage": {
+    "calls": 51,
+    "prompt_tokens": 148557,
+    "completion_tokens": 5935
+  },
+  "elapsed_s": 725.4,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 17,
+      "plan_formulation": 1,
+      "data_preparation": 13
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": true,
+      "running_experiments": false
+    },
+    "phase_time": {
+      "literature_review": 147.1,
+      "plan_formulation": 27.8,
+      "data_preparation": 236.4,
+      "running_experiments": 314.2
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "text classification",
+        "few shot examples",
+        "order variation"
+      ],
+      "found": 7,
+      "verified": 6
+    },
+    "mle_solver": {
+      "exec_attempts": 0,
+      "exec_errors": 0,
+      "repairs_ok": 0
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3,
+    "correcoes": true
+  },
+  "trace": {
+    "plan": "We will test the hypothesis that the order of few-shot examples changes the accuracy of a language model on text classification. The experiment will use the SMS Spam Collection dataset (200 examples) and Ollama's Llama 3 model. We will evaluate three conditions: (1) original order, (2) reversed order, and (3) shuffled order. For each condition, we will construct a few-shot prompt with 10 examples and evaluate the model on the test set. Accuracy will be measured for each condition. We will analyze whether the order of examples affects classification performance.",
+    "exp_results": "Nenhum código executou com sucesso.",
+    "interpretation": "",
+    "errors": [],
+    "n_papers": 5,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "running_experiments",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ]
+}

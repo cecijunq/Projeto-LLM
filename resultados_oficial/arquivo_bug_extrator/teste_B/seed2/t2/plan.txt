@@ -1,0 +1,39 @@
+{
+  "objective": "Investigate whether sentiment classifiers are sensitive to negation words in short movie reviews from the SST-2 dataset.",
+  "data_source": {
+    "name": "SST-2",
+    "source": "HuggingFace (dataset id: 'glue/sst2')",
+    "description": "Short movie reviews labeled as positive or negative."
+  },
+  "model": {
+    "name": "Llama-3",
+    "provider": "Ollama (OpenAI-compatible API)",
+    "description": "Pre-trained language model used for sentiment classification."
+  },
+  "experimental_design": {
+    "baseline": "Evaluate the model's performance on the original SST-2 dataset without modifications.",
+    "negation_addition": "Add negation words (e.g., 'not', 'never', 'no') to the beginning or end of each review, keeping the sentiment label unchanged.",
+    "negation_removal": "Remove any negation words present in the review and re-evaluate the sentiment.",
+    "metrics": ["accuracy", "F1 score"]
+  },
+  "implementation_steps": [
+    "Load the SST-2 dataset from HuggingFace.",
+    "Preprocess the dataset to extract short movie reviews and corresponding labels.",
+    "Modify reviews by adding or removing negation words.",
+    "Use the Ollama API to make predictions on the original and modified reviews.",
+    "Compare model performance on the original and modified reviews."
+  ],
+  "analysis": {
+    "metrics_to_analyze": ["accuracy", "F1 score"],
+    "questions_to_answer": [
+      "Is the model more sensitive to the presence of negation words?",
+      "Is the model more sensitive to the absence of negation words?"
+    ],
+    "implications": "Provide insights into how sentiment classifiers handle negation in short texts and guide the development of more robust sentiment analysis models."
+  },
+  "constraints": {
+    "data_size": "Small subset of SST-2 data (e.g., 500 samples) to ensure experiment runs in a few minutes.",
+    "model_usage": "Use only the local language model served by Ollama (no paid APIs, no external model downloads).",
+    "computational_limitations": "Limit the number of model queries and use efficient preprocessing to avoid timeouts."
+  }
+}

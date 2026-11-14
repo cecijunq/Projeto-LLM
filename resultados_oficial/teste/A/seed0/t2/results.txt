@@ -1,0 +1,40 @@
+Examples with negation words:
+                                            sentence  label
+0  this film 's relationship to actual tension is...     -1
+1  by the end of no such thing the audience , lik...     -1
+2  none of this violates the letter of behan 's b...     -1
+3  it is not a mass-market entertainment but an u...     -1
+4  now trimmed by about 20 minutes , this lavish ...     -1
+
+Examples without negation words:
+                                            sentence  label
+0             uneasy mishmash of styles and genres .     -1
+1  director rob marshall went out gunning to make...     -1
+2  lathan and diggs have considerable personal ch...     -1
+3  a well-made and often lovely depiction of the ...     -1
+4  although it bangs a very cliched drum at times...     -1
+=== experiment output ===
+Examples with negation words:
+                                            sentence  label
+0  this film 's relationship to actual tension is...     -1
+1  by the end of no such thing the audience , lik...     -1
+2  none of this violates the letter of behan 's b...     -1
+3  it is not a mass-market entertainment but an u...     -1
+4  now trimmed by about 20 minutes , this lavish ...     -1
+
+Examples without negation words:
+                                            sentence  label
+0             uneasy mishmash of styles and genres .     -1
+1  director rob marshall went out gunning to make...     -1
+2  lathan and diggs have considerable personal ch...     -1
+3  a well-made and often lovely depiction of the ...     -1
+4  although it bangs a very cliched drum at times...     -1
+
+Sentiment prediction accuracy on sentences with negation words:
+0.0
+
+Sentiment prediction accuracy on sentences without negation words:
+0.0
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

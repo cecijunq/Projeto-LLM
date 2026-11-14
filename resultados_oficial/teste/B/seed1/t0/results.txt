@@ -1,0 +1,60 @@
+=== experiment output ===
+Training accuracy: 0.0838
+Test accuracy: 0.0868
+Training accuracy: 0.0806
+Test accuracy: 0.0874
+Training accuracy: 0.0860
+Test accuracy: 0.0842
+Training accuracy: 0.0822
+Test accuracy: 0.0880
+Training accuracy: 0.1152
+Test accuracy: 0.1082
+Training accuracy: 0.1172
+Test accuracy: 0.1056
+Training accuracy: 0.1146
+Test accuracy: 0.1018
+Training accuracy: 0.1160
+Test accuracy: 0.1062
+CNN Model Accuracy:
+Clean: 0.0868
+10% Noise: 0.0874
+20% Noise: 0.0842
+30% Noise: 0.0880
+
+Transformer Model Accuracy:
+Clean: 0.1082
+10% Noise: 0.1056
+20% Noise: 0.1018
+30% Noise: 0.1062
+
+[stderr]
+
+  0%|          | 0.00/9.91M [00:00<?, ?B/s]
+  0%|          | 32.8k/9.91M [00:00<00:38, 254kB/s]
+  1%|          | 98.3k/9.91M [00:00<00:24, 406kB/s]
+  2%|▏         | 164k/9.91M [00:00<00:21, 462kB/s] 
+  4%|▍         | 393k/9.91M [00:00<00:09, 990kB/s]
+  8%|▊         | 754k/9.91M [00:00<00:05, 1.65MB/s]
+ 16%|█▌        | 1.54M/9.91M [00:00<00:02, 3.06MB/s]
+ 31%|███▏      | 3.11M/9.91M [00:00<00:01, 6.18MB/s]
+ 60%|██████    | 6.00M/9.91M [00:01<00:00, 11.9MB/s]
+ 80%|███████▉  | 7.90M/9.91M [00:01<00:00, 13.8MB/s]
+100%|██████████| 9.91M/9.91M [00:01<00:00, 8.51MB/s]
+
+  0%|          | 0.00/28.9k [00:00<?, ?B/s]
+100%|██████████| 28.9k/28.9k [00:00<00:00, 220kB/s]
+100%|██████████| 28.9k/28.9k [00:00<00:00, 220kB/s]
+
+  0%|          | 0.00/1.65M [00:00<?, ?B/s]
+  2%|▏         | 32.8k/1.65M [00:00<00:06, 255kB/s]
+  6%|▌         | 98.3k/1.65M [00:00<00:03, 405kB/s]
+ 10%|▉         | 164k/1.65M [00:00<00:03, 457kB/s] 
+ 24%|██▍       | 393k/1.65M [00:00<00:01, 983kB/s]
+ 46%|████▌     | 754k/1.65M [00:00<00:00, 1.65MB/s]
+ 93%|█████████▎| 1.54M/1.65M [00:00<00:00, 3.20MB/s]
+100%|██████████| 1.65M/1.65M [00:00<00:00, 2.15MB/s]
+
+  0%|          | 0.00/4.54k [00:00<?, ?B/s]
+100%|██████████| 4.54k/4.54k [00:00<00:00, 7.24MB/s]
+/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/torch/nn/modules/transformer.py:145: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.self_attn.batch_first was not True(use batch_first for better inference performance)
+  self.encoder = TransformerEncoder(

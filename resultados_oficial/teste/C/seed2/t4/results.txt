@@ -1,0 +1,19 @@
+=== experiment output ===
+=== Experiment: Effect of Few-shot Example Order on Model Accuracy ===
+Control Condition (No Few-shot Examples):
+Accuracy: 0.04
+
+=== Few-shot Example Orderings ===
+Ordering 1:
+Accuracy: 0.00
+Ordering 2:
+Accuracy: 0.00
+Ordering 3:
+Accuracy: 0.00
+Ordering 4:
+Accuracy: 0.00
+Ordering 5:
+Accuracy: 0.00
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

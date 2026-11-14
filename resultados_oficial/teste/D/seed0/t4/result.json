@@ -1,0 +1,202 @@
+{
+  "topic": "Does the order of few-shot examples change the accuracy of a language model on text classification?",
+  "with_memory": false,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 16,
+  "workflow_success": 0.667,
+  "usage": {
+    "calls": 63,
+    "prompt_tokens": 210059,
+    "completion_tokens": 6270
+  },
+  "elapsed_s": 3495.1,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 20,
+      "plan_formulation": 1,
+      "data_preparation": 20
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 135.1,
+      "plan_formulation": 26.2,
+      "data_preparation": 3333.8
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "text classification",
+        "few shot examples",
+        "order effect"
+      ],
+      "found": 8,
+      "verified": 6
+    },
+    "submit_fallback": 16,
+    "repeated_data_errors": 14
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3,
+    "correcoes": true
+  },
+  "trace": {
+    "plan": "Does the order of few-shot examples change the accuracy of a language model on text classification?\n\nPlan:\n1. Use Ollama's local model (e.g., llama3) for all conditions.\n2. Use a test set of 200 text classification examples, with a balanced distribution across classes (e.g., 50 examples per class).\n3. For each example, create a few-shot prompt with 5 examples per class (e.g., 5 examples for class A, 5 for class B, etc.).\n4. Compare the model's accuracy across the following conditions:\n   - Random order of examples.\n   - Ascending order of class labels.\n   - Descending order of class labels.\n   - No few-shot examples (control condition).\n5. Evaluate the model's accuracy using the same metric (e.g., accuracy, F1 score) across all conditions.\n6. Record the accuracy for each condition and compare the results to determine if the order of few-shot examples significantly affects the model's performance.",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [
+      {
+        "phase": "data_preparation",
+        "text": "thenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rGenerating train split:   0%|          | 0/1000 [00:00<?, ? examples/s]\rGenerating train split: 100%|██████████| 1000/1000 [00:00<00:00, 10911.67 examples/s]\nTraceback (most recent call last):\n  File \"/tmp/agentlab_alvsop80/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "thenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n\rGenerating train split:   0%|          | 0/1000 [00:00<?, ? examples/s]\rGenerating train split: 100%|██████████| 1000/1000 [00:00<00:00, 21930.54 examples/s]\nTraceback (most recent call last):\n  File \"/tmp/agentlab_1ndixp4h/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "[ERRO] Timeout: the code ran for more than 300s and was stopped. Make it much faster: use a small subset of the data (e.g. at most 2000 training examples, flattened features for sklearn) and at most 50 language model queries."
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_2hnhomc6/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "[ERRO] Timeout: the code ran for more than 300s and was stopped. Make it much faster: use a small subset of the data (e.g. at most 2000 training examples, flattened features for sklearn) and at most 50 language model queries."
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_qk4e09cu/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "[ERRO] Timeout: the code ran for more than 300s and was stopped. Make it much faster: use a small subset of the data (e.g. at most 2000 training examples, flattened features for sklearn) and at most 50 language model queries."
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_o2y4ty3q/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "[ERRO] Timeout: the code ran for more than 300s and was stopped. Make it much faster: use a small subset of the data (e.g. at most 2000 training examples, flattened features for sklearn) and at most 50 language model queries."
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_tnpqqfrs/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "[ERRO] Timeout: the code ran for more than 300s and was stopped. Make it much faster: use a small subset of the data (e.g. at most 2000 training examples, flattened features for sklearn) and at most 50 language model queries."
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_uajzt1tc/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "/s]\rGenerating test split:  60%|█████▉    | 21344/35853 [00:00<00:00, 106968.83 examples/s]\rGenerating test split: 100%|██████████| 35853/35853 [00:00<00:00, 108370.49 examples/s]\rGenerating test split: 100%|██████████| 35853/35853 [00:00<00:00, 107666.07 examples/s]\nTraceback (most recent call last):\n  File \"/tmp/agentlab_6kfd3ij5/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_wp25ku73/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_265z9p2y/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_fz325lrk/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      }
+    ],
+    "n_papers": 5,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "literature_review",
+      "categoria": "busca_em_loop"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "timeout"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "timeout"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "timeout"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "timeout"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "timeout"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ]
+}

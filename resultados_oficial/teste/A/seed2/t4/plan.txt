@@ -1,0 +1,10 @@
+Step 1: Prepare a small dataset of 20-50 text classification examples. The dataset should include text samples with corresponding labels, covering different classes (e.g., 5 classes with 4-5 examples per class).
+
+Step 2: Use the Ollama API to load a language model (e.g., llama3).
+
+Step 3: Create multiple versions of the few-shot prompt by varying the order of the examples while keeping the content and labels fixed.
+
+Step 4: For each version, use the Ollama API to generate predictions for a fixed test set (e.g., 10-20 examples) and calculate the accuracy.
+
+Step 5: Analyze the results to determine if the order of few-shot examples significantly affects the model's accuracy on text classification.
+</final plan>

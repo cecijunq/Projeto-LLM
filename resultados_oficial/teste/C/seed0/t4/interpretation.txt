@@ -1,0 +1,19 @@
+The results show that all three conditions (Random Order, Class-Sorted Order, and Baseline) resulted in zero accuracy, which is highly concerning and suggests significant issues with the experimental setup. The primary issues likely include:
+
+1. **Prompt Formatting**: The current prompt format may not be structured in a way that the language model can interpret the few-shot examples correctly. The prompt might not be providing sufficient guidance for the model to understand the task of classification.
+
+2. **Label Extraction**: The method for extracting the predicted label from the model's response appears to be incorrect. The model's output might not be explicitly identifying the label, leading to incorrect or default predictions (e.g., always assigning '0' or '1' as the label).
+
+3. **Model Behavior**: The language model might not be effectively utilizing the few-shot examples, which could be due to the model's inherent limitations in few-shot learning, the clarity of the examples, or the absence of a strong instruction to use the provided examples for classification.
+
+To address these issues, the following adjustments should be made:
+
+- **Refine Prompt Formatting**: Ensure the task description is clear and structured, with explicit instructions for the model to classify text based on the provided examples. For example, the prompt could include a more structured format where the model is explicitly told to "classify the following text into positive or negative sentiment based on the examples provided."
+
+- **Improve Label Extraction**: Modify the code to accurately parse the model’s output for the predicted label. This could involve explicitly instructing the model to end with a clear answer format (e.g., "Answer: positive" or "Answer: negative") and then extracting the label from this specific format.
+
+- **Verify Model Behavior**: Test the model's ability to perform few-shot learning by providing simpler or more structured examples, and ensure that the model is actually using the examples to make predictions.
+
+- **Use a Control Condition**: Include a control condition where the model is provided with no examples (like the Baseline condition) to confirm that the model is not simply guessing randomly, and that the lack of examples is not leading to a default prediction.
+
+After making these adjustments, re-run the experiment to ensure that the model can correctly interpret the few-shot examples and that the label extraction logic is functioning properly. This will allow for a more accurate assessment of how the order of the few-shot examples influences the model's accuracy in text classification.

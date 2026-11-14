@@ -1,0 +1,15 @@
+1. **Dataset Selection**: Use a small hand-written set of 20-50 multiple-choice questions where the same question is phrased with different word orders (e.g., "Which planet is closest to the sun?" vs. "To which planet is the sun closest?").
+
+2. **Model Setup**: Load a local language model via Ollama (e.g., `llama2` or `mistral`) using an OpenAI-compatible API.
+
+3. **Experiment Design**:
+   - For each question, generate two versions: the original and a version with altered word order.
+   - Use the model to predict the correct answer for both versions.
+   - Record the model's accuracy for each version.
+
+4. **Baseline Comparison**: Compare the model's performance between the original and altered versions. Include a baseline where the model randomly guesses the answer.
+
+5. **Analysis**: Calculate the accuracy for each version and determine whether the model's performance is significantly affected by changes in word order.
+
+6. **Reporting**: Summarize the findings, including any trends or patterns observed in the model's sensitivity to word order.
+</final plan>

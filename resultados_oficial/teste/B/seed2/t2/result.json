@@ -1,0 +1,121 @@
+{
+  "topic": "Are sentiment classifiers sensitive to negation words on short movie reviews (SST-2)?",
+  "with_memory": true,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 0,
+  "workflow_success": 0.333,
+  "usage": {
+    "calls": 63,
+    "prompt_tokens": 215526,
+    "completion_tokens": 6330
+  },
+  "elapsed_s": 872.3,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 20,
+      "plan_formulation": 1,
+      "data_preparation": 20
+    },
+    "phase_success": {
+      "literature_review": false,
+      "plan_formulation": true,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 241.2,
+      "plan_formulation": 62.3,
+      "data_preparation": 568.7
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "short movie reviews",
+        "sentiment classification",
+        "negation impact"
+      ],
+      "found": 5,
+      "verified": 6
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "{\n  \"objective\": \"Investigate whether sentiment classifiers are sensitive to negation words in short movie reviews from the SST-2 dataset.\",\n  \"methodology\": {\n    \"data\": {\n      \"source\": \"glue/sst2 from HuggingFace\",\n      \"split\": \"train, validation, test (80-10-10)\"\n    },\n    \"models\": {\n      \"type\": \"pre-trained language model via Ollama's API\",\n      \"examples\": [\"llama2\", \"mistral\"]\n    },\n    \"preprocessing\": {\n      \"task\": \"generate modified versions of reviews\",\n      \"actions\": [\n        \"remove negation words (e.g., 'not', 'never', 'don’t')\",\n        \"explicitly mark negation words (e.g., 'not good' → 'not good')\"\n      ]\n    },\n    \"experiment\": {\n      \"steps\": [\n        \"load SST-2 dataset\",\n        \"split into train/validation/test\",\n        \"generate modified reviews\",\n        \"classify sentiment using the language model\",\n        \"compute metrics (accuracy, precision, recall, F1)\"\n      ],\n      \"metrics\": [\"accuracy\", \"precision\", \"recall\", \"F1-score\"],\n      \"statistical_tests\": [\"t-test\"]\n    },\n    \"analysis\": {\n      \"goal\": \"determine if negation sensitivity affects classification accuracy\",\n      \"output\": \"compare performance between original and modified reviews\"\n    }\n  },\n  \"constraints\": {\n    \"time\": \"run in under 5 minutes\",\n    \"resources\": \"use only one GPU, no external APIs, local Ollama model\"\n  },\n  \"notes\": \"Use small subsets of data and limit model queries to ensure computational efficiency.\"\n}",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [],
+    "n_papers": 0,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "literature_review",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "literature_review",
+      "categoria": "busca_em_loop"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ],
+  "memory_stats": {
+    "runs": 1,
+    "total": 19,
+    "episodic": 0,
+    "insight": 19,
+    "error": 0,
+    "literature": 0,
+    "feedback": 0
+  },
+  "memory_retrievals": [
+    {
+      "phase": "literature_review",
+      "query": "Are sentiment classifiers sensitive to negation words on short movie reviews (SST-2)?\n",
+      "ids": [
+        "08005167d4",
+        "af5b986983",
+        "c409426cb1",
+        "d162fbaf81",
+        "f60ed49dbc",
+        "fc5a48d528"
+      ]
+    },
+    {
+      "phase": "plan_formulation",
+      "query": "Are sentiment classifiers sensitive to negation words on short movie reviews (SST-2)?\n",
+      "ids": [
+        "14834c8cf3",
+        "08005167d4",
+        "c409426cb1",
+        "d162fbaf81",
+        "f60ed49dbc",
+        "fc5a48d528"
+      ]
+    },
+    {
+      "phase": "data_preparation",
+      "query": "Are sentiment classifiers sensitive to negation words on short movie reviews (SST-2)?\n{\n  \"objective\": \"Investigate whether sentiment classifiers are sensitive to negation words in short movie reviews",
+      "ids": [
+        "f8b44f85d6",
+        "12665d0357",
+        "d162fbaf81",
+        "c409426cb1",
+        "f60ed49dbc",
+        "77867974e3"
+      ]
+    }
+  ]
+}

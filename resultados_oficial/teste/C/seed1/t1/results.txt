@@ -1,0 +1,76 @@
+Model Accuracy: 0.00 (0/20)
+=== experiment output ===
+Model Accuracy: 0.00% (0/13)
+
+=== experiment output ===
+Question: Which is the correct capital of France?
+Correct Answer: Paris
+Model Answer: Answer: Paris
+Is Correct: False
+--------------------------------------------------
+Question: What is the capital of Germany?
+Correct Answer: Berlin
+Model Answer: Answer: Berlin
+Is Correct: False
+--------------------------------------------------
+Question: Which city is the capital of Spain?
+Correct Answer: Madrid
+Model Answer: Answer: Madrid
+Is Correct: False
+--------------------------------------------------
+Question: Which is the correct capital of Italy?
+Correct Answer: Rome
+Model Answer: Answer: Rome
+Is Correct: False
+--------------------------------------------------
+Question: What is the capital of Portugal?
+Correct Answer: Lisbon
+Model Answer: Answer: Lisbon
+Is Correct: False
+--------------------------------------------------
+Question: Which city is the capital of Belgium?
+Correct Answer: Brussels
+Model Answer: Answer: Brussels
+Is Correct: False
+--------------------------------------------------
+Question: Which is the correct capital of Switzerland?
+Correct Answer: Bern
+Model Answer: Answer: Bern
+Is Correct: False
+--------------------------------------------------
+Question: What is the capital of Norway?
+Correct Answer: Oslo
+Model Answer: Answer: Oslo
+Is Correct: False
+--------------------------------------------------
+Question: Which city is the capital of Sweden?
+Correct Answer: Stockholm
+Model Answer: Answer: Stockholm
+Is Correct: False
+--------------------------------------------------
+Question: Which is the correct capital of Denmark?
+Correct Answer: Copenhagen
+Model Answer: Answer: Copenhagen
+Is Correct: False
+--------------------------------------------------
+Question: What is the capital of Finland?
+Correct Answer: Helsinki
+Model Answer: Answer: Helsinki
+Is Correct: False
+--------------------------------------------------
+Question: Which city is the capital of Iceland?
+Correct Answer: Reykjavik
+Model Answer: The capital of Iceland is **Reykjavik**.
+
+Answer: **Reykjavik**
+Is Correct: False
+--------------------------------------------------
+Question: Which is the correct capital of Norway?
+Correct Answer: Oslo
+Model Answer: The correct capital of Norway is:
+
+**Oslo**
+
+Answer: Oslo
+Is Correct: False
+--------------------------------------------------

@@ -1,0 +1,19 @@
+1. **Objective**: Test the sensitivity of sentiment classifiers to negation words on short movie reviews from the SST-2 dataset.
+2. **Model**: Use a pre-trained language model (e.g., Llama-3 via Ollama) for sentiment classification.
+3. **Dataset**: Use the SST-2 dataset (short sentences with binary sentiment labels).
+4. **Experiment Design**:
+   - Split the dataset into training and test sets.
+   - Create two versions of the test set:
+     - Version A: Original sentences (with negation words).
+     - Version B: Sentences with negation words removed.
+   - Evaluate the model's performance on both versions (accuracy, F1-score).
+   - Include a baseline model (e.g., a simple rule-based approach or a random guess) for comparison.
+5. **Analysis**:
+   - Compare the performance of the model on Version A vs. Version B to assess sensitivity to negation.
+   - Use statistical tests (e.g., t-tests) to determine the significance of performance differences.
+6. **Implementation**:
+   - Load the SST-2 dataset (ensure it is available or use a small subset).
+   - Preprocess the data (remove negation words for Version B).
+   - Train and evaluate the model using Ollama's local language model.
+   - Conduct statistical analysis to validate results.
+</final plan>

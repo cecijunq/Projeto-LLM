@@ -1,0 +1,36 @@
+{
+  "topic": "Are image transformers more or less sensitive to pixel noise than convolutional networks?",
+  "experiment_type": "noise robustness comparison",
+  "models": {
+    "image_transformer": "llama3",
+    "convolutional_network": "llama3"
+  },
+  "test_set": {
+    "size": 200,
+    "description": "A set of image classification tasks with varying levels of pixel noise (0%, 20%, 40%, 60%, 80% noise). Each task includes a clean image and the noisy versions."
+  },
+  "conditions": {
+    "clean": "No added noise",
+    "low_noise": "20% noise",
+    "medium_noise": "40% noise",
+    "high_noise": "60% noise",
+    "very_high_noise": "80% noise"
+  },
+  "metric": "classification accuracy",
+  "comparison": {
+    "type": "drop from clean accuracy",
+    "description": "For each model, calculate the drop in accuracy from the clean condition to the noisy conditions."
+  },
+  "controls": {
+    "image_transformer_clean": "Evaluate the image transformer on the clean condition.",
+    "convolutional_network_clean": "Evaluate the convolutional network on the clean condition."
+  },
+  "instructions": {
+    "image_transformer": "Use the image transformer model to classify the images under each noise condition.",
+    "convolutional_network": "Use the convolutional network model to classify the images under each noise condition."
+  },
+  "analysis": {
+    "main_question": "Compare the drop in accuracy for the image transformer and convolutional network across all noise conditions.",
+    "additional_analysis": "Examine if there is a significant difference in the noise robustness between the two models."
+  }
+}

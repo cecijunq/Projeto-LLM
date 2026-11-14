@@ -1,0 +1,353 @@
+{
+  "topic": "Are language models sensitive to word order in multiple choice benchmarks?",
+  "with_memory": true,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 6,
+  "workflow_success": 0.75,
+  "usage": {
+    "calls": 46,
+    "prompt_tokens": 113428,
+    "completion_tokens": 11244
+  },
+  "elapsed_s": 1724.1,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 20,
+      "plan_formulation": 1,
+      "data_preparation": 4
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": true,
+      "running_experiments": false
+    },
+    "phase_time": {
+      "literature_review": 235.8,
+      "plan_formulation": 32.7,
+      "data_preparation": 172.6,
+      "running_experiments": 1282.9
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "multiple choice questions",
+        "answer choice order",
+        "shuffled options dataset"
+      ],
+      "found": 4,
+      "verified": 3
+    },
+    "mle_solver": {
+      "exec_attempts": 15,
+      "exec_errors": 15,
+      "repairs_ok": 0
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "1. **Dataset Preparation**: Use a subset of the MMLU dataset (e.g., 100 questions from a single subject) to ensure the experiment runs quickly on a single GPU. Include the question and four answer choices (A, B, C, D).\n\n2. **Randomization**: For each question, shuffle the order of the answer choices while keeping the content (text) of each option the same. Save the shuffled versions as a separate dataset.\n\n3. **Model Evaluation**: Use the Ollama API to query the local language model with both the original and shuffled versions of the questions. For each question, record the model's selected answer.\n\n4. **Performance Comparison**: Calculate the accuracy of the model on both the original and shuffled datasets. Compare the two accuracy scores to determine if the order of the answer choices significantly impacts performance.\n\n5. **Analysis**: Interpret the results to assess whether the language model is sensitive to the order of answer choices in multiple-choice tasks. If a significant performance difference is observed, this would support the hypothesis that models are sensitive to word order in such benchmarks.\n</final plan>",
+    "exp_results": "Nenhum código executou com sucesso.",
+    "interpretation": "",
+    "errors": [
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_g3tdl29v/run.py\", line 26\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "(0/1 shards):   0%|          | 0/200 [00:00<?, ? examples/s]\nSaving the dataset (1/1 shards): 100%|██████████| 200/200 [00:00<00:00, 86116.50 examples/s]\nSaving the dataset (1/1 shards): 100%|██████████| 200/200 [00:00<00:00, 81119.89 examples/s]\nTraceback (most recent call last):\n  File \"/tmp/agentlab_l8p9vws8/run.py\", line 75, in <module>\n    if original_answer == example['answer'].upper():\n                          ^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'int' object has no attribute 'upper'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": " 200/200 [00:00<00:00, 82435.22 examples/s]\nTraceback (most recent call last):\n  File \"/tmp/agentlab_u65nn5z7/run.py\", line 91, in <module>\n    original_accuracy = evaluate_model(dataset, os.environ['AGENTLAB_LLM_MODEL'])\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/agentlab_u65nn5z7/run.py\", line 84, in evaluate_model\n    if model_answer == answer.upper():\n                       ^^^^^^^^^^^^\nAttributeError: 'int' object has no attribute 'upper'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "s/s]\nTraceback (most recent call last):\n  File \"/tmp/agentlab_t44vqdup/run.py\", line 97, in <module>\n    original_accuracy = evaluate_model(dataset, os.environ['AGENTLAB_LLM_MODEL'])\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/agentlab_t44vqdup/run.py\", line 69, in evaluate_model\n    formatted_question += f\"{choice['choice']}) {choice['text']}\\n\"\n                             ~~~~~~^^^^^^^^^^\nTypeError: string indices must be integers, not 'str'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "B_LLM_MODEL'])\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/agentlab_8a0nio09/run.py\", line 68, in evaluate_model\n    formatted_question = format_question(example)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/agentlab_8a0nio09/run.py\", line 60, in format_question\n    formatted_question += f\"{choice['choice']}) {choice['text']}\\n\"\n                             ~~~~~~^^^^^^^^^^\nTypeError: string indices must be integers, not 'str'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "B_LLM_MODEL'])\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/agentlab_tuknd2z0/run.py\", line 69, in evaluate_model\n    formatted_question = format_question(example)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/agentlab_tuknd2z0/run.py\", line 62, in format_question\n    formatted_question += f\"{choice['choice']}) {choice['text']}\\n\"\n                             ~~~~~~^^^^^^^^^^\nTypeError: string indices must be integers, not 'str'\n"
+      }
+    ],
+    "n_papers": 1,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "running_experiments",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "literature_review",
+      "categoria": "busca_em_loop"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ],
+  "memory_stats": {
+    "runs": 1,
+    "total": 20,
+    "episodic": 0,
+    "insight": 20,
+    "error": 0,
+    "literature": 0,
+    "feedback": 0
+  },
+  "memory_retrievals": [
+    {
+      "phase": "literature_review",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n",
+      "ids": [
+        "5abea6befd",
+        "5ae189e23f",
+        "ad65508c79",
+        "eb1b4fca88",
+        "c2ff422202",
+        "ba6518b180"
+      ]
+    },
+    {
+      "phase": "plan_formulation",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n",
+      "ids": [
+        "10b797dfa7",
+        "279f125643",
+        "eb1b4fca88",
+        "c2ff422202",
+        "ba6518b180",
+        "c646aff4f9"
+      ]
+    },
+    {
+      "phase": "data_preparation",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. **Dataset Preparation**: Use a subset of the MMLU dataset (e.g., 100 questions from a single subject) to ensure the experi",
+      "ids": [
+        "c646aff4f9",
+        "c2ff422202",
+        "7722e0010c",
+        "ba6518b180",
+        "3eacbab517",
+        "eb1b4fca88"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. **Dataset Preparation**: Use a subset of the MMLU dataset (e.g., 100 questions from a single subject) to ensure the experi",
+      "ids": [
+        "ba6518b180",
+        "eb1b4fca88",
+        "cd7aa60bf1",
+        "c58af0314d",
+        "c646aff4f9",
+        "c2ff422202"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\nAll required columns are present.\n=== experiment output ===\nAll required columns are present.\n\n[stderr]\nWarning: You are send",
+      "ids": [
+        "ba6518b180",
+        "eb1b4fca88",
+        "c58af0314d",
+        "cd7aa60bf1",
+        "c646aff4f9",
+        "c2ff422202"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\nAll required columns are present.\n=== experiment output ===\nAll required columns are present.\n\n[stderr]\nWarning: You are send",
+      "ids": [
+        "ba6518b180",
+        "eb1b4fca88",
+        "c58af0314d",
+        "cd7aa60bf1",
+        "c2ff422202",
+        "c646aff4f9"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. **Dataset Preparation**: Use a subset of the MMLU dataset (e.g., 100 questions from a single subject) to ensure the experi",
+      "ids": [
+        "ba6518b180",
+        "eb1b4fca88",
+        "cd7aa60bf1",
+        "c58af0314d",
+        "c646aff4f9",
+        "c2ff422202"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\net (1/1 shards): 100%|██████████| 200/200 [00:00<00:00, 73681.23 examples/s]\n\nSaving the dataset (0/1 shards):   0%|         ",
+      "ids": [
+        "eb1b4fca88",
+        "ba6518b180",
+        "c58af0314d",
+        "cd7aa60bf1",
+        "c2ff422202",
+        "2e90fd1951"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\net (1/1 shards): 100%|██████████| 200/200 [00:00<00:00, 87372.23 examples/s]\n\nSaving the dataset (0/1 shards):   0%|         ",
+      "ids": [
+        "eb1b4fca88",
+        "ba6518b180",
+        "c58af0314d",
+        "cd7aa60bf1",
+        "c2ff422202",
+        "2e90fd1951"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. **Dataset Preparation**: Use a subset of the MMLU dataset (e.g., 100 questions from a single subject) to ensure the experi",
+      "ids": [
+        "ba6518b180",
+        "eb1b4fca88",
+        "cd7aa60bf1",
+        "c58af0314d",
+        "c646aff4f9",
+        "c2ff422202"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n00 [00:00<00:00, 91180.52 examples/s]\n\nSaving the dataset (0/1 shards):   0%|          | 0/200 [00:00<?, ? examples/s]\nSaving",
+      "ids": [
+        "eb1b4fca88",
+        "ba6518b180",
+        "c58af0314d",
+        "cd7aa60bf1",
+        "2e90fd1951",
+        "c646aff4f9"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n[ERRO] Timeout: the code ran for more than 600s and was stopped. Make it much faster: use a small subset of the data (e.g. at",
+      "ids": [
+        "eb1b4fca88",
+        "ba6518b180",
+        "c58af0314d",
+        "cd7aa60bf1",
+        "2e90fd1951",
+        "c2ff422202"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. **Dataset Preparation**: Use a subset of the MMLU dataset (e.g., 100 questions from a single subject) to ensure the experi",
+      "ids": [
+        "ba6518b180",
+        "eb1b4fca88",
+        "cd7aa60bf1",
+        "c58af0314d",
+        "c646aff4f9",
+        "c2ff422202"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n 200/200 [00:00<00:00, 75832.65 examples/s]\nSaving the dataset (1/1 shards): 100%|██████████| 200/200 [00:00<00:00, 72509.36 ",
+      "ids": [
+        "eb1b4fca88",
+        "c58af0314d",
+        "cd7aa60bf1",
+        "ba6518b180",
+        "c646aff4f9",
+        "2e90fd1951"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n 200/200 [00:00<00:00, 89326.04 examples/s]\nSaving the dataset (1/1 shards): 100%|██████████| 200/200 [00:00<00:00, 85250.08 ",
+      "ids": [
+        "eb1b4fca88",
+        "c58af0314d",
+        "cd7aa60bf1",
+        "ba6518b180",
+        "c646aff4f9",
+        "c2ff422202"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. **Dataset Preparation**: Use a subset of the MMLU dataset (e.g., 100 questions from a single subject) to ensure the experi",
+      "ids": [
+        "ba6518b180",
+        "eb1b4fca88",
+        "cd7aa60bf1",
+        "c58af0314d",
+        "c646aff4f9",
+        "c2ff422202"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n 200/200 [00:00<00:00, 57932.38 examples/s]\nSaving the dataset (1/1 shards): 100%|██████████| 200/200 [00:00<00:00, 55983.77 ",
+      "ids": [
+        "eb1b4fca88",
+        "cd7aa60bf1",
+        "c58af0314d",
+        "ba6518b180",
+        "c646aff4f9",
+        "2e90fd1951"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n 200/200 [00:00<00:00, 92979.47 examples/s]\nSaving the dataset (1/1 shards): 100%|██████████| 200/200 [00:00<00:00, 88693.25 ",
+      "ids": [
+        "eb1b4fca88",
+        "cd7aa60bf1",
+        "ba6518b180",
+        "c58af0314d",
+        "c646aff4f9",
+        "2e90fd1951"
+      ]
+    }
+  ]
+}

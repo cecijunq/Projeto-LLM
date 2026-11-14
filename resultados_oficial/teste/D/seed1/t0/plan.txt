@@ -1,0 +1,9 @@
+In this experiment, we will compare the sensitivity of image transformers and convolutional networks to pixel noise by evaluating their performance on the MNIST dataset under varying levels of Gaussian noise. The experiment will follow these steps:
+
+1. **Data Preparation**: Load the MNIST dataset and add varying levels of Gaussian noise to the images. We will use noise levels of 0% (clean), 10%, 20%, 30%, and 40% to create five different noise conditions.
+
+2. **Model Selection**: Use a lightweight CNN (e.g., a simple CNN with two convolutional layers) and a Vision Transformer (ViT) model. Both models will be trained on the clean MNIST dataset.
+
+3. **Evaluation**: For each noise level, evaluate both models on the noisy images and measure their accuracy. This will allow us to compare how well each model performs under different noise conditions.
+
+4. **Analysis**: Compare the accuracy of the CNN and ViT across all noise levels. The goal is to determine whether image transformers are more or less sensitive to pixel noise than convolutional networks.

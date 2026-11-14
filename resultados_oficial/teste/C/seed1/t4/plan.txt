@@ -1,0 +1,10 @@
+1. Load the AG News dataset from HuggingFace (small subset for speed).
+2. Split into train, validation, and test sets.
+3. For each class in the training set, generate few-shot examples (e.g., 5 examples per class).
+4. Create two example orders: random and sorted by class.
+5. For each example order, construct a prompt with the few-shot examples and test set.
+6. Use the Ollama API to run inference on the test set with each prompt.
+7. Compute accuracy for each example order.
+8. Compare the results and analyze if the order impacts model accuracy.
+9. Repeat experiments with fixed random seeds for reliability.
+</final plan>

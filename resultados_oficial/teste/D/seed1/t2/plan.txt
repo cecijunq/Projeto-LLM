@@ -1,0 +1,25 @@
+[
+  {
+    "task": "Design a simple experiment to test the sensitivity of sentiment classifiers to negation words on short movie reviews (SST-2)",
+    "description": "We will evaluate the same local model (served by Ollama) with and without negation words on the same set of short movie reviews (SST-2). This will allow us to directly compare the impact of negation on sentiment classification accuracy.",
+    "setup": {
+      "model": "ollama",
+      "data": "SST-2 dataset (200 examples, test split)",
+      "metric": "Accuracy"
+    },
+    "conditions": [
+      {
+        "condition": "With negation words",
+        "prompt": "Classify the sentiment of this movie review: [review text with negation words]"
+      },
+      {
+        "condition": "Without negation words",
+        "prompt": "Classify the sentiment of this movie review: [review text without negation words]"
+      }
+    ],
+    "analysis": {
+      "measure": "Accuracy difference between the two conditions",
+      "interpretation": "A significant drop in accuracy when negation words are removed will indicate that the model is sensitive to them."
+    }
+  }
+]

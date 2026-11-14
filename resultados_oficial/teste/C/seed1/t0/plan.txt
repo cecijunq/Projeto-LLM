@@ -1,0 +1,8 @@
+1. **Dataset Preparation**: Use the CIFAR-10 dataset from torchvision, split into training and test sets.
+2. **Model Selection**: Implement a simple CNN (e.g., LeNet-5) and an image transformer (e.g., a transformer with 4 attention heads and 4 layers).
+3. **Noise Generation**: Add Gaussian noise to test images at different noise levels (10%, 20%, 30%).
+4. **Training**: Train both models on the clean training set.
+5. **Evaluation**: Evaluate both models on clean and noisy test images using accuracy as the metric.
+6. **Comparison**: Compare the accuracy of both models across different noise levels to determine which model is more sensitive to pixel noise.
+7. **Analysis**: Draw conclusions based on the performance comparison.
+</final plan>

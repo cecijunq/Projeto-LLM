@@ -1,0 +1,20 @@
+{
+  "topic": "Are language models sensitive to word order in multiple choice benchmarks?",
+  "method": "Compare the same local model with and without word order variation on the same multiple-choice questions",
+  "test_set": {
+    "name": "MMLU benchmark",
+    "size": 200,
+    "domain": "General knowledge"
+  },
+  "conditions": {
+    "original_order": "Questions in their original word order",
+    "reordered_order": "Questions with the same content but altered word order"
+  },
+  "metric": "Accuracy",
+  "setup": {
+    "model": "Local language model served by Ollama",
+    "instructions": "Evaluate the model's accuracy on the same multiple-choice questions with different word orders",
+    "execution": "Run the experiment directly on the test split of the dataset"
+  },
+  "notes": "The experiment will assess how word order affects model performance on multiple-choice questions by comparing accuracy across original and reordered versions of the same questions."
+}

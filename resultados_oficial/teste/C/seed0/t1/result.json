@@ -1,0 +1,357 @@
+{
+  "topic": "Are language models sensitive to word order in multiple choice benchmarks?",
+  "with_memory": true,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 6,
+  "workflow_success": 0.5,
+  "usage": {
+    "calls": 44,
+    "prompt_tokens": 111398,
+    "completion_tokens": 11509
+  },
+  "elapsed_s": 4301.9,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 20,
+      "plan_formulation": 1,
+      "data_preparation": 3
+    },
+    "phase_success": {
+      "literature_review": false,
+      "plan_formulation": true,
+      "data_preparation": true,
+      "running_experiments": false
+    },
+    "phase_time": {
+      "literature_review": 260.0,
+      "plan_formulation": 40.7,
+      "data_preparation": 127.6,
+      "running_experiments": 3873.7
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "multiple choice math",
+        "reversed question text",
+        "math problem variations"
+      ],
+      "found": 3,
+      "verified": 3
+    },
+    "mle_solver": {
+      "exec_attempts": 15,
+      "exec_errors": 15,
+      "repairs_ok": 0
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "1. Load a subset of the GSM8K dataset (e.g., 100 questions) for efficiency.  \n2. For each question, split the text into words, reverse the order, and reformat the question while preserving mathematical content.  \n3. Use the Ollama language model to generate answers for both original and reversed questions, instructing it to end responses with 'Answer: <number>'.  \n4. Extract the final number using regex and compare it numerically with the ground truth for accuracy.  \n5. Compare the accuracy of the model on the original vs. reversed word order versions.  \n6. Analyze results to determine if word order impacts model performance.  \n</final plan>",
+    "exp_results": "Nenhum código executou com sucesso.",
+    "interpretation": "",
+    "errors": [
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_tzp6__zl/run.py\", line 30\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "rning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_wpuh3906/run.py\", line 79, in <module>\n    true_answer = int(example['answer'])\n                  ^^^^^^^^^^^^^^^^^^^^^^\nValueError: invalid literal for int() with base 10: 'Janet sells 16 - 3 - 4 = <<16-3-4=9>>9 duck eggs a day.\\nShe makes 9 * 2 = $<<9*2=18>>18 every day at the farmer’s market.\\n#### 18'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "[ERRO] Timeout: the code ran for more than 600s and was stopped. Make it much faster: use a small subset of the data (e.g. at most 2000 training examples, flattened features for sklearn) and at most 50 language model queries."
+      },
+      {
+        "phase": "running_experiments",
+        "text": "ads.\n\nMap:   0%|          | 0/50 [00:00<?, ? examples/s]\nMap: 100%|██████████| 50/50 [00:00<00:00, 1706.33 examples/s]\nTraceback (most recent call last):\n  File \"/tmp/agentlab_oro7_3nf/run.py\", line 88, in <module>\n    if original_answer == int(example['answer']):\n                          ^^^^^^^^^^^^^^^^^^^^^^\nValueError: invalid literal for int() with base 10: 'Janet sells 16 - 3 - 4 = <<16-3-4=9>>9 duck eggs a day.\\nShe makes 9 * 2 = $<<9*2=18>>18 every day at the farmer’s market.\\n#### 18'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "[ERRO] Timeout: the code ran for more than 600s and was stopped. Make it much faster: use a small subset of the data (e.g. at most 2000 training examples, flattened features for sklearn) and at most 50 language model queries."
+      },
+      {
+        "phase": "running_experiments",
+        "text": "nding unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_a5l3l85r/run.py\", line 88, in <module>\n    if original_answer == int(example['answer']):\n                          ^^^^^^^^^^^^^^^^^^^^^^\nValueError: invalid literal for int() with base 10: 'Janet sells 16 - 3 - 4 = <<16-3-4=9>>9 duck eggs a day.\\nShe makes 9 * 2 = $<<9*2=18>>18 every day at the farmer’s market.\\n#### 18'\n"
+      }
+    ],
+    "n_papers": 0,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "literature_review",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "literature_review",
+      "categoria": "busca_em_loop"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "timeout"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "timeout"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ],
+  "memory_stats": {
+    "runs": 1,
+    "total": 17,
+    "episodic": 0,
+    "insight": 17,
+    "error": 0,
+    "literature": 0,
+    "feedback": 0
+  },
+  "memory_retrievals": [
+    {
+      "phase": "literature_review",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n",
+      "ids": [
+        "09fe02a48a",
+        "3c27d6f417",
+        "dbe5b6be44",
+        "9f86b405aa",
+        "ffc14c4957",
+        "a7cbf337db"
+      ]
+    },
+    {
+      "phase": "plan_formulation",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n",
+      "ids": [
+        "a7cbf337db",
+        "09fe02a48a",
+        "3c27d6f417",
+        "dbe5b6be44",
+        "9f86b405aa",
+        "ffc14c4957"
+      ]
+    },
+    {
+      "phase": "data_preparation",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. Load a subset of the GSM8K dataset (e.g., 100 questions) for efficiency.  \n2. For each question, split the text into words",
+      "ids": [
+        "9f86b405aa",
+        "36a9af77ad",
+        "3c27d6f417",
+        "ffc14c4957",
+        "09fe02a48a",
+        "dbe5b6be44"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. Load a subset of the GSM8K dataset (e.g., 100 questions) for efficiency.  \n2. For each question, split the text into words",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "2cc7afd9ea",
+        "9f86b405aa",
+        "88e94696e1",
+        "a7cbf337db"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n5 chickens of flock her gives she morning, the In meals. separate three in feed their chickens the gives She healthy. them ke",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "88e94696e1",
+        "2cc7afd9ea",
+        "9f86b405aa",
+        "b78d191257"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n5 chickens of flock her gives she morning, the In meals. separate three in feed their chickens the gives She healthy. them ke",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "88e94696e1",
+        "2cc7afd9ea",
+        "9f86b405aa",
+        "b78d191257"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. Load a subset of the GSM8K dataset (e.g., 100 questions) for efficiency.  \n2. For each question, split the text into words",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "2cc7afd9ea",
+        "9f86b405aa",
+        "88e94696e1",
+        "a7cbf337db"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n[ERRO] Timeout: the code ran for more than 600s and was stopped. Make it much faster: use a small subset of the data (e.g. at",
+      "ids": [
+        "09fe02a48a",
+        "88e94696e1",
+        "3c27d6f417",
+        "2cc7afd9ea",
+        "b78d191257",
+        "7d6d838a6f"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n[ERRO] Timeout: the code ran for more than 600s and was stopped. Make it much faster: use a small subset of the data (e.g. at",
+      "ids": [
+        "09fe02a48a",
+        "88e94696e1",
+        "3c27d6f417",
+        "2cc7afd9ea",
+        "b78d191257",
+        "7d6d838a6f"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. Load a subset of the GSM8K dataset (e.g., 100 questions) for efficiency.  \n2. For each question, split the text into words",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "2cc7afd9ea",
+        "9f86b405aa",
+        "88e94696e1",
+        "a7cbf337db"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\np to vegetables and mealworms seeds, containing feed, chicken mixed of cups three chickens her of each feeds Wendi day, Every",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "2cc7afd9ea",
+        "88e94696e1",
+        "9f86b405aa",
+        "7d6d838a6f"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\nck her gives she morning, the In meals. separate three in feed their chickens the gives She healthy. them keep help to vegeta",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "88e94696e1",
+        "2cc7afd9ea",
+        "9f86b405aa",
+        "b78d191257"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. Load a subset of the GSM8K dataset (e.g., 100 questions) for efficiency.  \n2. For each question, split the text into words",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "2cc7afd9ea",
+        "9f86b405aa",
+        "88e94696e1",
+        "a7cbf337db"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n[ERRO] Timeout: the code ran for more than 600s and was stopped. Make it much faster: use a small subset of the data (e.g. at",
+      "ids": [
+        "09fe02a48a",
+        "88e94696e1",
+        "3c27d6f417",
+        "2cc7afd9ea",
+        "b78d191257",
+        "7d6d838a6f"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\ndoes feed of cups many How feed. of cups 25 another chickens her gives she afternoon, the In feed. of cups 15 chickens of flo",
+      "ids": [
+        "09fe02a48a",
+        "3c27d6f417",
+        "2cc7afd9ea",
+        "88e94696e1",
+        "9f86b405aa",
+        "b78d191257"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. Load a subset of the GSM8K dataset (e.g., 100 questions) for efficiency.  \n2. For each question, split the text into words",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "2cc7afd9ea",
+        "9f86b405aa",
+        "88e94696e1",
+        "a7cbf337db"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\nck her gives she morning, the In meals. separate three in feed their chickens the gives She healthy. them keep help to vegeta",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "88e94696e1",
+        "2cc7afd9ea",
+        "9f86b405aa",
+        "b78d191257"
+      ]
+    },
+    {
+      "phase": "running_experiments",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\nck her gives she morning, the In meals. separate three in feed their chickens the gives She healthy. them keep help to vegeta",
+      "ids": [
+        "3c27d6f417",
+        "09fe02a48a",
+        "88e94696e1",
+        "2cc7afd9ea",
+        "9f86b405aa",
+        "b78d191257"
+      ]
+    }
+  ]
+}

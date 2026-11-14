@@ -1,0 +1,8 @@
+1. **Dataset**: Use CIFAR-10 from torchvision for image classification.
+2. **Models**: Train a CNN (e.g., ResNet-18) and a Vision Transformer (ViT) on the clean CIFAR-10 dataset.
+3. **Noise Generation**: Add random pixel noise to images (e.g., 5%, 10%, 15%, 20% noise levels) using a uniform distribution.
+4. **Evaluation**: Test the models on noisy images and record accuracy for each noise level.
+5. **Statistical Analysis**: Compute confidence intervals for accuracy differences between models at each noise level.
+6. **Comparison**: Analyze results to determine which model is more robust to pixel noise.
+7. **Tools**: Use Ollama to serve the local language model for documentation and analysis (no paid APIs, no model downloads).
+</final plan>

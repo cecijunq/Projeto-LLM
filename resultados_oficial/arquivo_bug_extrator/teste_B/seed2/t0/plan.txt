@@ -1,0 +1,8 @@
+1. Load and preprocess the MNIST dataset using torchvision, splitting it into training and test sets. 
+2. Introduce pixel noise to the images by randomly flipping 10%, 20%, and 30% of the pixel values to 0 or 255 (for grayscale). 
+3. Train a simple CNN (e.g., 2 convolutional layers followed by dense layers) using PyTorch on the clean MNIST dataset. 
+4. Load a pre-trained ViT model using Ollama's local serving API (e.g., using the "llava" or "vicuna" model if available for image tasks). 
+5. Evaluate both models on the noisy test images, calculating accuracy and F1 scores for each noise level. 
+6. Compare the performance degradation of the CNN and ViT to determine which model is more sensitive to pixel noise. 
+7. Document the results and analyze whether the ViT's transformer architecture provides better noise resilience compared to the CNN.
+</final plan>

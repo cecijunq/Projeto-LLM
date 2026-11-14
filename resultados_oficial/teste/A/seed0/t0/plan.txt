@@ -1,0 +1,2 @@
+We will design a simple experiment to compare the noise sensitivity of image transformers and convolutional networks. We will use the MNIST dataset and add varying levels of Gaussian noise to the images. We will train a CNN and a Vision Transformer (ViT) on the noisy images and evaluate their performance on the original test set. We will repeat the experiment for multiple noise levels to observe how each model's accuracy changes with increasing noise. This will allow us to compare the robustness of each model to pixel noise.
+</final plan>

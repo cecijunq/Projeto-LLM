@@ -1,0 +1,46 @@
+versao,seed,t,tema,nota_llm,mle_score,sucesso_etapas,falhas,falhas_repetidas,tokens,tempo_min,qualidade_experimental,qualidade_relatorio,utilidade,nota_humana
+A,0,0,Are image transformers more or less sensitive to pixel noise,,0.0,0.75,12,12,221569,69.98333333333333,0.0,0.0,0.0,0.0
+A,0,1,Are language models sensitive to word order in multiple choi,2.0,0.0,0.833,5,5,212515,26.03166666666667,3.0,3.0,2.0,2.6666666666666665
+A,0,2,Are sentiment classifiers sensitive to negation words on sho,2.0,0.0,1.0,5,5,290816,47.22166666666667,2.0,4.0,2.0,2.6666666666666665
+A,0,3,Does rotation data augmentation make a small CNN more robust,,0.0,0.667,8,5,152978,62.60166666666667,0.0,0.0,0.0,0.0
+A,0,4,Does the order of few-shot examples change the accuracy of a,2.0,0.0,1.0,3,3,138975,26.315,3.0,3.0,2.0,2.6666666666666665
+A,1,0,Are image transformers more or less sensitive to pixel noise,,0.0,0.333,24,18,182283,58.79833333333333,0.0,0.0,0.0,0.0
+A,1,1,Are language models sensitive to word order in multiple choi,5.0,0.5,1.0,10,10,309471,39.218333333333334,2.0,2.0,1.0,1.6666666666666667
+A,1,2,Are sentiment classifiers sensitive to negation words on sho,3.0,0.0,1.0,5,5,131515,40.63666666666666,1.0,1.0,1.0,1.0
+A,1,3,Does rotation data augmentation make a small CNN more robust,,0.0,0.667,3,3,155683,105.47,0.0,0.0,0.0,0.0
+A,1,4,Does the order of few-shot examples change the accuracy of a,,0.0,0.667,13,13,229306,15.253333333333334,0.0,0.0,0.0,0.0
+A,2,0,Are image transformers more or less sensitive to pixel noise,,0.0,0.667,4,4,121193,6.553333333333333,0.0,0.0,0.0,0.0
+A,2,1,Are language models sensitive to word order in multiple choi,4.0,0.0,1.0,5,5,169134,40.665,2.0,3.0,2.0,2.3333333333333335
+A,2,2,Are sentiment classifiers sensitive to negation words on sho,,0.0,0.667,21,21,207792,17.603333333333335,0.0,0.0,0.0,0.0
+A,2,3,Does rotation data augmentation make a small CNN more robust,,0.0,0.667,9,9,164967,16.151666666666667,0.0,0.0,0.0,0.0
+A,2,4,Does the order of few-shot examples change the accuracy of a,5.0,0.2,1.0,9,9,154516,21.671666666666667,3.0,2.0,2.0,2.3333333333333335
+B,0,0,Are image transformers more or less sensitive to pixel noise,,0.0,0.333,24,4,203514,139.55,0.0,0.0,0.0,0.0
+B,0,1,Are language models sensitive to word order in multiple choi,,0.0,0.75,9,9,124672,28.735,0.0,0.0,0.0,0.0
+B,0,2,Are sentiment classifiers sensitive to negation words on sho,4.0,0.2,1.0,2,2,157510,42.848333333333336,3.0,3.0,3.0,3.0
+B,0,3,Does rotation data augmentation make a small CNN more robust,,0.0,0.333,24,16,207822,68.73666666666666,0.0,0.0,0.0,0.0
+B,0,4,Does the order of few-shot examples change the accuracy of a,3.0,0.5,1.0,2,2,184836,75.08999999999999,1.0,3.0,1.0,1.6666666666666667
+B,1,0,Are image transformers more or less sensitive to pixel noise,3.0,0.5,0.833,10,9,249019,71.02,2.0,2.0,1.0,1.6666666666666667
+B,1,1,Are language models sensitive to word order in multiple choi,,0.0,0.667,20,20,248045,18.398333333333333,0.0,0.0,0.0,0.0
+B,1,2,Are sentiment classifiers sensitive to negation words on sho,,0.0,0.667,13,13,268653,26.223333333333336,0.0,0.0,0.0,0.0
+B,1,3,Does rotation data augmentation make a small CNN more robust,,0.0,0.333,6,6,193680,19.228333333333335,0.0,0.0,0.0,0.0
+B,1,4,Does the order of few-shot examples change the accuracy of a,2.0,0.0,1.0,5,5,232221,36.005,1.0,2.0,2.0,1.6666666666666667
+B,2,0,Are image transformers more or less sensitive to pixel noise,,0.0,0.333,6,6,204709,88.03833333333334,0.0,0.0,0.0,0.0
+B,2,1,Are language models sensitive to word order in multiple choi,5.0,0.5,1.0,10,10,365700,41.92333333333333,2.0,2.0,1.0,1.6666666666666667
+B,2,2,Are sentiment classifiers sensitive to negation words on sho,,0.0,0.333,4,4,221856,14.538333333333332,0.0,0.0,0.0,0.0
+B,2,3,Does rotation data augmentation make a small CNN more robust,,0.0,0.333,10,5,212744,140.63833333333332,0.0,0.0,0.0,0.0
+B,2,4,Does the order of few-shot examples change the accuracy of a,,0.0,0.5,9,9,113506,48.26166666666666,0.0,0.0,0.0,0.0
+C,0,0,Are image transformers more or less sensitive to pixel noise,,0.0,0.333,11,6,215655,88.53666666666666,0.0,0.0,0.0,0.0
+C,0,1,Are language models sensitive to word order in multiple choi,,0.0,0.5,10,10,122907,71.69833333333332,0.0,0.0,0.0,0.0
+C,0,2,Are sentiment classifiers sensitive to negation words on sho,,0.0,0.333,21,21,274530,57.73166666666667,0.0,0.0,0.0,0.0
+C,0,3,Does rotation data augmentation make a small CNN more robust,,0.0,0.333,4,4,218955,17.381666666666668,0.0,0.0,0.0,0.0
+C,0,4,Does the order of few-shot examples change the accuracy of a,3.0,0.0,1.0,6,6,161132,121.855,3.0,3.0,2.0,2.6666666666666665
+C,1,0,Are image transformers more or less sensitive to pixel noise,,0.0,0.5,14,12,157462,110.565,0.0,0.0,0.0,0.0
+C,1,1,Are language models sensitive to word order in multiple choi,2.0,0.0,1.0,10,8,248323,33.90833333333333,1.0,3.0,1.0,1.6666666666666667
+C,1,2,Are sentiment classifiers sensitive to negation words on sho,,0.0,0.667,3,3,264526,17.723333333333336,0.0,0.0,0.0,0.0
+C,1,3,Does rotation data augmentation make a small CNN more robust,,0.0,0.333,4,4,217927,18.240000000000002,0.0,0.0,0.0,0.0
+C,1,4,Does the order of few-shot examples change the accuracy of a,,0.0,0.667,9,9,205267,25.773333333333333,0.0,0.0,0.0,0.0
+C,2,0,Are image transformers more or less sensitive to pixel noise,,0.0,0.333,6,5,152752,23.063333333333333,0.0,0.0,0.0,0.0
+C,2,1,Are language models sensitive to word order in multiple choi,,0.0,0.667,3,3,153300,5.216666666666667,0.0,0.0,0.0,0.0
+C,2,2,Are sentiment classifiers sensitive to negation words on sho,3.0,0.1,0.833,6,6,175715,147.975,3.0,2.0,2.0,2.3333333333333335
+C,2,3,Does rotation data augmentation make a small CNN more robust,,0.0,0.333,24,23,222630,58.425,0.0,0.0,0.0,0.0
+C,2,4,Does the order of few-shot examples change the accuracy of a,4.0,0.2,0.833,5,5,282805,125.225,3.0,2.0,2.0,2.3333333333333335

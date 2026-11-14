@@ -1,0 +1,1 @@
+Rodada com o parser antigo do extrator de lições (descartava a lista inteira quando o JSON vinha cortado). Arquivada em 05/11/2026; B e C refeitos com o parser tolerante.

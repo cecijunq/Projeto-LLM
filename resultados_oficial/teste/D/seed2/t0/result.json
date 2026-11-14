@@ -1,0 +1,67 @@
+{
+  "topic": "Are image transformers more or less sensitive to pixel noise than convolutional networks?",
+  "with_memory": false,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 0,
+  "workflow_success": 0.667,
+  "usage": {
+    "calls": 59,
+    "prompt_tokens": 189363,
+    "completion_tokens": 6359
+  },
+  "elapsed_s": 6530.5,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 16,
+      "plan_formulation": 1,
+      "data_preparation": 20
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 132.5,
+      "plan_formulation": 24.4,
+      "data_preparation": 6373.6
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "image noise sensitivity",
+        "vision transformer analysis",
+        "convolutional network testing"
+      ],
+      "found": 0,
+      "verified": 1
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3,
+    "correcoes": true
+  },
+  "trace": {
+    "plan": "Evaluate the noise sensitivity of Vision Transformers (ViTs) and Convolutional Neural Networks (CNNs) on the CIFAR-10 dataset. Add pixel noise at levels of 0%, 5%, 10%, 15%, 20%, 25%, and 30% to the test images. For each noise level, compute the accuracy of both ViT-base and ResNet-50 on the noisy images. Use the same test set for both models and report the accuracy drop from the clean baseline. Compare the noise sensitivity by analyzing the accuracy drop across the noise levels for both models.",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [],
+    "n_papers": 5,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ]
+}

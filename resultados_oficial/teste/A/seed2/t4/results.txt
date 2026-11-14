@@ -1,0 +1,22 @@
+First few examples of the training set:
+                                                text    label
+0  The artist's vision is evident in every brushs...  Class 5
+1  This is an amazing piece of art. The creativit...  Class 5
+2  The delivery was delayed, and the item arrived...  Class 4
+3  I would not recommend this restaurant. The ser...  Class 2
+4  The staff was unhelpful and the overall experi...  Class 2
+
+First few examples of the test set:
+                                                text    label
+0  It has a timeless quality that continues to in...  Class 5
+1      I would not recommend this product to anyone.  Class 4
+2  The quality of the food did not match the high...  Class 2
+3  I am extremely satisfied with the performance ...  Class 3
+4  I was completely captivated by the performance...  Class 1
+=== experiment output ===
+Testing the impact of few-shot example order on model accuracy...
+Accuracy with this example order: 25.00%
+Accuracy with this example order: 25.00%
+Accuracy with this example order: 25.00%
+Accuracy with this example order: 25.00%
+Accuracy with this example order: 25.00%

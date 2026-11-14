@@ -1,0 +1,116 @@
+{
+  "topic": "Are language models sensitive to word order in multiple choice benchmarks?",
+  "with_memory": false,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 5,
+  "workflow_success": 0.75,
+  "usage": {
+    "calls": 49,
+    "prompt_tokens": 120105,
+    "completion_tokens": 18789
+  },
+  "elapsed_s": 2779.1,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 17,
+      "plan_formulation": 1,
+      "data_preparation": 7
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": true,
+      "running_experiments": false
+    },
+    "phase_time": {
+      "literature_review": 117.8,
+      "plan_formulation": 16.4,
+      "data_preparation": 73.2,
+      "running_experiments": 2571.7
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "multiple choice questions",
+        "answer position variation",
+        "option order impact"
+      ],
+      "found": 4,
+      "verified": 2
+    },
+    "mle_solver": {
+      "exec_attempts": 15,
+      "exec_errors": 15,
+      "repairs_ok": 0,
+      "no_results": 3
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3,
+    "correcoes": true
+  },
+  "trace": {
+    "plan": "Evaluate the sensitivity of a local language model to word order in multiple-choice questions by comparing the model's accuracy on two versions of the same question: one with the correct answer first and one with the correct answer last. Use a test set of at least 200 examples, where each example consists of a question and four answer choices. For each question, generate two versions: one with the correct answer as the first option and one with the correct answer as the last option. Evaluate the model's accuracy on both versions using the same metric (e.g., percentage of correct answers). Compare the accuracy scores to determine if the model is sensitive to word order in multiple-choice questions.",
+    "exp_results": "Nenhum código executou com sucesso.",
+    "interpretation": "",
+    "errors": [
+      {
+        "phase": "running_experiments",
+        "text": "el Response: Answer: E\nExtracted Answer: E\nExample 2:\nQuestion: 成人糖尿病酮症酸中毒胰岛素治疗采用（ ）。\nOption A: 每4小时静脉注射50U胰岛素\nOption B: 每4小时静脉滴注5～10URI\nOption C: 每2小时静脉滴注5～10U(PZI)\nOption D: 每小时静脉滴注4～6URI\nOption E: 每小时静脉滴注5～10UPZI\n请根据题干和选项，给出唯一的最佳答案。最终输出内容仅为选项英文字母。\nAnswer: D\nModel Response: D\nExtracted Answer: D\nAccuracy (original): 0.87\nAccuracy (reordered): 0.89\n\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/agentlab_ns7h0ke_/run.py\", line 83, in evaluate_accuracy\n    prompt = questions[i] + \"\\nOption A: \" + answers[i][0] + \"\\nOption B: \" + answers[i][1] + \"\\nOption C: \" + answers[i][2] + \"\\nOption D: \" + answers[i][3] + \"\\nOption E: \" + answers[i][4] + \"\\n请根据题干和选项，给出唯一的最佳答案。最终输出内容仅为选项英文字母。\"\n                                                                              ~~~~~~~~~~^^^\nIndexError: string index out of range\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_75k4i90t/run.py\", line 98\n    extracted_shuffled_answer = shuffled_answer[-1] if shuffled_answer[-\n                                                                      ^\nSyntaxError: '[' was never closed\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/agentlab_ksforzms/run.py\", line 112, in run_experiment\n    options = random.sample([f\"{chr(65 + j)}: {option}\" for j, option in enumerate(answers[i])], 4)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/random.py\", line 430, in sample\n    raise ValueError(\"Sample larger than population or is negative\")\nValueError: Sample larger than population or is negative\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "rr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_nb8z6ey4/run.py\", line 179, in <module>\n    options.append(extract_options(question))\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/agentlab_nb8z6ey4/run.py\", line 48, in extract_options\n    option = line.split(': ')[1]\n             ~~~~~~~~~~~~~~~~^^^\nIndexError: list index out of range\n"
+      }
+    ],
+    "n_papers": 5,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "running_experiments",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "outro_erro"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ]
+}

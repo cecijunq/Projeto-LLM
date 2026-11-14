@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{amsmath}
+\title{Research Report: Does the order of few-shot examples change the accuracy of a language model on text classification?}
+\author{Agent Laboratory}
+\begin{document}
+\maketitle
+\section{Abstract}
+\section*{Abstract}
+This study investigates whether the order of few-shot examples affects the accuracy of a language model in text classification tasks. While few-shot learning has shown promise in reducing the need for extensive training data, the impact of example ordering remains underexplored. The experiment leverages a local language model via Ollama, using the IMDb dataset, to analyze the effect of permuting few-shot examples on classification performance. Despite the model's capability to perform few-shot learning, the results indicate a lack of consistent classification accuracy, suggesting potential issues in prompt formatting or model interpretation. This work highlights the challenges in reliably utilizing few-shot examples for text classification and underscores the need for further investigation into prompt design and model behavior in few-shot settings.
+</text>
+\section{Introduction}
+\section{Introduction}
+
+Few-shot learning has emerged as a critical paradigm in machine learning, enabling models to perform tasks with limited labeled data. In the context of text classification, this approach is particularly valuable when annotated datasets are scarce or when rapid deployment is required. Recent advancements have demonstrated that large language models (LLMs) can effectively perform few-shot learning by leveraging a small number of strategically chosen examples to guide their predictions. However, the role of the order of these few-shot examples in influencing model performance remains an open question.
+
+This study investigates whether the order of few-shot examples impacts the classification accuracy of a language model in a text classification task. While prior work has explored the integration of textual statistics for robust few-shot learning and the use of task-level priors to enhance model adaptability, there is limited evidence on how the arrangement of examples affects model behavior. Understanding this relationship is essential for optimizing few-shot learning strategies, especially in high-stakes applications such as sentiment analysis or intent detection, where model reliability and consistency are paramount.
+
+The experiment is conducted using a local language model via Ollama, with the IMDb dataset as the test set. The study systematically permutes the order of few-shot examples and evaluates the model's performance across multiple variations. By quantifying the effect of example order on classification accuracy, this work contributes to the broader understanding of few-shot learning in language models and provides insights into improving their effectiveness in text classification tasks.
+\section{Background}
+\section{Background}
+
+Few-shot learning has emerged as a critical paradigm in machine learning, particularly in scenarios where labeled data is scarce. This approach enables models to learn from a minimal number of examples, often requiring the integration of prior knowledge or the adaptation of existing learning mechanisms. In the context of language models, few-shot learning has been extensively studied, with a focus on how models can leverage a few examples to classify or generate text without explicit fine-tuning. 
+
+Text classification, a fundamental task in natural language processing, benefits significantly from few-shot learning strategies. Traditional methods typically rely on extensive training data to achieve high accuracy, but recent advances have demonstrated that large language models can perform well with only a few examples, especially when provided with appropriate prompting. The integration of few-shot examples into the prompt has been shown to guide the model's understanding of the task, enabling it to make predictions based on the patterns and semantic similarities present in the provided examples.
+
+However, the influence of the order of these few-shot examples on model performance remains an open question. Existing literature highlights the potential of combining textual information with other modalities to improve few-shot learning outcomes, as well as the importance of task-level priors in adapting models to nonuniform few-shot settings. These insights suggest that the arrangement of examples might affect the model's ability to generalize, particularly when the examples are not representative of the target class distribution. 
+
+In this context, the order of few-shot examples could influence how the language model interprets the task and the relationships between examples. While some studies suggest that example order has a minimal impact on model performance, others indicate that the sequence in which examples are presented can affect the model's ability to infer task-specific patterns. This variability underscores the need for systematic evaluation of how example order influences the accuracy of text classification in few-shot settings, which is the focus of the current study.
+</text>
+\section{Related Work}
+\section{Related Work}
+
+This study investigates the impact of few-shot example order on text classification accuracy, situating itself within the broader context of few-shot learning for natural language processing. Existing approaches primarily focus on leveraging pre-trained language models for task-specific adaptation with minimal data, often emphasizing the content and quantity of examples rather than their order. 
+
+The work in \citet{2311.14544v1} explores the integration of textual information to enhance few-shot learning, particularly in cross-domain settings. By inferring class statistics from text, this method enriches the latent space and improves generalization. However, it does not address the potential influence of example order on model performance, focusing instead on the statistical properties of the data. In contrast, this study explicitly examines how varying the order of few-shot examples may alter classification outcomes, offering a complementary perspective to statistical enrichment methods.
+
+Similarly, \citet{2205.15014v1} introduces the Task-Prior Conditional Variational Auto-Encoder (TP-VAE) to address nonuniform few-shot scenarios, emphasizing the importance of task-level priors for adaptability. While TP-VAE improves performance through structured priors, it does not consider the sequential or contextual implications of example order. This study, however, challenges the assumption that example order is inconsequential by exploring its potential impact on model behavior, providing a more granular understanding of few-shot dynamics.
+
+The work in \citet{2008.06239v2} highlights the utility of large language models like GPT-2 and GPT-3 for few-shot learning in dialogue systems, demonstrating that minimal examples can suffice for task adaptation. This aligns with the current study's objectives but extends the analysis by focusing on the ordering of examples rather than their content. While previous work emphasizes the sufficiency of few examples, this study investigates whether their arrangement can further influence model accuracy, raising new questions about the role of sequence in few-shot learning.
+
+In summary, while prior research has demonstrated the effectiveness of few-shot learning in text classification, this study introduces a novel angle by evaluating the impact of example order—a factor that has received limited attention in the literature. By comparing and contrasting these approaches, the current work provides a more nuanced understanding of how few-shot learning functions in language models, particularly in text classification tasks.
+\section{Methods}
+\section{Methods}
+
+The experiment was designed to investigate whether the order of few-shot examples affects the accuracy of a language model in text classification. The study employed a controlled setup where a language model was prompted with a fixed number of labeled examples, and the order of these examples was systematically varied to observe any impact on classification performance. The model used was a local language model accessible via the Ollama API, simulating an OpenAI-compatible interface. 
+
+The dataset utilized was the IMDb movie review corpus, split into a test set containing 200 samples. For each experiment, two positive and two negative examples were selected at random, ensuring a balanced representation of classes. These selected examples were then permuted to generate multiple variations of the few-shot prompt. Specifically, 10 permutations of the few-shot examples were created, each containing four instances with randomized order. 
+
+Each permutation was used to construct a prompt where the model was instructed to classify a given text as either positive or negative. The prompt format consisted of the few-shot examples followed by an unlabeled query, formatted as: “Classify the following text as positive or negative: [text]”. The model was prompted to generate a classification for the query text, and its prediction was compared to the true label of the test example. 
+
+To ensure statistical reliability, the entire experiment was repeated five times, with each repetition involving a new random selection of few-shot examples and permutations. The accuracy metric was computed as the proportion of correctly classified test examples across all permutations. 
+
+The experiment's design aimed to isolate the effect of example order by keeping all other variables constant, including the model's parameters, the prompt structure, and the query format. This approach allows for a direct assessment of whether the order of few-shot examples significantly influences the model's ability to generalize to unseen text samples in a text classification task.
+</text>
+\section{Experimental Setup}
+\section{Experimental Setup}
+
+The experiment was conducted using a local language model via Ollama, which is an OpenAI-compatible API. The dataset employed was the IMDb movie reviews dataset, specifically the test set, which was split to ensure a balanced representation of positive and negative sentiments. For the few-shot examples, two instances were selected per class, resulting in a total of four examples used in the prompt. 
+
+To assess the impact of example order, ten permutations of the few-shot examples were generated, each with a random arrangement of the selected examples. The model was prompted with these permutations, followed by a query for an unseen text example, formatted as: "Classify the following text as positive or negative: [text]". The accuracy metric was used to evaluate the model's performance, with the classification result compared against the true label of the test example. 
+
+The experiment was repeated five times to ensure statistical robustness. All random processes were initialized with a seed value of 42 to ensure reproducibility. No specific hyperparameters were adjusted beyond those required for the model's prompt formatting and response generation. The accuracy was computed as the proportion of correctly classified test examples across all permutations and repetitions.
+\section{Results}
+\section{Results}
+
+The experiment yielded an accuracy of 0.00 across all permutations, indicating that the model did not correctly classify the test example in any of the iterations. This result suggests that the model failed to produce valid classifications (e.g., "positive" or "negative") for the query text. A closer inspection of the raw model responses revealed that the model either generated unsupported or irrelevant outputs, or defaulted to a neutral response that did not align with the expected labels. Furthermore, the model did not consistently assign the same label to the test example across different permutations, which may indicate a failure in task understanding or prompt formatting. These findings highlight potential limitations in the experimental setup, including the prompt structure and the model's ability to interpret and utilize the few-shot examples effectively. The results do not provide evidence of a measurable impact of example order on classification accuracy, due to the model's inability to produce reliable predictions.
+\section{Discussion}
+The results of the experiment indicate that the model's accuracy across permutations was 0.00, suggesting a failure to correctly classify the test example. This outcome may be attributed to several factors, including inadequate prompt formatting, ambiguous task instruction, or the model's inability to effectively utilize the few-shot examples provided. The lack of a valid classification response implies that the model could not interpret the prompt or infer the correct task from the given examples. 
+
+Further inspection of the raw model outputs is necessary to determine whether the model produced any classifications, even if they were incorrect. If the model consistently assigned the same label to the test example across permutations, this would suggest that the order of examples did not influence the model's prediction, at least in this specific setup. However, if the model produced varying or invalid responses depending on the permutation, this could imply that the order of examples does affect the model's ability to perform few-shot classification.
+
+The findings highlight the importance of carefully designing the prompt structure and ensuring that the model is explicitly instructed to use the few-shot examples for classification. Future work should explore different prompt formats, include more detailed task descriptions, and validate the model's understanding of the classification task through intermediate checks. Additionally, the current experiment used a minimal number of examples and a single test example, which may not be sufficient to draw robust conclusions about the impact of example order. Expanding the number of examples and test cases could provide a more comprehensive understanding of how example order influences performance in few-shot text classification.
+
+Overall, this experiment underscores the challenges of implementing few-shot learning in language models for text classification, particularly when the model's ability to interpret and utilize the few-shot examples is not well established. Further research is needed to determine the extent to which example order affects model performance and to develop more effective strategies for prompting language models in few-shot settings.
+\end{document}

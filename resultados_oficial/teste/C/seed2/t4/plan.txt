@@ -1,0 +1,14 @@
+The experiment will investigate whether the order of few-shot examples affects the accuracy of a language model on text classification. We will use the IMDb dataset for text classification and the Ollama language model. The plan is as follows:
+
+1. **Dataset**: Use the IMDb dataset for text classification, which consists of 50,000 movie reviews labeled as positive or negative.
+
+2. **Few-shot Examples**: Select a fixed number of few-shot examples (e.g., 10) from the IMDb dataset. We will vary the order of these examples to test the hypothesis that the order influences model accuracy.
+
+3. **Control Condition**: Include a control condition where the model is not prompted with any few-shot examples to isolate the effect of the few-shot examples.
+
+4. **Model Inference**: For each condition (different orderings of few-shot examples and the control), run the model inference on a small subset of the IMDb dataset (e.g., 50 samples). Limit the number of model queries to a maximum of 50 per condition to avoid timeouts.
+
+5. **Evaluation**: Compare the model's predictions with the correct labels from the dataset. Extract the model's predicted label and compare it with the correct label to compute accuracy.
+
+6. **Statistical Analysis**: Analyze the accuracy across different orderings of few-shot examples and the control condition. Use a simple statistical test (e.g., ANOVA) to determine if the order of few-shot examples significantly affects the model's accuracy.
+</final plan>

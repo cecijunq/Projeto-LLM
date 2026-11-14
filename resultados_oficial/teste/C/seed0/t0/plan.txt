@@ -1,0 +1,7 @@
+1. Load the CIFAR-10 dataset using torchvision and split it into training and test sets.
+2. Generate noisy versions of the test images by adding random pixel noise at levels of 10%, 20%, 30%, 40%, and 50%.
+3. Train a CNN (e.g., ResNet-18) and a transformer-based model (e.g., ViT) on the clean training data.
+4. Evaluate both models on the clean test set and on each noisy test set, recording their accuracy.
+5. Compare the accuracy of the CNN and transformer model across the different noise levels to determine which is more sensitive to pixel noise.
+6. Ensure reproducibility by fixing the random seed and performing statistical tests (e.g., paired t-test) to validate the significance of results.
+</final plan>

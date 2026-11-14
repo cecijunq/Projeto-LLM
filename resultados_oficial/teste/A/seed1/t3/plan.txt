@@ -1,0 +1,7 @@
+1. Load the CIFAR-10 dataset using torchvision, ensuring the training and test sets are split.
+2. Create two data loaders: one with random rotation augmentation (e.g., 15 degrees) and one without.
+3. Define a simple CNN architecture (e.g., 5 layers) and train two models: one with rotation augmentation and one without, using the same hyperparameters (e.g., learning rate, batch size, number of epochs).
+4. Generate a test set of CIFAR-10 images rotated by 15 degrees.
+5. Evaluate both models on the rotated test set and compute their accuracy.
+6. Compare the accuracy of the two models to determine if rotation data augmentation improves robustness to rotated images.
+</final plan>

@@ -1,0 +1,194 @@
+{
+  "topic": "Are language models sensitive to word order in multiple choice benchmarks?",
+  "with_memory": false,
+  "review": {
+    "Summary": "The paper investigates whether language models are sensitive to word order in multiple-choice questions by comparing accuracy on original and reordered versions of the same questions. The experiment is conducted on the MMLU benchmark, but the results lack statistical validation and the results section is incomplete.",
+    "Strengths": [
+      "Clear research question and methodology aligned with the research plan",
+      "Use of a relevant benchmark dataset (MMLU)",
+      "Focus on an underexplored aspect of model behavior (word order sensitivity)"
+    ],
+    "Weaknesses": [
+      "Lack of statistical validation for the observed accuracy drop",
+      "Missing results section and incomplete discussion",
+      "No detailed description of the reordering process",
+      "No hypothesis testing or control conditions",
+      "Limited exploration of potential confounding factors"
+    ],
+    "Originality": 3,
+    "Quality": 2,
+    "Clarity": 3,
+    "Significance": 2,
+    "Questions": [
+      "What statistical tests were performed to validate the observed accuracy difference?",
+      "How was the reordering of answer options performed, and was it randomized?",
+      "Were any control conditions implemented to isolate the effect of word order?",
+      "How were the results analyzed beyond simple accuracy comparison?"
+    ],
+    "Limitations": [
+      "Lack of statistical rigor in the analysis",
+      "Incomplete results and discussion sections",
+      "No detailed reordering methodology",
+      "No hypothesis testing"
+    ],
+    "Ethical Concerns": false,
+    "Soundness": 2,
+    "Presentation": 3,
+    "Contribution": 2,
+    "Overall": 3,
+    "Confidence": 2,
+    "Decision": "Reject"
+  },
+  "overall": 3,
+  "mle_score": 0.3,
+  "n_code_errors": 10,
+  "workflow_success": 1.0,
+  "usage": {
+    "calls": 98,
+    "prompt_tokens": 218988,
+    "completion_tokens": 36839
+  },
+  "elapsed_s": 5681.1,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 16,
+      "plan_formulation": 1,
+      "data_preparation": 3,
+      "results_interpretation": 1
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": true,
+      "running_experiments": true,
+      "results_interpretation": true,
+      "report_writing": true
+    },
+    "phase_time": {
+      "literature_review": 166.6,
+      "plan_formulation": 43.7,
+      "data_preparation": 119.2,
+      "running_experiments": 2526.3,
+      "results_interpretation": 21.7,
+      "report_writing": 277.8
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "multiple choice questions",
+        "word order variation",
+        "general knowledge data"
+      ],
+      "found": 9,
+      "verified": 6
+    },
+    "submit_fallback": 2,
+    "mle_solver": {
+      "exec_attempts": 12,
+      "exec_errors": 8,
+      "repairs_ok": 4,
+      "no_results": 1
+    },
+    "revisits": [
+      "running_experiments"
+    ]
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3,
+    "correcoes": true
+  },
+  "trace": {
+    "plan": "{\n  \"topic\": \"Are language models sensitive to word order in multiple choice benchmarks?\",\n  \"method\": \"Compare the same local model with and without word order variation on the same multiple-choice questions\",\n  \"test_set\": {\n    \"name\": \"MMLU benchmark\",\n    \"size\": 200,\n    \"domain\": \"General knowledge\"\n  },\n  \"conditions\": {\n    \"original_order\": \"Questions in their original word order\",\n    \"reordered_order\": \"Questions with the same content but altered word order\"\n  },\n  \"metric\": \"Accuracy\",\n  \"setup\": {\n    \"model\": \"Local language model served by Ollama\",\n    \"instructions\": \"Evaluate the model's accuracy on the same multiple-choice questions with different word orders\",\n    \"execution\": \"Run the experiment directly on the test split of the dataset\"\n  },\n  \"notes\": \"The experiment will assess how word order affects model performance on multiple-choice questions by comparing accuracy across original and reordered versions of the same questions.\"\n}",
+    "exp_results": "]\nExample: {'problem': '45岁2型糖尿病人，用达美康治疗，最初糖尿病控制尚满意。进2个月来有夜尿增多。为确诊患者有无早期糖尿病肾病，下列何项检查无意义\\nOption A: 肾血浆流量测定\\nOption B: 尿微量总蛋白测定\\nOption C: 血肌酐测定\\nOption D: β2-微球蛋白测定\\nOption E: 尿蛋白排泄率测定\\n请根据题干和选项，给出唯一的最佳答案。最终输出内容仅为选项英文字母。', 'answer': 'C'}\nData preparation completed.\n=== experiment output ===\nColumns: ['problem', 'answer']\nExample: {'problem': '45岁2型糖尿病人，用达美康治疗，最初糖尿病控制尚满意。进2个月来有夜尿增多。为确诊患者有无早期糖尿病肾病，下列何项检查无意义\\nOption A: 肾血浆流量测定\\nOption B: 尿微量总蛋白测定\\nOption C: 血肌酐测定\\nOption D: β2-微球蛋白测定\\nOption E: 尿蛋白排泄率测定\\n请根据题干和选项，给出唯一的最佳答案。最终输出内容仅为选项英文字母。', 'answer': 'C'}\nData preparation completed.\nAccuracy (original_order): 123/200 = 0.61\nAccuracy (reordered_order): 82/200 = 0.41\n\nExamples for original_order:\nExample 1:\nModel Response: E\nExtracted Answer: Unknown\nGold Answer: C\n\nExample 2:\nModel Response: A\nExtracted Answer: Unknown\nGold Answer: E\n\nExample 3:\nModel Response: E\nExtracted Answer: Unknown\nGold Answer: D\n\nExample 4:\nModel Response: E\nExtracted Answer: Unknown\nGold Answer: D\n\nExample 5:\nModel Response: C\nExtracted Answer: C\nGold Answer: C\n\nExample 6:\nModel Response: B\nExtracted Answer: B\nGold Answer: B\n\nExample 7:\nModel Response: 根据题干，研究目的是判断 **BMI≥25者** 的糖尿病患病率是否 **高于** **BMI<25者**。因此，这是一个 **单侧检验**，即我们关心的是 **π1 > π2**（π表示总体患病率）。\n\n---\n\n### 分析选项：\nExtracted Answer: Unknown\nGold Answer: E\n\nExample 8:\nModel Response: C\nExtra\n...[saída truncada]...\nr: B\n\nExample 187:\nModel Response: D\nExtracted Answer: D\nGold Answer: D\n\nExample 188:\nModel Response: C\nExtracted Answer: Unknown\nGold Answer: ABCD\n\nExample 189:\nModel Response: 在题干中，我们得知：\n\n- **时间范围**：1990—2010年  \n- **筛检方法**：空腹血糖试验  \n- **糖尿病患病率**：增加了一倍  \n- **问题**：哪项筛检试验特征会因患病率增加\nExtracted Answer: Unknown\nGold Answer: D\n\nExample 190:\nModel Response: Option A: 糖尿病控制不满意\nExtracted Answer: Unknown\nGold Answer: A\n\nExample 191:\nModel Response: B\nExtracted Answer: B\nGold Answer: B\n\nExample 192:\nModel Response: Option A: 病例对照研究\nExtracted Answer: Unknown\nGold Answer: A\n\nExample 193:\nModel Response: B\n\n**解析：**\n\n题干中提到的是一个**横断面研究**，它测量的是**患病率**（prevalence），而不是**发病率**（incidence）。  \n- **患病率**是指某一特定时间点，某人群中患有某种疾病的人数所占的比例。  \n-\nExtracted Answer: Unknown\nGold Answer: C\n\nExample 194:\nModel Response: Option D: 假阴性率\nExtracted Answer: Unknown\nGold Answer: D\n\nExample 195:\nModel Response: C\nExtracted Answer: Unknown\nGold Answer: D\n\nExample 196:\nModel Response: 根据糖尿病管理指南，治疗良好的糖尿病患者的糖化血红蛋白（HbA1c）水平应控制在 **<7%**（即 **<0.07**）。\n\n在选项中：\n\n- **Option A: 0.06**（即 6%）——目标\nExtracted Answer: Unknown\nGold Answer: D\n\nExample 197:\nModel Response: E\nExtracted Answer: E\nGold Answer: E\n\nExample 198:\nModel Response: A\nExtracted Answer: A\nGold Answer: A\n\nExample 199:\nModel Response: 我们来计算糖尿病家族史与2型糖尿病的**关联强度**，通常使用**比值比（Odds Ratio, OR）**来衡量。\n\n---\n\n### **1. 确定各组数据：**\n\n- **病例组（2型糖尿病患者）：**\n  - 总人数\nExtracted Answer: Unknown\nGold Answer: D\n\nExample 200:\nModel Response: Option B\nExtracted Answer: Unknown\nGold Answer: C\n\n\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n",
+    "interpretation": "The experiment results show that the model's accuracy decreased from 61% (original_order) to 41% (reordered_order), indicating a 20% drop in performance when the word order was altered. However, the results do not provide any statistical evidence (e.g., p-value, confidence interval) to determine whether this difference is significant. Therefore, we cannot conclude that the model is more sensitive to word order in the original_order condition. The observed drop in accuracy could be due to random variation, and without a significance test, no definitive claim about the model's sensitivity to word order can be made.",
+    "errors": [
+      {
+        "phase": "data_preparation",
+        "text": "lit:  45%|████▌     | 45000/99842 [00:00<00:00, 231637.28 examples/s]\rGenerating auxiliary_train split:  84%|████████▍ | 84000/99842 [00:00<00:00, 301525.30 examples/s]\rGenerating auxiliary_train split: 100%|██████████| 99842/99842 [00:00<00:00, 307603.49 examples/s]\nTraceback (most recent call last):\n  File \"/tmp/agentlab_mdwyi6wg/run.py\", line 8, in <module>\n    print(\"Columns:\", dataset.columns)\n                      ^^^^^^^^^^^^^^^\nAttributeError: 'Dataset' object has no attribute 'columns'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "ub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide\n  var *= (n / (n-ddof))  # to avoid error on division by zero\n/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply\n  var *= (n / (n-ddof))  # to avoid error on division by zero\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "ion B: 尿微量总蛋白测定\\nOption C: 血肌酐测定\\nOption D: β2-微球蛋白测定\\nOption E: 尿蛋白排泄率测定\\n请根据题干和选项，给出唯一的最佳答案。最终输出内容仅为选项英文字母。', 'answer': 'C'}\nData preparation completed.\n=== experiment output ===\n\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_ut3dc1ng/run.py\", line 28, in <module>\n    torch.manual_seed(42)\n    ^^^^^\nNameError: name 'torch' is not defined\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "ite-packages/pandas/core/series.py\", line 1102, in __getitem__\n    return self._get_value(key)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/pandas/core/series.py\", line 1189, in _get_value\n    loc = self.index.get_loc(label)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py\", line 3823, in get_loc\n    raise KeyError(key) from err\nKeyError: 'question'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "病，下列何项检查无意义\\nOption A: 肾血浆流量测定\\nOption B: 尿微量总蛋白测定\\nOption C: 血肌酐测定\\nOption D: β2-微球蛋白测定\\nOption E: 尿蛋白排泄率测定\\n请根据题干和选项，给出唯一的最佳答案。最终输出内容仅为选项英文字母。', 'answer': 'C'}\nData preparation completed.\n\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_apfqkor5/run.py\", line 44, in <module>\n    np.random.seed(42)\n    ^^\nNameError: name 'np' is not defined\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "ub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: divide by zero encountered in divide\n  var *= (n / (n-ddof))  # to avoid error on division by zero\n/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/scipy/stats/_stats_py.py:1227: RuntimeWarning: invalid value encountered in multiply\n  var *= (n / (n-ddof))  # to avoid error on division by zero\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "e>\n    df['reordered_question'] = df['question'].apply(reorder_question)\n                               ~~^^^^^^^^^^^^\n  File \"/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/pandas/core/frame.py\", line 4330, in __getitem__\n    indexer = self.columns.get_loc(key)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py\", line 3823, in get_loc\n    raise KeyError(key) from err\nKeyError: 'question'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "son.dumps(\n           ^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n          ^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/encoder.py\", line 200, in encode\n    chunks = self.iterencode(o, _one_shot=True)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/json/encoder.py\", line 258, in iterencode\n    return _iterencode(o, 0)\n           ^^^^^^^^^^^^^^^^^\nValueError: Out of range float values are not JSON compliant: nan\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_njya50oe/run.py\", line 109\n    prompt = problem\nIndentationError: unexpected indent\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_kok5trh6/run.py\", line 108\n    prompt = problem\nIndentationError: unexpected indent\n"
+      }
+    ],
+    "n_papers": 5,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "outro_erro"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "outro_erro"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_sintaxe"
+    }
+  ]
+}

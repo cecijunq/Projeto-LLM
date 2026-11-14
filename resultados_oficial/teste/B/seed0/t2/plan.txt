@@ -1,0 +1,24 @@
+{
+  "objective": "Investigate whether sentiment classifiers are sensitive to negation words on short movie reviews (SST-2).",
+  "methodology": {
+    "dataset": "SST-2 dataset from HuggingFace",
+    "model": "Local language model served by Ollama through an OpenAI-compatible API",
+    "steps": [
+      "Load the SST-2 dataset from HuggingFace.",
+      "Split the dataset into training and testing sets.",
+      "Train a sentiment classifier using the training set.",
+      "Evaluate the model's performance on the test set.",
+      "Analyze the model's performance on sentences with and without negation words to determine if the model is sensitive to negation."
+    ]
+  },
+  "constraints": {
+    "small_data": true,
+    "local_model_only": true,
+    "no_paid_apis": true,
+    "no_transformers_models": true
+  },
+  "expected_outcomes": [
+    "Model performance on sentences with and without negation words will be compared.",
+    "Statistical analysis (e.g., confidence intervals, hypothesis testing) will be performed to assess the significance of performance differences."
+  ]
+}

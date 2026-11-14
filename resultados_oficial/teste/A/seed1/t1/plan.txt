@@ -1,0 +1,8 @@
+The experiment will focus on evaluating the sensitivity of Ollama's local language model to word order in the context of the SuperGLUE WiC dataset. The plan is as follows:
+1. Load the SuperGLUE WiC dataset in JSON format, ensuring that each example is structured with "word", "context1", "context2", and "label".
+2. For each example, generate a prompt in the format: "Is the word '[word]' used in the same way in these two contexts: '[context1]' and '[context2]'?" to ensure alignment with the dataset.
+3. Use Ollama's local language model to generate a response for each prompt.
+4. Extract the model's prediction (e.g., "Yes" or "No") and compare it to the actual label in the dataset to compute accuracy.
+5. Repeat the process for multiple examples to evaluate the model's overall performance and its sensitivity to word order in the context of word meaning consistency.
+This experiment will be run on a single GPU, using a small subset of the dataset for efficiency, and will provide insights into the model's ability to understand word order and its impact on meaning.
+</final plan>

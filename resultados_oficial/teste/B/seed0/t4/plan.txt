@@ -1,0 +1,12 @@
+The experiment will investigate whether the order of few-shot examples impacts the accuracy of a language model on text classification. We will use the IMDb movie reviews dataset (binary classification: positive/negative). The plan is as follows:
+
+1. Load a small subset of the IMDb dataset (e.g., 50 positive and 50 negative reviews) and split into few-shot examples (e.g., 5 examples per class).
+2. Create three versions of the few-shot prompt:
+   - Version A: Examples in the order of positive followed by negative.
+   - Version B: Examples in the order of negative followed by positive.
+   - Version C: Randomized order of examples.
+3. For each version, use the Ollama model via its OpenAI-compatible API to perform text classification on a test set of 10 examples (5 positive, 5 negative).
+4. Record the accuracy of the model for each version.
+5. Compare the accuracy across versions to determine if the order of examples affects performance.
+
+This experiment is simple, small-scale, and will run in a few minutes on one GPU using only the local Ollama model.

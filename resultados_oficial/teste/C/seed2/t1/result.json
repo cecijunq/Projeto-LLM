@@ -1,0 +1,117 @@
+{
+  "topic": "Are language models sensitive to word order in multiple choice benchmarks?",
+  "with_memory": true,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 0,
+  "workflow_success": 0.667,
+  "usage": {
+    "calls": 63,
+    "prompt_tokens": 151480,
+    "completion_tokens": 1820
+  },
+  "elapsed_s": 313.0,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 20,
+      "plan_formulation": 1,
+      "data_preparation": 20
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 188.7,
+      "plan_formulation": 25.6,
+      "data_preparation": 98.7
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "multiple choice questions",
+        "shuffled answer options",
+        "option order sensitivity"
+      ],
+      "found": 4,
+      "verified": 2
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "Evaluate the sensitivity of a language model to the order of answer choices in multiple-choice questions by comparing its performance on the original and shuffled versions of the same questions from the \"MultipleChoice\" dataset. Use the Ollama API to interact with the local language model. Split the dataset into two groups: one with the original option order and one with shuffled options. For each question, prompt the model to answer and record its accuracy. Compare the accuracy across the two conditions to assess sensitivity to word order.",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [],
+    "n_papers": 3,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "literature_review",
+      "categoria": "busca_em_loop"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ],
+  "memory_stats": {
+    "runs": 1,
+    "total": 20,
+    "episodic": 0,
+    "insight": 20,
+    "error": 0,
+    "literature": 0,
+    "feedback": 0
+  },
+  "memory_retrievals": [
+    {
+      "phase": "literature_review",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n",
+      "ids": [
+        "723ad6365b",
+        "b14d22ea0f",
+        "a13296740a",
+        "616f482bd1",
+        "ebdba5a429",
+        "132179e8ce"
+      ]
+    },
+    {
+      "phase": "plan_formulation",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n",
+      "ids": [
+        "723ad6365b",
+        "2534c53528",
+        "b14d22ea0f",
+        "a13296740a",
+        "616f482bd1",
+        "ebdba5a429"
+      ]
+    },
+    {
+      "phase": "data_preparation",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\nEvaluate the sensitivity of a language model to the order of answer choices in multiple-choice questions by comparing its per",
+      "ids": [
+        "c78231190f",
+        "2fd776adb8",
+        "ebdba5a429",
+        "b14d22ea0f",
+        "132179e8ce",
+        "a13296740a"
+      ]
+    }
+  ]
+}

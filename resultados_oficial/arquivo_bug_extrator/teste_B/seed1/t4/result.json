@@ -1,0 +1,120 @@
+{
+  "topic": "Does the order of few-shot examples change the accuracy of a language model on text classification?",
+  "with_memory": true,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 0,
+  "workflow_success": 0.667,
+  "usage": {
+    "calls": 56,
+    "prompt_tokens": 207148,
+    "completion_tokens": 4958
+  },
+  "elapsed_s": 639.3,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 13,
+      "plan_formulation": 1,
+      "data_preparation": 20
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 134.5,
+      "plan_formulation": 47.5,
+      "data_preparation": 457.3
+    },
+    "invalid_commands": {
+      "literature_review": 1
+    },
+    "hf_suggestions": {
+      "queries": [
+        "text classification",
+        "few shot examples",
+        "example order"
+      ],
+      "found": 8,
+      "verified": 6
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "We will design a simple experiment to investigate whether the order of few-shot examples impacts the accuracy of a language model on text classification. The experiment will use the Ollama language model via an OpenAI-compatible API and the HuggingFace dataset 'imdb' for text classification. The plan is as follows:\n\n1. **Setup**: Load the 'imdb' dataset and split it into training and testing sets. Use only the testing set for evaluation.\n2. **Few-shot Examples**: Select 5 examples for each class (positive and negative) from the training set.\n3. **Vary Order**: Create multiple permutations of the few-shot examples for each class (e.g., 5 different orders).\n4. **Prompt Construction**: Construct prompts for the language model by concatenating the few-shot examples in different orders, followed by the test sample.\n5. **Model Inference**: Use the Ollama API to generate predictions for each test sample with different example orders.\n6. **Accuracy Measurement**: Compute the classification accuracy for each order and compare across permutations.\n7. **Statistical Analysis**: Use a t-test or ANOVA to determine whether the order of few-shot examples significantly impacts the model's accuracy.\n\nThe experiment will be run on a single GPU and should take a few minutes to complete. The data size is small, and only the local language model served by Ollama will be used.\n</final plan>",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [],
+    "n_papers": 5,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "literature_review",
+      "categoria": "formato_invalido",
+      "n": 1
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ],
+  "memory_stats": {
+    "runs": 1,
+    "total": 15,
+    "episodic": 0,
+    "insight": 15,
+    "error": 0,
+    "literature": 0,
+    "feedback": 0
+  },
+  "memory_retrievals": [
+    {
+      "phase": "literature_review",
+      "query": "Does the order of few-shot examples change the accuracy of a language model on text classification?\n",
+      "ids": [
+        "ee72255e08",
+        "f9fd4ec9bc",
+        "07e6ab63e1",
+        "52f3c7f3cd",
+        "9b5cf93059",
+        "f66abd5080"
+      ]
+    },
+    {
+      "phase": "plan_formulation",
+      "query": "Does the order of few-shot examples change the accuracy of a language model on text classification?\n",
+      "ids": [
+        "be47f339da",
+        "b86786f7dc",
+        "f9fd4ec9bc",
+        "07e6ab63e1",
+        "52f3c7f3cd",
+        "9b5cf93059"
+      ]
+    },
+    {
+      "phase": "data_preparation",
+      "query": "Does the order of few-shot examples change the accuracy of a language model on text classification?\nWe will design a simple experiment to investigate whether the order of few-shot examples impacts the",
+      "ids": [
+        "52f3c7f3cd",
+        "f9fd4ec9bc",
+        "f66abd5080",
+        "45ce551be1",
+        "9b5cf93059",
+        "07e6ab63e1"
+      ]
+    }
+  ]
+}

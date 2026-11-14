@@ -1,0 +1,12 @@
+First few rows of the dataset:
+                                            original  ...       answer
+0                Which planet is closest to the sun?  ...      Mercury
+1                     What is the capital of France?  ...        Paris
+2                   Who wrote 'Pride and Prejudice'?  ...  Jane Austen
+3         Which element has the chemical symbol 'O'?  ...       Oxygen
+4  Which gas is most abundant in Earth's atmosphere?  ...     Nitrogen
+
+[5 rows x 3 columns]
+=== experiment output ===
+Original Accuracy: 0.0
+Altered Accuracy: 0.0

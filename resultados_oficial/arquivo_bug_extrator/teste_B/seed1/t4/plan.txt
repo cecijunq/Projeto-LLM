@@ -1,0 +1,12 @@
+We will design a simple experiment to investigate whether the order of few-shot examples impacts the accuracy of a language model on text classification. The experiment will use the Ollama language model via an OpenAI-compatible API and the HuggingFace dataset 'imdb' for text classification. The plan is as follows:
+
+1. **Setup**: Load the 'imdb' dataset and split it into training and testing sets. Use only the testing set for evaluation.
+2. **Few-shot Examples**: Select 5 examples for each class (positive and negative) from the training set.
+3. **Vary Order**: Create multiple permutations of the few-shot examples for each class (e.g., 5 different orders).
+4. **Prompt Construction**: Construct prompts for the language model by concatenating the few-shot examples in different orders, followed by the test sample.
+5. **Model Inference**: Use the Ollama API to generate predictions for each test sample with different example orders.
+6. **Accuracy Measurement**: Compute the classification accuracy for each order and compare across permutations.
+7. **Statistical Analysis**: Use a t-test or ANOVA to determine whether the order of few-shot examples significantly impacts the model's accuracy.
+
+The experiment will be run on a single GPU and should take a few minutes to complete. The data size is small, and only the local language model served by Ollama will be used.
+</final plan>

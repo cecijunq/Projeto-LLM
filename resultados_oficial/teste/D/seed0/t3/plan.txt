@@ -1,0 +1,10 @@
+1. Dataset: Use the CIFAR-10 dataset from torchvision and include rotated versions of images (0°, 90°, 180°, 270°) from the CIFAR-10-Warehouse dataset (available via HuggingFace) to create a test set of at least 200 examples.
+2. Model: Train two small CNNs (e.g., a standard CNN and a RIC-CNN from [2211.11812v1]) on the original CIFAR-10 dataset.
+3. Training: 
+   - Model A: Train with rotation data augmentation (e.g., random rotations of images during training).
+   - Model B: Train without rotation data augmentation.
+4. Evaluation:
+   - Test both models on the original CIFAR-10 test set (no rotation).
+   - Test both models on the rotated versions of the original images (0°, 90°, 18, 270°) from the CIFAR-10-Warehouse dataset.
+5. Metric: Use classification accuracy as the evaluation metric.
+6. Analysis: Compare the accuracy of both models on the original and rotated test sets to determine whether rotation data augmentation improves robustness to rotated images.

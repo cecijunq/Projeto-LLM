@@ -1,0 +1,156 @@
+{
+  "topic": "Does the order of few-shot examples change the accuracy of a language model on text classification?",
+  "with_memory": false,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 11,
+  "workflow_success": 0.667,
+  "usage": {
+    "calls": 68,
+    "prompt_tokens": 220366,
+    "completion_tokens": 8940
+  },
+  "elapsed_s": 915.2,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 19,
+      "plan_formulation": 4,
+      "data_preparation": 20
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 197.3,
+      "plan_formulation": 79.2,
+      "data_preparation": 638.7
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "few-shot text classification",
+        "example order impact",
+        "permutation testing"
+      ],
+      "found": 0,
+      "verified": 1
+    },
+    "repeated_data_errors": 10
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "1. Load the SST-2 dataset and split it into training and test sets.\n2. Select 10 examples (5 positive, 5 negative) for few-shot learning.\n3. Generate multiple permutations of the 10 examples to test the impact of order.\n4. For each permutation, format the examples as a prompt and use the few-shot examples to classify the test set using the local language model served by Ollama.\n5. Measure the classification accuracy for each permutation and analyze the effect of example order on model performance.\n</final plan>",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_xpjkpcag/run.py\", line 22\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_ubx8fj6h/run.py\", line 19\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_swjcehdv/run.py\", line 19\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_vwdhkdoq/run.py\", line 19\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_dyqrqbtj/run.py\", line 19\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_29pqktgi/run.py\", line 19\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_sudcrmo0/run.py\", line 19\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_rg9cvev1/run.py\", line 19\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_u3tfqfk_/run.py\", line 19\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_vl5zvc0z/run.py\", line 19\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "phase": "data_preparation",
+        "text": "\n[stderr]\n  File \"/tmp/agentlab_n_59yt1v/run.py\", line 19\n    </final python code>\n    ^\nSyntaxError: invalid syntax\n"
+      }
+    ],
+    "n_papers": 5,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "erro_de_sintaxe"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ]
+}

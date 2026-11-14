@@ -1,0 +1,8 @@
+1. Load the SST-2 dataset and select a test split of at least 200 examples.
+2. For each example in the test split:
+   a. Create two versions of the input: one with the original negation words and one with the negation words removed.
+   b. Use the local language model (via Ollama's API) to predict the sentiment for both versions.
+3. Compute the accuracy of the model for both conditions (with and without negation words).
+4. Compare the accuracy scores between the two conditions to determine if the model is sensitive to negation words.
+5. Include a baseline condition where negation words are explicitly removed from the input to ensure the comparison is fair.
+6. Report the accuracy difference as a measure of sensitivity to negation words.

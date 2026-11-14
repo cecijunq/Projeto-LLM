@@ -1,0 +1,28 @@
+=== experiment output ===
+Category: 17
+Examples: Sexual health is a broad topic that involves physical, emotional, and social well-being. Proper sexual health can lead to better relationships and overall life satisfaction. It's important for individuals to understand the risks associated with certain behaviors and to practice safe sex to prevent sexually transmitted infections (STIs). Comprehensive education about human sexuality includes understanding consent, respecting individual boundaries, and knowing how to access appropriate healthcare services. - 17
+A balanced diet is essential for maintaining good health. It should include a variety of fruits, vegetables, whole grains, and lean proteins. Eating a wide range of nutrients helps the body to function properly and can help prevent chronic diseases such as heart disease, diabetes, and some forms of cancer. Additionally, regular physical activity contributes to overall well-being by keeping muscles strong, improving cardiovascular health, and promoting mental health. - 17
+The human body can benefit from regular exercise in numerous ways. Physical activity enhances heart health by strengthening the cardiovascular system and improving blood circulation. It also helps maintain a healthy weight, which reduces the risk of chronic diseases such as type 2 diabetes and hypertension. Mental health is another area that benefits significantly; exercise has been proven to decrease stress levels, improve mood, and enhance overall cognitive function. - 17
+Model's answer: The category of this text is **Health and Wellness**.
+Accuracy for this category: 0.0
+--------------------------------------------------
+Category: 16
+Examples: The curriculum for new hires in the IT department covers a range of topics from basic networking principles to advanced software development practices. Employees will learn how to troubleshoot common hardware issues and manage user accounts effectively. This training aims to provide a comprehensive skill
+...[saída truncada]...
+s that signify the transition into adulthood, which may coincide with the start of sexual activity. However, these relationships can also bring about complex issues such as consent, health risks, and psychological impacts, necessitating a broader understanding and dialogue within communities.']
+Model's answer: Not enough examples to evaluate.
+Accuracy for this category: 0.0
+--------------------------------------------------
+Category: 15
+Examples: ['The rise of digital media has changed how we consume news. With the internet now providing instant access to information from sources around the world, traditional print newspapers are struggling to maintain relevance in an increasingly connected society. This shift is not only a change in format but also in readership behaviors and expectations. People seek real-time updates and interactive content that goes beyond just reading articles.']
+Model's answer: Not enough examples to evaluate.
+Accuracy for this category: 0.0
+--------------------------------------------------
+Category: 25
+Examples: ['Human sexuality has been studied in various contexts throughout history, from biological perspectives that examine the role of hormones and genetic makeup in sexual development, to sociological analyses that investigate the influence of culture on sexual behavior and identity. The diversity of human sexual experiences is vast, ranging from heterosexual relationships to a variety of other orientations, each with its own set of nuances and cultural connotations. Furthermore, discussions surrounding sexuality often intersect with legal and ethical considerations, especially in contexts where certain practices are legally restricted or socially frowned upon.']
+Model's answer: Not enough examples to evaluate.
+Accuracy for this category: 0.0
+--------------------------------------------------
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

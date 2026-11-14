@@ -1,0 +1,11 @@
+1. Load the IMDB dataset from HuggingFace (small subset of 500 samples) and split into training and test sets.
+2. Select 5 examples from the training set for few-shot classification (2 positive, 3 negative).
+3. Create two versions of the few-shot prompt: 
+   - Random order of examples
+   - Increasing sentiment order (positive first, then negative)
+4. Create a baseline prompt with no examples.
+5. Use the Ollama API to query a local language model with each prompt, asking it to classify 10 test samples.
+6. Measure accuracy for each prompt order and baseline.
+7. Repeat the experiment with multiple models (e.g., llama3, mixtral, llama2) to ensure results are not model-specific.
+8. Analyze the impact of example order on model accuracy and reasoning by examining the model's outputs.
+</final plan>

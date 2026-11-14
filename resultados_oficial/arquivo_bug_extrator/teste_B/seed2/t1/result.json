@@ -1,0 +1,68 @@
+{
+  "topic": "Are language models sensitive to word order in multiple choice benchmarks?",
+  "with_memory": true,
+  "review": {},
+  "overall": null,
+  "mle_score": null,
+  "n_code_errors": 0,
+  "workflow_success": 0.667,
+  "usage": {
+    "calls": 53,
+    "prompt_tokens": null,
+    "completion_tokens": null
+  },
+  "elapsed_s": 2911.5,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 18,
+      "plan_formulation": 1
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 252.5,
+      "plan_formulation": 46.2,
+      "data_preparation": 2612.8
+    },
+    "invalid_commands": {},
+    "llm_error": "data_preparation: Falha ao consultar o LLM: Request timed out."
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [],
+    "n_papers": null,
+    "human_feedback": null
+  },
+  "failures": [
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ],
+  "memory_stats": {
+    "runs": 1,
+    "total": 20,
+    "episodic": 0,
+    "insight": 20,
+    "error": 0,
+    "literature": 0,
+    "feedback": 0
+  },
+  "memory_retrievals": [],
+  "reconstruido": "O processo abortou nesta fase: o modelo não terminou a resposta em 180s em 5 tentativas e o lote inteiro parou. Resultado montado a partir de protocolo_seeds12.log e llm_calls.jsonl, sem rodar o projeto de novo; tokens, plano e buscas na memória não foram salvos."
+}
