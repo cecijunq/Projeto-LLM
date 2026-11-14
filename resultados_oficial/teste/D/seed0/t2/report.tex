@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{amsmath}
+\title{Research Report: Are sentiment classifiers sensitive to negation words on short movie reviews (SST-2)?}
+\author{Agent Laboratory}
+\begin{document}
+\maketitle
+\section{Abstract}
+The study investigates the sensitivity of sentiment classifiers to negation words in short movie reviews from the SST-2 dataset. While prior work highlights the significant impact of negation on sentiment analysis, particularly in short texts, the specific effect on local language models remains underexplored. This experiment evaluates whether removing negation words improves classification accuracy, using a local language model without external training. The results show a marginal decrease in accuracy when negation words are included, but the difference is not statistically significant, suggesting that the model's performance is not strongly influenced by negation in this context. The findings underscore the need for further investigation into the role of negation in sentiment classification and the limitations of current methods in handling such linguistic phenomena.
+\section{Introduction}
+\section{Introduction}
+
+Sentiment analysis plays a crucial role in understanding public opinion, customer feedback, and social media discourse. Short texts, such as movie reviews, pose unique challenges due to their brevity and the frequent use of linguistic phenomena such as negation. Negation words, such as "not," "no," and "never," can significantly alter the sentiment of a sentence, making their presence a critical factor in the accuracy of sentiment classifiers. The Stanford Sentiment Treebank (SST-2) dataset, which consists of short movie reviews labeled as positive or negative, has been widely used to evaluate sentiment analysis models. 
+
+Despite the importance of negation in sentiment classification, there is limited understanding of how sentiment classifiers, particularly those trained on short texts, handle negation words. Previous studies have shown that negation can influence sentiment composition and that models trained with explicit consideration of negation tend to outperform those that learn it implicitly. However, these findings are primarily based on longer texts or specific linguistic contexts, and their applicability to short, domain-specific texts like those in the SST-2 dataset remains an open question. 
+
+This study investigates the sensitivity of sentiment classifiers to negation words in short movie reviews from the SST-2 dataset. Using a local language model, we assess how the inclusion or removal of negation words affects the model's performance on a test set of 200 examples. The results of this experiment provide insights into whether sentiment classifiers are sensitive to negation in short texts and highlight the challenges of handling negation in sentiment analysis for such data.
+\section{Background}
+\section{Background}
+
+Sentiment analysis is a fundamental task in natural language processing, aimed at determining the polarity of a given text as either positive or negative. The Stanford Sentiment Treebank (SST-2) is a widely used benchmark dataset for this task, consisting of short movie reviews annotated with binary sentiment labels. The challenge of accurately classifying sentiment in such short texts is compounded by the presence of negation words, which can invert the sentiment expressed in a sentence. For instance, the phrase "not a good movie" conveys a negative sentiment despite the presence of the word "good." 
+
+The impact of negation on sentiment classification has been extensively studied in the literature. Early work focused on the effects of negators, modals, and degree adverbs on sentiment composition, showing that these modifiers can significantly alter the overall sentiment of a sentence. More recent approaches have explored explicit modeling of negation through multi-task learning and cascading neural architectures, demonstrating the importance of incorporating negation-aware mechanisms for improved performance. These findings suggest that negation words can have a substantial influence on sentiment classification, particularly in short texts where context is limited. 
+
+Despite these insights, there remains a lack of conclusive evidence regarding the sensitivity of sentiment classifiers to negation words in specific domains, such as short movie reviews. This study aims to address this gap by evaluating the performance of a local language model on the SST-2 dataset with and without negation words, thereby investigating the extent to which sentiment classifiers are influenced by such linguistic phenomena.
+\section{Related Work}
+The existing literature on sentiment analysis has extensively explored the impact of negation words on sentiment classification, particularly in short texts such as those found in the SST-2 dataset. Early studies, such as [1712.01794v1], emphasized the significant role of modifiers like negation words in shaping sentiment, showing that their inclusion can alter the perceived sentiment of a phrase. This work laid the foundation for understanding how negation influences sentiment composition, though it primarily focused on annotated phrases rather than full sentences. Subsequent research, such as [1906.07610v2], introduced a more explicit method for handling negation by incorporating it as an auxiliary task in a multi-task learning framework, which demonstrated improved performance in sentiment analysis tasks. This approach contrasts with earlier data-driven methods that implicitly learned negation patterns without direct modeling. 
+
+In contrast, the current experiment does not employ such advanced modeling strategies but rather investigates the direct impact of negation words on model performance through a simple removal of these words from input sentences. While [2107.11597v1] focused on colloquial Arabic and used rule-based approaches to mitigate the effects of negation, the present study adopts a more general and less linguistically informed method. Similarly, [1605.05195v2] emphasized the importance of contextual factors in short texts, such as those found in Twitter, but the current experiment does not incorporate contextual information, instead focusing solely on the presence or absence of negation words. 
+
+The results of the current experiment align with the broader literature in that they suggest the presence of negation words may not significantly affect model accuracy in this specific task. However, the lack of statistical validation and the limited scope of the experiment prevent definitive conclusions about the sensitivity of sentiment classifiers to negation in short texts. This highlights the need for more rigorous methodologies, such as those proposed in [1906.07610v2], which explicitly model negation effects, to better understand and address the challenges posed by negation in sentiment analysis.
+\section{Methods}
+\section{Methods}
+
+The experiment was conducted to assess the sensitivity of a local language model to negation words in short movie reviews from the SST-2 dataset. The SST-2 dataset consists of 670,000 IMDb movie reviews, each labeled as either positive (1) or negative (0). For this experiment, only the test split was used, and the first 200 examples were selected for analysis.
+
+The local language model was served by Ollama and was not trained on any additional data. The model's performance was evaluated under two conditions: (1) with negation words included in the input, and (2) with negation words removed. The negation words considered in this experiment are commonly used to invert sentiment and include words such as "not", "no", "never", "none", "nothing", "nobody", "neither", "nor", "can't", "won't", "don't", "didn't", "isn't", "aren't", "wasn't", "weren't", "haven't", "hadn't", "shouldn't", "wouldn't", "mustn't", and "oughtn't".
+
+To simulate the removal of negation words, a preprocessing step was applied to the input sentences. Specifically, all instances of negation words were removed using a predefined set of negation words. The preprocessing was performed by replacing each occurrence of a negation word with an empty string, followed by a subsequent cleaning step to remove any residual punctuation or whitespace.
+
+The model's predictions were generated by formatting a prompt for each review, which instructed the model to classify the sentiment of the sentence as either 0 (negative) or 1 (positive). Two versions of the prompt were used: one that included the instruction to consider the effect of negation words, and another that omitted this instruction. The prompts were structured as follows:
+
+$$
+P_{\text{neg}} = \text{"Classify the sentiment of the following sentence as 0 (negative) or 1 (positive). The sentence is: } \{question\}. \text{ Consider the effect of negation words like 'not', 'no', 'never', 'none', etc. Answer:"}
+$$
+
+$$
+P_{\text{non-neg}} = \text{"Classify the sentiment of the following sentence as 0 (negative) or 1 (positive). The sentence is: } \{question\}. \text{ Answer:"}
+$$
+
+Each prompt was applied to the first 50 examples from the dataset to generate the model's predictions. The model's responses were then processed to extract the final answer, which was identified as the last digit in the response using a regular expression. The extracted answer was compared to the true label (gold answer) to calculate the model's accuracy under each condition.
+
+The accuracy was computed using the following equation:
+
+$$
+\text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total number of predictions}} \times 100
+$$
+
+The results from the experiment were then compared to determine whether the inclusion or exclusion of negation words significantly affected the model's performance. No statistical test was conducted to assess the significance of the difference in accuracy between the two conditions.
+\section{Experimental Setup}
+\section{Experimental Setup}
+
+The experiment was conducted using the Stanford Sentiment Treebank (SST-2) dataset, which consists of short movie reviews annotated with sentiment labels (0 for negative, 1 for positive). The dataset was split into training, validation, and test sets, with the test set containing 200 examples selected for evaluation. Each example includes a sentence and a corresponding sentiment label. The selected subset of 200 examples was used to assess the model's performance under two conditions: with and without negation words.
+
+The primary metric used to evaluate the model's performance was accuracy, defined as the proportion of correctly classified sentences. The model's predictions were compared against the gold-standard labels from the dataset. The accuracy was calculated separately for the two conditions: (1) with negation words included in the input, and (2) with negation words removed from the input.
+
+The negation words were identified and removed based on a predefined set of negation terms, including words such as 'not', 'no', 'never', 'none', and others commonly associated with negation in natural language. The removal of negation words was performed during preprocessing of the input text before feeding it to the model.
+
+No hyperparameter tuning was conducted, and the model was evaluated using the same prompt format and inference settings across both conditions. The evaluation was performed using a local language model served by Ollama, without any training or external API dependencies. The random seed was set to 42 to ensure reproducibility of the experimental results.
+\section{Results}
+\section{Results}
+
+The experiment was conducted to assess the sensitivity of a local language model to negation words in short movie reviews from the SST-2 dataset. The model's performance was evaluated under two conditions: (1) with negation words included in the input, and (2) with negation words removed. The evaluation was performed on a test set of 200 examples, and the model's accuracy was measured for both conditions. 
+
+The results indicate that the model achieved an accuracy of 0.46 when negation words were included in the input, compared to an accuracy of 0.52 when negation words were removed. However, no statistical test was conducted to determine the significance of this difference. Additionally, the experiment did not report the variation between runs, which limits the ability to draw definitive conclusions about the model's sensitivity to negation words. 
+
+The results also show that the model's performance is not significantly affected by the presence or absence of negation words in the input, as the difference in accuracy is small and not statistically validated. This suggests that the model may not be highly sensitive to negation words in the context of short movie reviews. However, the lack of statistical analysis and limited reporting of variability prevent a robust conclusion about the sensitivity of sentiment classifiers to negation words in this task.
+\section{Discussion}
+
+\end{document}

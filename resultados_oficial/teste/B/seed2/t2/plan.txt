@@ -1,0 +1,40 @@
+{
+  "objective": "Investigate whether sentiment classifiers are sensitive to negation words in short movie reviews from the SST-2 dataset.",
+  "methodology": {
+    "data": {
+      "source": "glue/sst2 from HuggingFace",
+      "split": "train, validation, test (80-10-10)"
+    },
+    "models": {
+      "type": "pre-trained language model via Ollama's API",
+      "examples": ["llama2", "mistral"]
+    },
+    "preprocessing": {
+      "task": "generate modified versions of reviews",
+      "actions": [
+        "remove negation words (e.g., 'not', 'never', 'don’t')",
+        "explicitly mark negation words (e.g., 'not good' → 'not good')"
+      ]
+    },
+    "experiment": {
+      "steps": [
+        "load SST-2 dataset",
+        "split into train/validation/test",
+        "generate modified reviews",
+        "classify sentiment using the language model",
+        "compute metrics (accuracy, precision, recall, F1)"
+      ],
+      "metrics": ["accuracy", "precision", "recall", "F1-score"],
+      "statistical_tests": ["t-test"]
+    },
+    "analysis": {
+      "goal": "determine if negation sensitivity affects classification accuracy",
+      "output": "compare performance between original and modified reviews"
+    }
+  },
+  "constraints": {
+    "time": "run in under 5 minutes",
+    "resources": "use only one GPU, no external APIs, local Ollama model"
+  },
+  "notes": "Use small subsets of data and limit model queries to ensure computational efficiency."
+}

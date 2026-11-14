@@ -1,0 +1,9 @@
+Data preparation completed. Files saved: version_a.json, version_b.json, version_c.json, test_set.json
+=== experiment output ===
+Data preparation completed. Files saved: version_a.json, version_b.json, version_c.json, test_set.json
+Accuracy for Version A (Positive first): 0.02
+Accuracy for Version B (Negative first): 0.02
+Accuracy for Version C (Randomized order): 0.04
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

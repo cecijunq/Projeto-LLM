@@ -64,12 +64,9 @@ def make_llm(args, seed: int):
 def read_csv(path: str) -> list[dict]:
     """Lê CSV separado por ';' ou ',' (Excel em português usa ';', Google Sheets costuma usar ',')."""
     with open(path, encoding="utf-8-sig", newline="") as f:
-        sample = f.read(4096)
+        cabecalho = f.readline()  # o cabeçalho não tem texto livre: o separador é o que mais aparece nele
         f.seek(0)
-        try:
-            delim = csv.Sniffer().sniff(sample, delimiters=";,").delimiter
-        except csv.Error:
-            delim = ";"
+        delim = "," if cabecalho.count(",") > cabecalho.count(";") else ";"
         return list(csv.DictReader(f, delimiter=delim))
 
 

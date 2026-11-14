@@ -1,0 +1,16 @@
+1. **Objective**: Evaluate the sensitivity of the local language model (served by Ollama) to negation words in the SST-2 dataset.
+
+2. **Data Source**: Use the SST-2 dataset from HuggingFace (`glue/sst2`). The dataset will be loaded and split into training, validation, and test sets.
+
+3. **Models**: 
+   - Use the local language model served by Ollama (e.g., `llama3`).
+
+4. **Experimental Steps**:
+   - Load the SST-2 dataset and split it into training, validation, and test sets.
+   - Preprocess the test set by identifying negation words (e.g., "not," "no," "never") and marking their presence in each review. Create two subsets: one with negation words and one without.
+   - Evaluate the local language model's performance on both subsets using sentiment classification (positive/negative).
+   - Calculate accuracy and F1-score for both subsets to compare the model's sensitivity to negation words.
+   - Analyze the results to determine whether the model is sensitive to negation in short movie reviews.
+
+5. **Expected Outcome**: The experiment will assess how the local language model handles sentiment in the presence of negation words, providing insights into its sensitivity to such linguistic phenomena without requiring external models or datasets.
+</final plan>

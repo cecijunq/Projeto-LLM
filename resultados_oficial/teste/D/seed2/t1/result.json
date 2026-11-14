@@ -1,0 +1,116 @@
+{
+  "topic": "Are language models sensitive to word order in multiple choice benchmarks?",
+  "with_memory": false,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 5,
+  "workflow_success": 0.75,
+  "usage": {
+    "calls": 32,
+    "prompt_tokens": 62564,
+    "completion_tokens": 15198
+  },
+  "elapsed_s": 977.2,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 12,
+      "plan_formulation": 1,
+      "data_preparation": 1
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": true,
+      "running_experiments": false
+    },
+    "phase_time": {
+      "literature_review": 85.5,
+      "plan_formulation": 24.2,
+      "data_preparation": 33.9,
+      "running_experiments": 833.6
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "multiple choice questions",
+        "permuted question order",
+        "answer choice reordering"
+      ],
+      "found": 4,
+      "verified": 2
+    },
+    "submit_fallback": 1,
+    "mle_solver": {
+      "exec_attempts": 15,
+      "exec_errors": 15,
+      "repairs_ok": 0
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3,
+    "correcoes": true
+  },
+  "trace": {
+    "plan": "We will design an experiment to test whether language models are sensitive to word order in multiple choice benchmarks. We will use the AGQA dataset from HuggingFace, which contains questions and answers. For each question, we will permute the word order of the question and the choices while keeping the meaning intact. We will evaluate the model's accuracy on both the original and permuted versions of the questions. The same model served by Ollama will be used to ensure consistency. We will use a test set of at least 200 examples and measure the accuracy of the model on both versions of the questions. We will compare the accuracy of the model on the original and permuted versions of the questions to determine if the model is sensitive to word order.",
+    "exp_results": "Nenhum código executou com sucesso.",
+    "interpretation": "",
+    "errors": [
+      {
+        "phase": "running_experiments",
+        "text": "ite-packages/pandas/core/series.py\", line 1102, in __getitem__\n    return self._get_value(key)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/pandas/core/series.py\", line 1189, in _get_value\n    loc = self.index.get_loc(label)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py\", line 3823, in get_loc\n    raise KeyError(key) from err\nKeyError: 'question'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": " 'B':...\n3   4  ...  {'': None, '...': None, 'A': 'I e III.', 'B': ...\n4   5  ...  {'': None, '...': None, 'A': 'Há um erro de si...\n\n[5 rows x 4 columns]\n=== experiment output ===\n\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_1d_f8mj9/run.py\", line 30, in <module>\n    torch.manual_seed(42)\n    ^^^^^\nNameError: name 'torch' is not defined\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "ite-packages/pandas/core/series.py\", line 1102, in __getitem__\n    return self._get_value(key)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/pandas/core/series.py\", line 1189, in _get_value\n    loc = self.index.get_loc(label)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py\", line 3823, in get_loc\n    raise KeyError(key) from err\nKeyError: 'question'\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": " 'B':...\n3   4  ...  {'': None, '...': None, 'A': 'I e III.', 'B': ...\n4   5  ...  {'': None, '...': None, 'A': 'Há um erro de si...\n\n[5 rows x 4 columns]\n=== experiment output ===\n\n[stderr]\nWarning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nTraceback (most recent call last):\n  File \"/tmp/agentlab_ru1dh7gf/run.py\", line 30, in <module>\n    torch.manual_seed(42)\n    ^^^^^\nNameError: name 'torch' is not defined\n"
+      },
+      {
+        "phase": "running_experiments",
+        "text": "ite-packages/pandas/core/series.py\", line 1102, in __getitem__\n    return self._get_value(key)\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/pandas/core/series.py\", line 1189, in _get_value\n    loc = self.index.get_loc(label)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/dyamamoto/faculdade/llm/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py\", line 3823, in get_loc\n    raise KeyError(key) from err\nKeyError: 'question'\n"
+      }
+    ],
+    "n_papers": 5,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "running_experiments",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "running_experiments",
+      "categoria": "erro_de_execucao"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ]
+}

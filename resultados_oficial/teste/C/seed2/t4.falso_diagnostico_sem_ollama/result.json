@@ -1,0 +1,109 @@
+{
+  "topic": "Does the order of few-shot examples change the accuracy of a language model on text classification?",
+  "with_memory": true,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 0,
+  "workflow_success": 0.0,
+  "usage": {
+    "calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0
+  },
+  "elapsed_s": 61.8,
+  "metrics": {
+    "phase_steps": {},
+    "phase_success": {
+      "literature_review": false,
+      "plan_formulation": false,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 20.7,
+      "plan_formulation": 20.5,
+      "data_preparation": 20.6
+    },
+    "invalid_commands": {},
+    "llm_error": "data_preparation: Falha ao consultar o LLM: Connection error."
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [],
+    "n_papers": 0,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "literature_review",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "plan_formulation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ],
+  "memory_stats": {
+    "runs": 1,
+    "total": 20,
+    "episodic": 0,
+    "insight": 20,
+    "error": 0,
+    "literature": 0,
+    "feedback": 0
+  },
+  "memory_retrievals": [
+    {
+      "phase": "literature_review",
+      "query": "Does the order of few-shot examples change the accuracy of a language model on text classification?\n",
+      "ids": [
+        "b14d22ea0f",
+        "ebdba5a429",
+        "3cd18552e9",
+        "723ad6365b",
+        "132179e8ce",
+        "6a2e8550d9"
+      ]
+    },
+    {
+      "phase": "plan_formulation",
+      "query": "Does the order of few-shot examples change the accuracy of a language model on text classification?\n",
+      "ids": [
+        "723ad6365b",
+        "2534c53528",
+        "b14d22ea0f",
+        "ebdba5a429",
+        "3cd18552e9",
+        "132179e8ce"
+      ]
+    },
+    {
+      "phase": "data_preparation",
+      "query": "Does the order of few-shot examples change the accuracy of a language model on text classification?\n",
+      "ids": [
+        "3cd18552e9",
+        "132179e8ce",
+        "133de62f53",
+        "c78231190f",
+        "2fd776adb8",
+        "63900affb0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/treino/seed0/t0: Do language models exhibit cognitive biases, such as confirmation bias
+[AgentLab] literature_review: ok (13 passos, 1 comandos inválidos, 173.8s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 90.9s)
+[AgentLab] data_preparation: FALHOU (20 passos, 0 comandos inválidos, 1520.3s)
+[AgentLab]    última resposta do modelo: ```SUBMIT_CODE | <final python code> | import os | import json | import ollama | import random |  | # Step 1: Create a small dataset of 20-30 examples | examples = [] |  | # Factual statements about science, politics, and general knowledge | factual_statements = [ |     "The Earth orbits the Sun.", |     "The capital of Fran
+[AgentLab] Fase crítica falhou; encerrando o projeto.
+[ok] nota LLM=None | falhas=23 | tokens=177693 | 1785.0s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/treino/seed0/t1: Do language models improve accuracy on MedQA when asked to perform dif
+[AgentLab] literature_review: ok (20 passos, 0 comandos inválidos, 192.1s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 21.0s)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[AgentLab] data_preparation: ok (5 passos, 0 comandos inválidos, 142.5s)
+[AgentLab] running_experiments: FALHOU (- passos, 0 comandos inválidos, 665.2s)
+[AgentLab] Fase crítica falhou; encerrando o projeto.
+[ok] nota LLM=None | falhas=9 | tokens=114415 | 1020.8s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/treino/seed0/t2: Does gender role play affect the accuracy of language models on answer
+[AgentLab] literature_review: ok (16 passos, 0 comandos inválidos, 144.0s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 27.3s)
+[AgentLab] data_preparation: ok (14 passos, 0 comandos inválidos, 573.5s)
+[AgentLab] running_experiments: ok (- passos, 0 comandos inválidos, 3413.7s)
+[AgentLab] results_interpretation: ok (1 passos, 0 comandos inválidos, 38.2s)
+[AgentLab] report_writing: ok (- passos, 0 comandos inválidos, 292.5s)
+[ok] nota LLM=2 | falhas=2 | tokens=202242 | 4491.5s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/treino/seed0/t3: Does chain-of-thought prompting improve the accuracy of a small langua
+[AgentLab] literature_review: ok (18 passos, 0 comandos inválidos, 643.2s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 49.1s)
+[AgentLab] data_preparation: ok (1 passos, 0 comandos inválidos, 120.8s)
+[AgentLab] running_experiments: ok (- passos, 0 comandos inválidos, 4607.5s)
+[AgentLab] results_interpretation: ok (1 passos, 0 comandos inválidos, 26.4s)
+[AgentLab] report_writing: ok (- passos, 0 comandos inválidos, 339.1s)
+[ok] nota LLM=4 | falhas=5 | tokens=137036 | 5787.4s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/treino/seed0/t4: Does label noise hurt logistic regression more than gradient boosting 
+[AgentLab] literature_review: ok (20 passos, 0 comandos inválidos, 314.3s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 37.7s)
+[AgentLab] data_preparation: ok (9 passos, 0 comandos inválidos, 529.4s)
+[AgentLab] running_experiments: ok (- passos, 0 comandos inválidos, 310.5s)
+[AgentLab] results_interpretation: ok (1 passos, 0 comandos inválidos, 27.1s)
+[AgentLab] report_writing: ok (- passos, 0 comandos inválidos, 371.3s)
+[ok] nota LLM=3 | falhas=12 | tokens=189544 | 1591.8s
+
+Planilha de feedback humano: /home/dyamamoto/faculdade/llm/resultados_oficial/feedback_humano.csv
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 3193.83it/s]
+Memória B seed 0: 12 lições -> /home/dyamamoto/faculdade/llm/resultados_oficial/memoria/B_seed0.json
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/teste/A/seed0/t0: Are image transformers more or less sensitive to pixel noise than conv
+[AgentLab] literature_review: ok (12 passos, 1 comandos inválidos, 79.6s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 15.6s)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[AgentLab] data_preparation: ok (17 passos, 0 comandos inválidos, 1478.8s)
+[AgentLab] running_experiments: FALHOU (- passos, 0 comandos inválidos, 2624.9s)
+[AgentLab] Fase crítica falhou; encerrando o projeto.
+[ok] nota LLM=None | falhas=12 | tokens=221569 | 4199.0s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/teste/A/seed0/t1: Are language models sensitive to word order in multiple choice benchma
+[AgentLab] literature_review: FALHOU (20 passos, 0 comandos inválidos, 110.6s)
+[AgentLab]    última resposta do modelo: ```SUMMARY | language models word order multiple choice benchmarks | ```
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 44.3s)
+[AgentLab] data_preparation: ok (5 passos, 0 comandos inválidos, 164.2s)
+[AgentLab] running_experiments: ok (- passos, 0 comandos inválidos, 730.1s)
+[AgentLab] results_interpretation: ok (11 passos, 0 comandos inválidos, 233.6s)
+[AgentLab] report_writing: ok (- passos, 0 comandos inválidos, 274.1s)
+[ok] nota LLM=2 | falhas=5 | tokens=212515 | 1561.9s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/teste/A/seed0/t2: Are sentiment classifiers sensitive to negation words on short movie r
+[AgentLab] literature_review: ok (11 passos, 1 comandos inválidos, 59.2s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 32.9s)
+[AgentLab] data_preparation: ok (18 passos, 0 comandos inválidos, 459.3s)
+[AgentLab] running_experiments: ok (- passos, 0 comandos inválidos, 1749.1s)
+[AgentLab] results_interpretation: ok (12 passos, 0 comandos inválidos, 226.4s)
+[AgentLab] report_writing: ok (- passos, 0 comandos inválidos, 304.8s)
+[ok] nota LLM=2 | falhas=5 | tokens=290816 | 2833.3s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/teste/A/seed0/t3: Does rotation data augmentation make a small CNN more robust to rotate
+[AgentLab] literature_review: ok (18 passos, 0 comandos inválidos, 1003.6s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 24.4s)
+HTTP Error 429 thrown while requesting GET https://huggingface.co/api/resolve-cache/datasets/Reza-Telus/certainty-robustness-llm-evaluation/76fbb49390e86370c98ed39b534b8e790907bb0d/README.md?%2Fdatasets%2FReza-Telus%2Fcertainty-robustness-llm-evaluation%2Fresolve%2Fmain%2FREADME.md=&etag=%22008235487a9bb45e2192fe88504ab495c39f2614%22
+Retrying in 1s [Retry 1/5].
+[AgentLab] data_preparation: FALHOU (20 passos, 0 comandos inválidos, 2728.1s)
+[AgentLab]    última resposta do modelo: ```SUBMIT_CODE | <final python code> | import torch | import torchvision | import torchvision.transforms as transforms | from torchvision import datasets | from torch.utils.data import DataLoader, Subset | import numpy as np | import os | import random | import time | import datetime |  | # Set random seeds for reproducibili
+[AgentLab] Fase crítica falhou; encerrando o projeto.
+[ok] nota LLM=None | falhas=8 | tokens=152978 | 3756.1s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/teste/A/seed0/t4: Does the order of few-shot examples change the accuracy of a language 
+[AgentLab] literature_review: ok (17 passos, 0 comandos inválidos, 151.5s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 43.8s)
+[AgentLab] data_preparation: ok (5 passos, 0 comandos inválidos, 262.9s)
+[AgentLab] running_experiments: ok (- passos, 0 comandos inválidos, 792.5s)
+[AgentLab] results_interpretation: ok (2 passos, 0 comandos inválidos, 48.0s)
+[AgentLab] report_writing: ok (- passos, 0 comandos inválidos, 278.5s)
+[ok] nota LLM=2 | falhas=3 | tokens=138975 | 1578.9s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1031.65it/s]
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/teste/B/seed0/t0: Are image transformers more or less sensitive to pixel noise than conv
+[AgentLab] literature_review: FALHOU (20 passos, 0 comandos inválidos, 159.3s)
+[AgentLab]    última resposta do modelo: ```SUMMARY | image noise sensitivity transformer cnn comparison | ```
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 22.9s)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[AgentLab] data_preparation: ok (17 passos, 0 comandos inválidos, 680.4s)
+[AgentLab] running_experiments: FALHOU (- passos, 0 comandos inválidos, 787.9s)
+[AgentLab] Fase crítica falhou; encerrando o projeto.
+[ok] nota LLM=None | falhas=12 | tokens=221099 | 1650.6s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/teste/B/seed0/t1: Are language models sensitive to word order in multiple choice benchma
+[AgentLab] literature_review: ok (20 passos, 0 comandos inválidos, 171.3s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 32.1s)
+[AgentLab] data_preparation: FALHOU (20 passos, 0 comandos inválidos, 1179.9s)
+[AgentLab]    última resposta do modelo: ```SUBMIT_CODE | <final python code> | from datasets import load_dataset |  | # Load the 'WaltonFuture/Diabetes-multiple-choice-questions' dataset with a small subset | dataset = load_dataset('WaltonFuture/Diabetes-multiple-choice-questions', split='train[:200]') |  | # Extract the problem (question), options, an
+[AgentLab] Fase crítica falhou; encerrando o projeto.
+[ok] nota LLM=None | falhas=21 | tokens=286942 | 1383.3s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/teste/B/seed0/t2: Are sentiment classifiers sensitive to negation words on short movie r
+[AgentLab] literature_review: ok (20 passos, 0 comandos inválidos, 199.3s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 47.9s)
+[AgentLab] data_preparation: FALHOU (20 passos, 0 comandos inválidos, 697.9s)
+[AgentLab]    última resposta do modelo: ```SUBMIT_CODE | <final python code> | from datasets import load_dataset | from transformers import AutoTokenizer | import pandas as pd | from sklearn.model_selection import train_test_split | from sklearn.linear_model import LogisticRegression | from sklearn.metrics import accuracy_score, f1_score | from sklearn.f
+[AgentLab] Fase crítica falhou; encerrando o projeto.
+[ok] nota LLM=None | falhas=9 | tokens=236968 | 945.1s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/teste/B/seed0/t3: Does rotation data augmentation make a small CNN more robust to rotate
+[AgentLab] literature_review: FALHOU (20 passos, 0 comandos inválidos, 156.3s)
+[AgentLab]    última resposta do modelo: ```SUMMARY | rotation data augmentation CIFAR-10 robustness CNN | ```
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 43.5s)
+[AgentLab] data_preparation: FALHOU (20 passos, 0 comandos inválidos, 6509.6s)
+[AgentLab]    última resposta do modelo: ```SUBMIT_CODE | <final python code> | import torch | import torchvision | import torchvision.transforms as transforms | from torchvision import datasets | from torch.utils.data import DataLoader | import numpy as np | import matplotlib.pyplot as plt | from sklearn.model_selection import train_test_split |  | # Load CIFA
+[AgentLab] Fase crítica falhou; encerrando o projeto.
+[ok] nota LLM=None | falhas=24 | tokens=217087 | 6709.5s
+
+[rodando] /home/dyamamoto/faculdade/llm/resultados_oficial/teste/B/seed0/t4: Does the order of few-shot examples change the accuracy of a language 
+[AgentLab] literature_review: ok (12 passos, 1 comandos inválidos, 101.2s)
+[AgentLab] plan_formulation: ok (1 passos, 0 comandos inválidos, 46.8s)
+[AgentLab] data_preparation: ok (4 passos, 0 comandos inválidos, 664.5s)
+[AgentLab] running_experiments: ok (- passos, 0 comandos inválidos, 626.3s)
+[AgentLab] results_interpretation: ok (5 passos, 0 comandos inválidos, 123.6s)
+[AgentLab] report_writing: ok (- passos, 0 comandos inválidos, 458.4s)
+[ok] nota LLM=3 | falhas=4 | tokens=172754 | 2023.0s
+exit=0

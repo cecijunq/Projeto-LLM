@@ -1,0 +1,261 @@
+{
+  "run_counter": 1,
+  "items": [
+    {
+      "content": "Problem: Calling a non-existent model via the API leads to incorrect results and no meaningful data collection. | How to avoid: Use a model that is available and properly configured, such as the OpenAI client with the correct model name specified in the environment variable.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "running_experiments",
+      "importance": 0.95,
+      "id": "ff71dfa779",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926725.313896,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t0"
+      }
+    },
+    {
+      "content": "Problem: The code failed to check for and handle errors in API responses, leading to invalid conclusions. | How to avoid: Implement error checking in the code to ensure responses are valid and not error messages. Print or log results for verification.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "running_experiments",
+      "importance": 0.9,
+      "id": "4632442008",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926725.3439775,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t0"
+      }
+    },
+    {
+      "content": "Problem: The anchoring prompts lacked a proper anchor, making it impossible to measure the effect of anchoring bias. | How to avoid: Design anchoring prompts with distinct anchor values and include a control condition without an anchor to measure the effect accurately.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "data_preparation",
+      "importance": 0.85,
+      "id": "eea66ab326",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926725.3614554,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t0"
+      }
+    },
+    {
+      "content": "Problem: The interpretation of results was based on insufficient or invalid data, leading to incorrect conclusions. | How to avoid: Ensure that the data collected is valid and contains measurable metrics before interpreting results. Include quantitative analysis to support conclusions.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "results_interpretation",
+      "importance": 0.8,
+      "id": "84b756fe31",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926725.3809173,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t0"
+      }
+    },
+    {
+      "content": "Problem: Comparing full model responses to answers using exact string matching leads to incorrect accuracy calculations. | How to avoid: Extract numerical answers from model responses and compare them numerically instead of using exact string matching.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "results_interpretation",
+      "importance": 0.9,
+      "id": "954c9ef89a",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926770.7519243,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t2"
+      }
+    },
+    {
+      "content": "Problem: Using trivial math questions fails to detect any meaningful differences in model performance based on gender role prompts. | How to avoid: Use more complex math questions from datasets like GSM8K to ensure sufficient difficulty and variability in responses.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "data_preparation",
+      "importance": 0.8,
+      "id": "4eb090dbb6",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926770.7741418,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t2"
+      }
+    },
+    {
+      "content": "Problem: The experiment lacked a control condition without gender role prompts, making it difficult to interpret results. | How to avoid: Include a control condition where the model is not prompted with a gender role to isolate the effect of the prompt.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "plan_formulation",
+      "importance": 0.8,
+      "id": "c730bdcbfe",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926770.7932117,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t2"
+      }
+    },
+    {
+      "content": "Problem: The report was written despite the interpretation identifying an error in the evaluation process. | How to avoid: Only proceed to report writing after confirming that the evaluation process is accurate and free of errors.",
+      "kind": "insight",
+      "topic": "Does gender role play affect the accuracy of language models on answering math questions?",
+      "phase": "report_writing",
+      "importance": 0.7,
+      "id": "5f4135137a",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926770.81163,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t2"
+      }
+    },
+    {
+      "content": "Problem: The code made 400 model queries (200 questions × 2 conditions), leading to timeouts and exceeding the allowed time limit. | How to avoid: Limit the number of model queries to a maximum of 50 per condition by using a subset of the data, such as df.head(50).",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "running_experiments",
+      "importance": 0.95,
+      "id": "97540a2286",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926795.0166225,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t3"
+      }
+    },
+    {
+      "content": "Problem: The CoT prompting condition did not explicitly ask for step-by-step reasoning, making the comparison with the full solution of GSM8K ineffective. | How to avoid: Explicitly request step-by-step reasoning in the CoT condition, such as by including the instruction 'Think step by step and end with: Answer: <number>'.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "running_experiments",
+      "importance": 0.9,
+      "id": "844c6fdbd5",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926795.0329158,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t3"
+      }
+    },
+    {
+      "content": "Problem: The evaluation compared the full text response with the exact solution, which would result in 0% accuracy even if the model provided the correct answer. | How to avoid: Extract only the numerical answer from the model's response and compare it with the correct number from the GSM8K dataset to ensure accurate evaluation.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "results_interpretation",
+      "importance": 0.85,
+      "id": "50224aef38",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926795.049766,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t3"
+      }
+    },
+    {
+      "content": "Problem: The report was not generated, which prevented the researchers from reviewing the findings and conclusions. | How to avoid: Ensure that the report-writing phase is completed by including a structured report that summarizes the methodology, results, and conclusions.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "report_writing",
+      "importance": 0.8,
+      "id": "a4c33d8365",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926795.0631325,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t3"
+      }
+    },
+    {
+      "content": "Problem: The dataset used in the experiment was not aligned with the plan, leading to irrelevant data and incorrect target labels. | How to avoid: Ensure that the dataset used in the experiment exactly matches the one described in the plan. Verify that the target variable is correctly identified and used as the label.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "data_preparation",
+      "importance": 0.95,
+      "id": "851b6eff8c",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926816.3622158,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t4"
+      }
+    },
+    {
+      "content": "Problem: Label noise was introduced during data preparation, but the code lacked necessary imports, leading to runtime errors. | How to avoid: Include all required imports at the beginning of each code section. Validate that the code can run without errors before submitting it for execution.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "data_preparation",
+      "importance": 0.85,
+      "id": "c679667284",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926816.3813624,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t4"
+      }
+    },
+    {
+      "content": "Problem: The code was repeatedly submitted without changes, leading to the same errors persisting. | How to avoid: Review error messages carefully and make necessary adjustments before resubmitting code. Avoid submitting the same code multiple times without modifications.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "running_experiments",
+      "importance": 0.75,
+      "id": "cc794c1ccb",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926816.431101,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t4"
+      }
+    },
+    {
+      "content": "Problem: No report was submitted, making it impossible to assess the findings or methodology. | How to avoid: Ensure that a complete report is generated and submitted as part of the project, including methodology, results, and conclusions.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "report_writing",
+      "importance": 0.9,
+      "id": "049cd01965",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926816.4455678,
+      "metadata": {
+        "source": "human",
+        "project": "seed2/t4"
+      }
+    }
+  ]
+}

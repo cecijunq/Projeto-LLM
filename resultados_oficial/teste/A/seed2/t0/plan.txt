@@ -1,0 +1,6 @@
+1. Load the FashionMNIST dataset using torchvision, split into training and test sets.
+2. Define a simple ConvNet and a Vision Transformer (ViT) model for image classification.
+3. Introduce varying levels of Gaussian noise (5%, 10%, 15%, 20%) to the test images.
+4. Evaluate the models' accuracy on the noisy images using Ollama's local language model.
+5. Compare the accuracy of both models across noise levels to determine which is more robust to pixel noise.
+</final plan>

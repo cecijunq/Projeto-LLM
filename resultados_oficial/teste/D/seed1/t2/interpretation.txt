@@ -1,0 +1,1 @@
+The experiment produced no valid result. The model's accuracy is 0.00 in both conditions, which indicates a bug in the evaluation setup or data processing. Since the accuracy is 0% in all conditions, no conclusions about the model's sensitivity to negation words can be drawn from these results.

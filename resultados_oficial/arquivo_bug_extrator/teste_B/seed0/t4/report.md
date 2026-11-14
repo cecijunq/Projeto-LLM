@@ -1,0 +1,119 @@
+# Research Report: Does the order of few-shot examples change the accuracy of a language model on text classification?
+
+## Abstract
+
+\section*{Abstract}
+This study investigates whether the order of few-shot examples influences the accuracy of language models in text classification tasks. Given the increasing reliance on few-shot learning for practical applications, understanding how example order impacts model performance is crucial for improving reliability and generalization. The challenge lies in isolating the effect of example order from other variables such as content and presentation, which complicates the evaluation of model behavior. Through an experimental setup involving multiple permutations of example order, we assess the model's accuracy across different configurations. Our findings suggest that example order may indeed affect performance, although further analysis with a larger dataset and more rigorous statistical methods is required to confirm this hypothesis. The results contribute to the broader discussion on the interpretability and robustness of language models in few-shot settings.
+</text>
+
+## Introduction
+
+\section{Introduction}
+
+The ability of language models to generalize from a small number of examples has become a key area of research in natural language processing. In few-shot learning scenarios, the order in which examples are presented to the model can potentially influence its ability to learn and classify new instances. While prior work has explored the impact of few-shot examples in image classification and meta-learning frameworks for anomaly detection, there remains limited understanding of how the order of these examples affects the accuracy of language models in text classification tasks. 
+
+This study investigates whether the order of few-shot examples influences the performance of a language model in a text classification setting. By systematically varying the order of examples within each category and evaluating the model's classification accuracy, we aim to determine whether the sequence in which examples are presented plays a significant role in the model's ability to generalize. The results of this experiment contribute to the broader understanding of how language models process and utilize few-shot examples, with implications for improving their performance in real-world applications where labeled data is scarce.
+
+## Background
+
+\section*{Background}
+
+The use of language models in text classification tasks has gained significant attention in recent years, particularly in scenarios where labeled data is scarce. Few-shot learning, which involves training models with only a small number of labeled examples, has emerged as a promising approach to address this challenge. The effectiveness of few-shot learning in natural language processing (NLP) tasks is often influenced by several factors, including the quality and diversity of the training examples, the model's ability to generalize from limited data, and the structure of the input prompts. 
+
+Recent research has highlighted the importance of how examples are presented to the model, particularly in few-shot settings. For instance, the order in which examples are provided may impact the model's ability to learn patterns and make accurate predictions. This is especially relevant in tasks such as text classification, where the model must infer the correct category for a given text based on a limited number of examples. 
+
+Several studies have explored the role of example order in model performance, primarily within the context of image classification and anomaly detection. For example, the TP-VAE model \cite{2205.15014v1} demonstrated that the distribution and order of examples in nonuniform few-shot scenarios significantly affect model accuracy. Similarly, a meta-learning framework for anomaly detection \cite{2507.20019v1} emphasized the importance of generalization across tasks, suggesting that the structure of exemplars may influence the model's adaptability to new classification problems. These findings provide a foundation for investigating how the order of few-shot examples influences the accuracy of language models in text classification tasks. 
+
+The current study builds on these insights by exploring the impact of example order on model performance in a controlled few-shot setting. By systematically varying the order of examples and measuring the resulting accuracy, this research aims to contribute to the understanding of how language models process and generalize from limited, structured input.
+</text>
+
+## Related Work
+
+\section*{Related Work}
+
+Prior research has explored the impact of few-shot learning on language models, with a particular focus on how the order and distribution of examples influence model performance. One line of work investigates the effects of nonuniform few-shot scenarios in image classification, proposing models such as the Task-Prior Conditional Variational Auto-Encoder (TP-VAE). This approach demonstrates that varying the distribution of examples can lead to improved performance, particularly in 1-shot settings, by leveraging task-specific priors. While the TP-VAE model is designed for image tasks, its findings are relevant to understanding how the order of examples might affect language models in text classification. However, the TP-VAE approach relies on complex probabilistic modeling, which is not directly applicable to text-based few-shot learning tasks and may not capture the nuanced contextual dependencies in natural language.
+
+Another body of work focuses on few-shot anomaly detection in human language, where the task is framed as a binary classification problem. This research introduces a meta-learning framework that combines episodic training with prototypical networks and domain resampling. The method emphasizes adaptability across diverse domains and limited labeled data, which is crucial for few-shot scenarios. While this approach is tailored for anomaly detection, its use of domain adaptation and generalization techniques highlights the importance of example order in shaping model behavior. However, the framework does not explicitly address how the sequence of examples influences classification accuracy in text tasks, leaving a gap in understanding whether and how example order affects language models in more traditional classification settings.
+
+In contrast, this study investigates the direct impact of few-shot example order on text classification accuracy, focusing on the practical implications for model performance. Unlike prior work that emphasizes model architecture or training strategies, this research centers on the role of input ordering in shaping model outcomes. The findings suggest that while the order of examples may influence accuracy, the current experimental design lacks sufficient statistical rigor to establish a definitive causal relationship. This highlights the need for more systematic evaluation methods, including larger sample sizes and controlled permutations of example order, to determine whether such effects are significant and generalizable. The results also emphasize the importance of experimental design in few-shot learning studies, as subtle variations in input structure can lead to meaningful differences in model behavior.
+
+## Methods
+
+\section*{Methods}
+
+The experimental methodology is designed to investigate the impact of the order of few-shot examples on the accuracy of a language model in text classification tasks. The study is based on a controlled experiment where the model is prompted with a small set of labeled examples, and its ability to correctly classify a new query is evaluated. The approach involves several key phases of data preparation, prompt creation, model inference, and statistical analysis.
+
+\subsection*{Data Preparation}
+
+A small labeled dataset is constructed, containing 20 to 50 examples grouped into 3 to 5 categories. Each category is represented by at least 5 examples, ensuring sufficient diversity and coverage. The dataset is loaded from the \texttt{argilla/synthetic-domain-text-classification} dataset, with only the first 200 examples selected for the experiment. The dataset is assumed to contain \texttt{label} and \texttt{text} columns, which are used to group examples by their respective categories.
+
+The examples within each category are shuffled randomly to create multiple permutations of the same dataset for testing. This shuffling ensures that the model is exposed to different example orders during inference, allowing for a more comprehensive evaluation of how example order might affect performance. The shuffled examples are then combined into a single list, and each example is paired with its corresponding label for later use in prompt construction.
+
+\subsection*{Few-Shot Prompt Creation}
+
+For each category, a few-shot prompt is created by selecting 3 examples from the shuffled list. The examples are formatted as a sequence of labeled inputs, with each example consisting of a text and its corresponding label. The prompt is structured as follows:
+
+$$
+\text{Examples:} \\
+\text{<example 1>} - \text{<label>} \\
+\text{<example 2>} - \text{<label>} \\
+\text{<example 3>} - \text{<label>} \\
+\text{Query: What is the category of this text? '<text>'} \\
+\text{Answer:}
+$$
+
+The prompt is constructed using a template that inserts the selected examples and the query text, and it is passed to the language model for inference. The model's output is then compared to the correct label to determine the accuracy of the classification.
+
+\subsection*{Model Inference}
+
+The language model is accessed via an OpenAI-compatible API, and the prompt is sent to the model for inference. The model is instructed to provide a concise answer to the query, and the output is extracted and compared to the expected label. The model's response is evaluated for correctness, with an accuracy score of 1.0 assigned if the answer matches the correct label, and 0.0 otherwise.
+
+\subsection*{Statistical Analysis}
+
+To assess the significance of the effect of example order on model accuracy, the experiment is repeated across multiple permutations of the same dataset. For each category, multiple prompts are constructed using different example orders, and the model's performance is evaluated for each permutation. The accuracy scores are recorded and aggregated to compute the mean accuracy for each category.
+
+A statistical test, such as a t-test, is then applied to determine whether the observed differences in accuracy across different example orders are statistically significant. This analysis allows for the identification of whether the order of few-shot examples has a measurable impact on the model's ability to perform text classification tasks.
+
+\subsection*{Implementation Details}
+
+The experiment is implemented using Python, with the \texttt{datasets} library used to load and preprocess the data. The \texttt{random} module is used to shuffle the examples within each category. The \texttt{openai} library is utilized to interact with the language model through an API. All prompts are formatted using a predefined template, and the model's responses are parsed for evaluation.
+
+The experimental setup ensures that the model is consistently evaluated on the same query format, allowing for a fair comparison of performance across different example orders. The results are then analyzed to determine whether the order of few-shot examples significantly influences the model's accuracy in text classification tasks.
+</text>
+
+## Experimental Setup
+
+\section{Experimental Setup}
+
+The experimental setup was designed to investigate the impact of the order of few-shot examples on the accuracy of a language model in text classification tasks. The dataset used in this study was the ``synthetic-domain-text-classification'' dataset from the Argilla platform, which was loaded and filtered to include only the first 200 examples. This dataset was used to create a small labeled corpus consisting of texts categorized into different topics. The dataset was processed to ensure that it contained both ``text'' and ``label'' columns, which were necessary for the experiment.
+
+The primary metric used to evaluate the model's performance was classification accuracy, which was calculated as the proportion of correctly classified examples. Additionally, the model's responses were analyzed qualitatively to assess whether the order of few-shot examples influenced the model's reasoning or output.
+
+For the few-shot prompts, the model was presented with three examples per category, where each example was formatted as a text-label pair. The examples were randomly selected from the dataset for each prompt, and the order of the examples was varied to test the hypothesis that example order impacts model accuracy. The prompt format was standardized to ensure consistency across all experiments, with the prompt consisting of a few-shot example section followed by a query text and a request for the model to classify the query text.
+
+The language model used for inference was served via an OpenAI-compatible API, with the model name specified as ``llama3''. The model's inference parameters included a maximum token limit of 64, a temperature setting of 0 to ensure deterministic output, and a fixed prompt template to maintain consistency in the input format. No additional hyperparameters were tuned during the experiment, as the focus was on evaluating the effect of example order rather than optimizing model performance.
+
+## Results
+
+\section{Results}
+
+The experiment was conducted to assess whether the order of few-shot examples influences the accuracy of a language model in text classification tasks. A total of 200 examples were loaded from the "argilla/synthetic-domain-text-classification" dataset and grouped by label. Each label group was shuffled to ensure randomness in example order. The model was then evaluated by presenting few-shot examples in different orders for each category.
+
+For each category, the model was provided with three examples in a randomly selected order, followed by a query asking for the category of a new text. The model's predictions were compared to the true labels to compute accuracy. However, due to the limited number of examples per category and the lack of systematic variation in example order, the experimental design did not allow for a thorough evaluation of the impact of example order on model accuracy.
+
+The results showed that the model's accuracy varied across categories. In category "17", the model incorrectly classified the text as "Health and Wellness" despite the examples being related to health topics. In contrast, for category "16", the model provided an answer that closely matched the expected label, although the exact accuracy could not be determined due to incomplete data. These results highlight the need for a more structured experimental setup, including a larger number of examples per category and a systematic variation in the order of few-shot examples to enable a rigorous statistical analysis.
+
+The current experimental setup lacks the statistical power to draw robust conclusions about the effects of example order on model performance. Future work should focus on increasing the number of examples per category and testing multiple permutations of example order to better understand the impact of few-shot example order on language model accuracy in text classification tasks.
+</text>
+
+## Discussion
+
+\section*{Discussion}
+
+The experimental results provide preliminary insights into the potential influence of the order of few-shot examples on the accuracy of language models in text classification tasks. While the model's performance varied across different categories, the current experimental design lacks sufficient statistical power to draw definitive conclusions. For instance, in category "17," the model incorrectly classified the query text even though three examples were provided, which may suggest that the order of examples could affect its predictive capability. However, due to the limited number of examples per category and the lack of systematic variation in the order of examples, it remains unclear whether this was a consistent effect or an anomaly.
+
+A key limitation of the current setup is the insufficient number of examples per category and the absence of multiple permutations for each set of examples. This prevents a thorough analysis of how different orderings affect the model's ability to generalize. To address this, future experiments should include more examples per category and test multiple permutations of the same set to ensure that any observed effects are not due to chance. Additionally, increasing the number of trials for each permutation would improve the statistical reliability of the findings.
+
+The results also highlight the importance of careful prompt construction and the need for consistent formatting across all few-shot examples. In the current implementation, the model was presented with a fixed number of examples per category, which may have constrained its ability to learn from the provided data effectively. Future work should explore varying the number of examples and their order systematically to better understand their impact on model performance.
+
+Overall, the findings suggest that the order of few-shot examples may play a role in influencing the accuracy of language models for text classification tasks. However, more rigorous experimentation is required to confirm this hypothesis and to determine the extent to which example order affects model behavior. Further research in this area could lead to improved prompting strategies and more effective use of few-shot learning in practical applications.

@@ -1,0 +1,18 @@
+We will design a simple experiment to test whether language models are sensitive to word order in multiple-choice benchmarks. The plan involves the following steps:
+
+1. **Dataset Selection**: Use the Winograd Schema Challenge (WSC) dataset, which is known for testing syntactic and semantic ambiguity due to word order. This dataset contains multiple-choice questions where the answer depends on understanding the correct word order.
+
+2. **Task Setup**: For each question in the WSC dataset, we will prompt the language model to select the correct answer from the given options. We will compare the model's performance on questions with varying word order to assess sensitivity to this factor.
+
+3. **Implementation**:
+   - Load the WSC dataset (small subset for fast execution).
+   - For each question, generate a prompt asking the model to select the correct answer.
+   - Use the Ollama-served language model to respond to the prompts.
+   - Record the model's answers and compare them with the correct answers.
+
+4. **Evaluation**:
+   - Calculate the accuracy of the model on the WSC subset.
+   - Analyze whether the model's performance is affected by changes in word order by comparing results across different versions of the same question with altered word order.
+
+This experiment is designed to be computationally light and can run in a few minutes on a single GPU. It ensures reproducibility and provides insights into the model's sensitivity to word order in multiple-choice tasks.
+</final plan>

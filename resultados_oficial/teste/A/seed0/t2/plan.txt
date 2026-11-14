@@ -1,0 +1,6 @@
+Step 1: Load the SST-2 dataset from HuggingFace using the `datasets` library, focusing on short movie reviews.  
+Step 2: Preprocess the dataset to create two subsets: one containing sentences with negation words (e.g., "not," "never," "no") and another without these words. Use a simple rule-based approach to detect negation words.  
+Step 3: Use a pre-trained language model (e.g., `llama2` or `mistral`) served by Ollama through an OpenAI-compatible API to predict sentiment for both subsets.  
+Step 4: Compare the model's performance metrics (e.g., accuracy, F1-score) for the two subsets to evaluate how sensitive the sentiment classifier is to negation words in short movie reviews.  
+Step 5: Analyze the results to determine if the presence of negation words significantly impacts the model's ability to classify sentiment accurately.  
+</final plan>

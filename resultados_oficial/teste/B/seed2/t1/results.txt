@@ -1,0 +1,47 @@
+=== experiment output ===
+Question: The apple is red. The banana is yellow. Which fruit is red?
+Options: ['apple', 'banana', 'orange', 'grape']
+Correct Answer: apple
+Model Answer: apple
+Is Correct: True
+----------------------------------------
+Question: The cat is on the mat. The dog is under the mat. Which animal is on the mat?
+Options: ['cat', 'dog', 'bird', 'fish']
+Correct Answer: cat
+Model Answer: cat
+Is Correct: True
+----------------------------------------
+Question: John gave Mary a gift. Mary gave John a gift. Who gave a gift to whom?
+Options: ['John gave a gift to Mary', 'Mary gave a gift to John', 'John gave a gift to John', 'Mary gave a gift to Mary']
+Correct Answer: Mary gave a gift to John
+Model Answer: **Mary gave a gift to John**
+
+Explanation:  
+The original statement says:  
+- "John gave Mary a gift."  
+- "Mary gave John a gift."
+
+So both John and Mary gave gifts to each other. Among the options, the correct one is:  
+**Mary gave a gift to John
+Is Correct: False
+----------------------------------------
+Question: The boy is playing with a ball. The ball is red. What is the color of the ball?
+Options: ['red', 'blue', 'green', 'yellow']
+Correct Answer: red
+Model Answer: The color of the ball is **red**.
+
+Answer: red
+Is Correct: False
+----------------------------------------
+Question: The girl is wearing a blue dress. The dress is long. What is the color of the dress?
+Options: ['blue', 'red', 'green', 'yellow']
+Correct Answer: blue
+Model Answer: The color of the dress is **blue**.
+
+Answer: **blue**
+Is Correct: False
+----------------------------------------
+Accuracy: 2/5 (40.00%)
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

@@ -6,6 +6,5 @@ agent_lab/resultados_local/
 # chave da avaliação cega: nunca versionar (as notas precisam ser dadas às cegas)
 .chave.json
 **/.chave.json
-# resultados de teste e log por versão: só depois da avaliação cega (revelam a versão de cada relatório)
-resultados_oficial/teste/
-resultados_oficial/protocolo.log
+# metadados que o Windows grava em arquivos baixados
+*:Zone.Identifier

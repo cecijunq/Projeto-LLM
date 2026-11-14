@@ -1,0 +1,7 @@
+Step 1: Load the SST-2 dataset from HuggingFace using the Ollama model for text processing.  
+Step 2: Preprocess the dataset by tokenizing the text and converting labels to numerical values.  
+Step 3: Train a baseline sentiment classifier (e.g., logistic regression) on the dataset.  
+Step 4: Train a negation-aware model using a multi-task learning approach, where the model learns to detect negation words as an auxiliary task.  
+Step 5: Evaluate both models on the test set using accuracy and F1 score.  
+Step 6: Analyze the results to determine whether the negation-aware model shows improved sensitivity to negation words on short movie reviews.  
+</final plan>

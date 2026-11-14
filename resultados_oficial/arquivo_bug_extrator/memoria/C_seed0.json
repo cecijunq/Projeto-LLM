@@ -1,0 +1,133 @@
+{
+  "run_counter": 1,
+  "items": [
+    {
+      "content": "Problem: Failed to install or import required libraries, leading to repeated runtime errors. | How to avoid: Check if required libraries are installed in the environment before running the code. If a library is not available, consider using an alternative or install the missing package.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "data_preparation",
+      "importance": 0.9,
+      "id": "f9e3598f65",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926494.3543851,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t0"
+      }
+    },
+    {
+      "content": "Problem: Incorrectly used a local language model (e.g., Ollama) without verifying its availability in the environment. | How to avoid: Verify the availability of the chosen model and its dependencies in the environment. Prefer models that are already supported or ensure the environment is properly configured.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "data_preparation",
+      "importance": 0.8,
+      "id": "771ef8a6c0",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926497.5170407,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t0"
+      }
+    },
+    {
+      "content": "Problem: Used a language model during data preparation, which is unnecessary and caused errors. | How to avoid: Separate the data preparation phase from model usage. Only load and preprocess data during this phase, and use the model during the experiment execution phase.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "data_preparation",
+      "importance": 0.7,
+      "id": "fcd3d50c4c",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926497.5347068,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t0"
+      }
+    },
+    {
+      "content": "Problem: Repeated the same approach without adapting when errors occurred, leading to multiple failures. | How to avoid: When an error occurs, evaluate whether the approach needs to be changed. If the same error persists, consider alternative methods or tools.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "running_experiments",
+      "importance": 0.6,
+      "id": "c25a807899",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926497.549044,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t0"
+      }
+    },
+    {
+      "content": "Problem: Missing baseline without label noise makes it impossible to assess the impact of noise on models. | How to avoid: Include a baseline condition with 0% label noise and compare the performance drop of each model relative to their clean accuracy.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "results_interpretation",
+      "importance": 0.95,
+      "id": "cf4fee0631",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926593.9672515,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t4"
+      }
+    },
+    {
+      "content": "Problem: The wrong dataset was used, leading to misleading results and invalid comparisons. | How to avoid: Ensure the dataset used in the code matches the one specified in the plan. Verify the dataset name, size, and structure before proceeding with experiments.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "data_preparation",
+      "importance": 0.9,
+      "id": "3e69409276",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926593.9807546,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t4"
+      }
+    },
+    {
+      "content": "Problem: Lack of fixed random seed and repeated experiments leads to inconsistent results. | How to avoid: Fix the random seed using np.random.seed() or similar functions and repeat the experiments at least 5 times to ensure reproducibility and statistical validity.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "running_experiments",
+      "importance": 0.85,
+      "id": "e6633f36d8",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926593.9946744,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t4"
+      }
+    },
+    {
+      "content": "Problem: No statistical test was performed to validate the conclusion about model robustness. | How to avoid: Perform a paired statistical test (e.g., paired t-test) to compare the performance of models across noise levels and validate the conclusion about robustness.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "results_interpretation",
+      "importance": 0.8,
+      "id": "ff557bed27",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926594.0074444,
+      "metadata": {
+        "source": "human",
+        "project": "seed0/t4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "topic": "Are language models sensitive to word order in multiple choice benchmarks?",
+  "with_memory": true,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 0,
+  "workflow_success": 0.667,
+  "usage": {
+    "calls": 63,
+    "prompt_tokens": 219715,
+    "completion_tokens": 5638
+  },
+  "elapsed_s": 697.2,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 20,
+      "plan_formulation": 1,
+      "data_preparation": 20
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 198.8,
+      "plan_formulation": 52.9,
+      "data_preparation": 445.4
+    },
+    "invalid_commands": {},
+    "hf_suggestions": {
+      "queries": [
+        "multiple choice questions",
+        "answer option permutations",
+        "word order variation"
+      ],
+      "found": 4,
+      "verified": 3
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "1. **Dataset Selection**: Use a small subset of the MMLU dataset (e.g., 100 questions from 5 subjects) to ensure the experiment runs quickly on a single GPU. Focus on multiple-choice questions with clear answer options.\n\n2. **Question Preparation**: For each question, extract the answer options (A, B, C, D) and generate reordered versions (e.g., shuffle the order of the options while keeping the content unchanged). Ensure all variations maintain the same meaning and factual content.\n\n3. **Model Interaction**: Use the Ollama API to interact with the local language model. For each question variation, prompt the model to select the correct answer. Record the model's response and whether it matches the correct option.\n\n4. **Performance Evaluation**: Compare the model's accuracy across the original and reordered options. Calculate the accuracy rate for each condition and analyze whether there is a statistically significant difference in performance based on the order of the options.\n\n5. **Result Analysis**: Summarize the findings, including the accuracy rates and any observed sensitivity to word order. Discuss how these results align with the findings from [2308.11483v1], and consider implications for model robustness and reliability in reasoning tasks.\n</final plan>",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [],
+    "n_papers": 4,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "literature_review",
+      "categoria": "busca_em_loop"
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ],
+  "memory_stats": {
+    "runs": 1,
+    "total": 15,
+    "episodic": 0,
+    "insight": 15,
+    "error": 0,
+    "literature": 0,
+    "feedback": 0
+  },
+  "memory_retrievals": [
+    {
+      "phase": "literature_review",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n",
+      "ids": [
+        "ee72255e08",
+        "9b5cf93059",
+        "07e6ab63e1",
+        "f9fd4ec9bc",
+        "45ce551be1",
+        "52f3c7f3cd"
+      ]
+    },
+    {
+      "phase": "plan_formulation",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n",
+      "ids": [
+        "be47f339da",
+        "b86786f7dc",
+        "9b5cf93059",
+        "07e6ab63e1",
+        "f9fd4ec9bc",
+        "45ce551be1"
+      ]
+    },
+    {
+      "phase": "data_preparation",
+      "query": "Are language models sensitive to word order in multiple choice benchmarks?\n1. **Dataset Selection**: Use a small subset of the MMLU dataset (e.g., 100 questions from 5 subjects) to ensure the experime",
+      "ids": [
+        "52f3c7f3cd",
+        "f9fd4ec9bc",
+        "f66abd5080",
+        "45ce551be1",
+        "9b5cf93059",
+        "07e6ab63e1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+1. **Dataset Selection**: Use a small subset of the MMLU dataset (e.g., 100 questions from 5 subjects) to ensure the experiment runs quickly on a single GPU. Focus on multiple-choice questions with clear answer options.
+
+2. **Question Preparation**: For each question, extract the answer options (A, B, C, D) and generate reordered versions (e.g., shuffle the order of the options while keeping the content unchanged). Ensure all variations maintain the same meaning and factual content.
+
+3. **Model Interaction**: Use the Ollama API to interact with the local language model. For each question variation, prompt the model to select the correct answer. Record the model's response and whether it matches the correct option.
+
+4. **Performance Evaluation**: Compare the model's accuracy across the original and reordered options. Calculate the accuracy rate for each condition and analyze whether there is a statistically significant difference in performance based on the order of the options.
+
+5. **Result Analysis**: Summarize the findings, including the accuracy rates and any observed sensitivity to word order. Discuss how these results align with the findings from [2308.11483v1], and consider implications for model robustness and reliability in reasoning tasks.
+</final plan>

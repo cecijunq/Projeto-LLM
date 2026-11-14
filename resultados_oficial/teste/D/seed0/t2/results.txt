@@ -1,0 +1,28 @@
+Columns: ['idx', 'sentence', 'label']
+Example: {'idx': 0, 'sentence': 'uneasy mishmash of styles and genres .', 'label': -1}
+   idx                                           question  gold_answer
+0    0             uneasy mishmash of styles and genres .           -1
+1    1  this film 's relationship to actual tension is...           -1
+2    2  by the end of no such thing the audience , lik...           -1
+3    3  director rob marshall went out gunning to make...           -1
+4    4  lathan and diggs have considerable personal ch...           -1
+=== experiment output ===
+Columns: ['idx', 'sentence', 'label']
+Example: {'idx': 0, 'sentence': 'uneasy mishmash of styles and genres .', 'label': -1}
+   idx                                           question  gold_answer
+0    0             uneasy mishmash of styles and genres .           -1
+1    1  this film 's relationship to actual tension is...           -1
+2    2  by the end of no such thing the audience , lik...           -1
+3    3  director rob marshall went out gunning to make...           -1
+4    4  lathan and diggs have considerable personal ch...           -1
+Accuracy (with negation words): 0.46
+Accuracy (without negation words): 0.52
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+/tmp/agentlab_6ygqxmjr/run.py:17: Pandas4Warning: The inplace keyword in DataFrame.rename is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.rename(columns={'sentence': 'question', 'label': 'gold_answer'}, inplace=True)
+/tmp/agentlab_6ygqxmjr/run.py:48: Pandas4Warning: The inplace keyword in DataFrame.rename is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.rename(columns={'sentence': 'question', 'label': 'gold_answer'}, inplace=True)

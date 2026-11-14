@@ -1,0 +1,102 @@
+Dataset({
+    features: ['word', 'context1', 'context2', 'label'],
+    num_rows: 18
+})
+=== experiment output ===
+Dataset structure:
+Dataset({
+    features: ['word', 'context1', 'context2', 'label'],
+    num_rows: 18
+})
+Prompt: Is the word 'see' used in the same way in these two contexts: 'I see what you mean.' and 'I see what you mean.'?
+Model Response: Yes, the word **"see"** is used in the **same way** in both contexts you provided.
+
+### Both sentences are:
+> **"I see what you mean."**
+
+This is a **repetition** of the same sentence, so of course the word **"see"** is used in the
+True Label: Yes
+Predicted Label: Yes
+Correct? Yes
+--------------------------------------------------------------------------------
+Prompt: Is the word 'see' used in the same way in these two contexts: 'He saw the movie.' and 'He sees the movie.'?
+Model Response: The word **"see"** is used in **similar** but **not exactly the same** way in the two sentences:
+
+1. **"He saw the movie."**  
+2. **"He sees the movie."**
+
+### 1. **"He saw the movie."**  
+- This is in
+True Label: No
+Predicted Label: No
+Correct? Yes
+--------------------------------------------------------------------------------
+Prompt: Is the word 'make' used in the same way in these two contexts: 'She made a cake.' and 'She makes a cake.'?
+Model Response: The word **"make"** is used in **similar ways** in both sentences, but there is a **difference in tense**, which affects the meaning and the context in which the sentences are used.
+
+---
+
+### 1. **"She made a cake."**
+- **Tense:** Past tense
+- **
+True Label: No
+Predicted Label: Unknown
+Correct? No
+--------------------------------------------------------------------------------
+Prompt: Is the word 'make' used in the same way in these two contexts: 'He made a mistake.' and 'He makes a mistake.'?
+Model Response: The word **"make"** is used in a **similar way** in both sentences, but there is a **difference in tense** and **implication**.
+
+---
+
+### 1. **"He made a mistake."**
+- **Te
+...[saída truncada]...
+used in the same way in these two contexts: 'She looked at the picture.' and 'She looks at the picture.'?
+Model Response: The word **"look"** is used in **similar ways** in both sentences, but there is a **difference in tense** that affects the meaning and context.
+
+---
+
+### 1. **"She looked at the picture."**
+- **Tense:** Past tense
+- **Meaning:** This sentence describes
+True Label: No
+Predicted Label: Unknown
+Correct? No
+--------------------------------------------------------------------------------
+Prompt: Is the word 'call' used in the same way in these two contexts: 'He called his friend.' and 'He calls his friend.'?
+Model Response: The word **"call"** is used in the **same way** in both sentences, but the **tense** differs, which affects the **timing** of the action.
+
+### 1. **"He called his friend."**
+- **Tense:** Past tense
+- **Meaning:** The action
+True Label: No
+Predicted Label: Unknown
+Correct? No
+--------------------------------------------------------------------------------
+Prompt: Is the word 'take' used in the same way in these two contexts: 'She took the book.' and 'She takes the book.'?
+Model Response: The word **"take"** is used in **similar ways** in both sentences, but the **tense** and **context** differ, which affects the meaning and usage.
+
+---
+
+### 1. **"She took the book."**
+- **Tense:** Past tense
+- **Meaning:** This
+True Label: No
+Predicted Label: Unknown
+Correct? No
+--------------------------------------------------------------------------------
+Prompt: Is the word 'do' used in the same way in these two contexts: 'I do my homework.' and 'I does my homework.'?
+Model Response: No, the word **"do"** is **not used in the same way** in the two sentences:
+
+1. **"I do my homework."**  
+2. **"I does my homework."**
+
+### Explanation:
+
+- **"I do my homework."** is **correct** and uses **"
+True Label: No
+Predicted Label: No
+Correct? Yes
+--------------------------------------------------------------------------------
+
+Accuracy: 0.33 (6/18 correct)

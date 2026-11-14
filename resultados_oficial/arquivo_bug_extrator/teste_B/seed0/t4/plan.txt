@@ -1,0 +1,12 @@
+1. **Data Preparation**: Create a small dataset of 20-50 labeled text examples, grouped into 3-5 categories (e.g., "technology", "politics", "sports"). For each category, ensure there are at least 5 examples. Randomly shuffle the order of examples for each category to create multiple permutations of the same set for testing.
+
+2. **Few-Shot Prompt Creation**: For each category, create few-shot prompts by selecting 3-5 examples (in different orders) and formatting them as input for the model. Each prompt should include a few examples (e.g., 3) followed by a query (e.g., "What is the category of this text?").
+
+3. **Model Setup**: Use Ollama to serve a language model (e.g., "llama3") via an OpenAI-compatible API. Ensure that the API is configured, and the model is accessible for inference.
+
+4. **Experimental Design**: For each category, evaluate the model's performance on the test set using the few-shot prompts in different example orders. Use the same few-shot prompt format for consistency. Repeat this for all categories.
+
+5. **Evaluation and Analysis**: Calculate the accuracy of the model for each prompt order. Perform a statistical analysis (e.g., t-test) to determine whether the order of few-shot examples significantly affects the model's accuracy. 
+
+6. **Results and Conclusion**: Summarize the findings of the experiment and determine whether the order of few-shot examples influences the accuracy of the model in text classification tasks.
+</final plan>
