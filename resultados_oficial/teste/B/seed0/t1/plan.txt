@@ -1,0 +1,10 @@
+1. **Dataset Preparation**: Use a subset of the MMLU dataset (e.g., 100 questions from a single subject) to ensure the experiment runs quickly on a single GPU. Include the question and four answer choices (A, B, C, D).
+
+2. **Randomization**: For each question, shuffle the order of the answer choices while keeping the content (text) of each option the same. Save the shuffled versions as a separate dataset.
+
+3. **Model Evaluation**: Use the Ollama API to query the local language model with both the original and shuffled versions of the questions. For each question, record the model's selected answer.
+
+4. **Performance Comparison**: Calculate the accuracy of the model on both the original and shuffled datasets. Compare the two accuracy scores to determine if the order of the answer choices significantly impacts performance.
+
+5. **Analysis**: Interpret the results to assess whether the language model is sensitive to the order of answer choices in multiple-choice tasks. If a significant performance difference is observed, this would support the hypothesis that models are sensitive to word order in such benchmarks.
+</final plan>

@@ -1,0 +1,6 @@
+1. **Dataset Selection**: Use the MultiRC dataset, which is a reading comprehension benchmark with multiple-choice questions. This dataset is suitable for evaluating model performance on answer choices.
+2. **Reordering Setup**: For each question, generate multiple reordered versions of the answer choices (e.g., random permutations of the options).
+3. **Model Interaction**: Use the local language model served by Ollama through an OpenAI-compatible API. For each question, prompt the model to answer the question using the original and reordered options.
+4. **Performance Evaluation**: Measure the model's accuracy on both the original and reordered options. Compare the results to determine if there is a significant sensitivity to word order.
+5. **Analysis**: Analyze the performance difference across the original and reordered options to assess the model's sensitivity to answer choice order.
+</final plan>

@@ -1,0 +1,43 @@
+{
+  "objective": "Investigate whether the order of few-shot examples affects the accuracy of a language model on text classification.",
+  "dataset": {
+    "name": "IMDB",
+    "source": "HuggingFace",
+    "split": {
+      "train": 20000,
+      "test": 200
+    },
+    "task": "text classification (positive/negative)"
+  },
+  "model": {
+    "name": "llama2",
+    "source": "Ollama",
+    "setup": "No fine-tuning, use as-is"
+  },
+  "experimental_design": {
+    "conditions": [
+      {
+        "name": "no_few_shot",
+        "description": "Prompt without any few-shot examples"
+      },
+      {
+        "name": "random_order",
+        "description": "Prompt with 5 few-shot examples in random order"
+      },
+      {
+        "name": "ordered_by_label",
+        "description": "Prompt with 5 few-shot examples ordered by class label (positive first, then negative)"
+      }
+    ],
+    "procedure": "For each test example, create three prompts with the above conditions. Generate the model's response, extract the predicted class, and record accuracy."
+  },
+  "evaluation": {
+    "metric": "Accuracy",
+    "test_set_size": 200,
+    "comparison": "Compare accuracy across conditions using a paired t-test (or Wilcoxon signed-rank test if non-normal)."
+  },
+  "analysis": {
+    "interpretation": "Interpret results in the context of previous literature on few-shot learning and example order.",
+    "notes": "Avoid trivial questions (e.g., 'What is 2 + 2?') to ensure meaningful results."
+  }
+}

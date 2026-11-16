@@ -1,0 +1,58 @@
+# Projeto: Does the order of few-shot examples change the accuracy of a language model on text classification?
+
+## Etapas
+- literature_review: ok
+- plan_formulation: ok
+- data_preparation: FALHOU
+
+## Falhas detectadas automaticamente
+- data_preparation: fase_falhou
+- literature_review: formato_invalido
+- data_preparation: erro_de_sintaxe
+- data_preparation: erro_de_sintaxe
+- data_preparation: erro_de_sintaxe
+- data_preparation: erro_de_sintaxe
+- data_preparation: erro_de_sintaxe
+- data_preparation: erro_de_sintaxe
+- report_writing: sem_relatorio
+
+## Artigos da revisão (5)
+[2309.12345v1] This paper investigates how the order of few-shot examples influences the performance of language models in text classification tasks. The study conducts extensive experiments on benchmark datasets such as AG News and IMDb, where the model's accuracy is evaluated under different example ordering strategies. The results show that the order of examples can significantly impact the model's ability to generalize, with a particular emphasis on the effectiveness of ordered examples in capturing semantic coherence and contextual patterns. The findings suggest that structured ordering of examples can enhance the model's accuracy and provide insights into the design of more effective few-shot learning frameworks.
+[2311.14544v1] This paper presents a novel approach that leverages text-derived statistics to predict the mean and covariance of the visual feature distribution for each class in few-shot learning. By incorporating these statistics, the method enriches the latent space, leading to more robust and generalizable few-shot learning models. The paper demonstrates that integrating both mean and covariance statistics significantly improves the performance of foundation models like CLIP in few-shot settings, particularly in cross-domain scenarios. The findings highlight the potential of text as a powerful modality for enhancing the effectiveness of visual few-shot learning frameworks.
+[2205.15014v1] This paper addresses the limitations of existing few-shot image classification methods, which assume uniform distribution of samples across classes. To overcome this, the authors propose TP-VAE, a Task-Prior Conditional Variational Auto-Encoder model that conditions on support shots and incorporates task-level prior regularization. The method demonstrates superior performance in nonuniform few-shot scenarios and achieves state-of-the-art results in standard few-shot image classification tasks, particularly improving 1-shot accuracy by approximately 3%. While focused on image classification, the paper's insights on handling nonuniform sample distributions could be relevant to understanding how example ordering impacts language model performance in few-shot text classification.
+[2510.17892v1] This paper provides a systematic review of pre-trained language models (PLMs) for domain-specific text classification tasks. It highlights the challenges of applying large language models (LLMs) in specialized domains due to factors such as domain-specific vocabulary, unique grammatical structures, and imbalanced data distributions. The review synthesizes findings from 41 studies published between 2018 and 2024, emphasizing the importance of adapting PLMs to domain-specific contexts for improved classification accuracy. The insights from this review are particularly relevant to understanding how language models perform in few-shot settings, especially when domain-specific knowledge is crucial for accurate text classification.
+[2406.00954v2] This paper explores the application of Large Language Models (LLMs) in the classification of educational text to identify indicators of learning engagement. The study emphasizes the potential of LLMs in Natural Language Processing (NLP) tasks, particularly in educational contexts where automated classification can provide valuable insights into learning processes. While the paper primarily focuses on learning engagement classification, it highlights the broader implications for text classification tasks, including the challenges faced by LLMs in specialized domains. The findings suggest that improving LLMs through knowledge augmentation techniques can enhance their performance in domain-specific text classification tasks, which is directly relevant to understanding how example ordering impacts language model accuracy in few-shot settings.
+
+## Plano
+1. Load the AG News dataset from HuggingFace (small subset for speed).
+2. Split into train, validation, and test sets.
+3. For each class in the training set, generate few-shot examples (e.g., 5 examples per class).
+4. Create two example orders: random and sorted by class.
+5. For each example order, construct a prompt with the few-shot examples and test set.
+6. Use the Ollama API to run inference on the test set with each prompt.
+7. Compute accuracy for each example order.
+8. Compare the results and analyze if the order impacts model accuracy.
+9. Repeat experiments with fixed random seeds for reliability.
+</final plan>
+
+## Código de preparação de dados
+```python
+
+```
+
+## Código do experimento
+```python
+
+```
+
+## Saída do experimento
+```
+
+```
+
+## Interpretação
+(sem interpretação)
+
+## Relatório final
+
+(sem relatório)

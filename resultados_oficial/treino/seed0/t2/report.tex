@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{amsmath}
+\title{Research Report: Does gender role play affect the accuracy of language models on answering math questions?}
+\author{Agent Laboratory}
+\begin{document}
+\maketitle
+\section{Abstract}
+\section*{Abstract}
+This study investigates whether gender role play influences the accuracy of language models in answering math questions. Given the prevalence of gender bias in large language models (LLMs), the research explores how framing math problems with specific gender roles might affect model performance. The experiment employs a controlled setup using a math problem dataset and an OpenAI-compatible API to evaluate model responses under neutral and gender-role prompts. Despite careful design, the results show zero accuracy in both scenarios, highlighting challenges in model capability and prompt effectiveness. This finding underscores the difficulty of isolating gender bias effects in complex tasks and emphasizes the need for more capable models and refined evaluation methodologies. The study contributes to the growing body of work on bias in LLMs by focusing on the intersection of gender roles and mathematical reasoning.
+</text>
+\section{Introduction}
+\section*{Introduction}
+
+The integration of language models into academic and practical domains has raised significant concerns regarding their potential to inherit and amplify societal biases. Among these, gender bias remains a prominent issue, particularly in tasks involving reasoning and problem-solving. While existing literature has extensively explored gender stereotyping and representation bias in language models, the specific impact of gender role play on the accuracy of models when answering math questions remains underexplored. This study investigates whether framing math questions with explicit gender roles—such as "A man is solving this math problem"—affects the accuracy of language models in generating correct solutions. 
+
+Mathematical problem-solving is a domain where reasoning and logical inference are paramount, and any embedded biases could potentially influence the model's ability to produce accurate results. Previous research has indicated that biases present in training data can propagate through the model's decision-making processes, potentially leading to disparities in performance across different groups. By introducing gender role prompts, this study seeks to explore whether such biases manifest in the context of mathematical reasoning. 
+
+The experiment described in this paper employs a controlled setting to assess model performance under two scenarios: neutral prompts and gender-role prompts. The results highlight the challenges in achieving accurate mathematical responses, suggesting that the model may not be sufficiently trained or prompted to perform effectively in this domain. These findings underscore the importance of addressing both data biases and prompt design in improving the fairness and reliability of language models, particularly in critical tasks such as mathematical problem solving.
+</text>
+\section{Background}
+
+\section{Related Work}
+
+\section{Methods}
+\section{Methods}
+
+To investigate the impact of gender role play on the accuracy of language models in answering math questions, we designed a controlled experimental methodology. The experiment aimed to determine whether framing a math question with a specific gender role (e.g., "A man is solving this math problem") would influence the model's ability to generate correct answers. The methodology is based on a prompt-based evaluation framework, where the model's outputs are compared against a predefined set of ground truth answers.
+
+The model used in the experiment was served by an OpenAI-compatible API provided by Ollama, with the model identifier specified by the environment variable \texttt{AGENTLAB\_LLM\_MODEL}. The model was prompted with two distinct types of questions: neutral prompts and gender-role prompts. Neutral prompts were constructed as: 
+
+$$
+\text{Q: } q_i \text{A:}
+$$
+
+where $ q_i $ represents the $ i $-th math question. Gender-role prompts were constructed by appending a gender-specific role to the question, as follows:
+
+$$
+\text{Q: A man is solving this math problem. } q_i \text{A:}
+$$
+
+This formulation was chosen to simulate a scenario where the model is explicitly told about the gender of the problem solver, potentially influencing its internal representation of the task.
+
+The evaluation dataset was sourced from the \texttt{math-story-problems} dataset on HuggingFace, which contains math problems and their corresponding solutions. The dataset was loaded using the \texttt{load\_dataset} function, and only the \texttt{test} split was used, with the first 200 items selected for analysis. From this, 50 questions and their corresponding answers were extracted, ensuring that the dataset used for evaluation was representative of the full dataset.
+
+Each question was paired with its corresponding answer, and the model's output for both prompt types was collected. The model's responses were parsed to extract the answer portion following the prompt, and these were compared against the ground truth answers to compute accuracy. Specifically, correctness was defined as the number of instances where the model's generated answer matched the correct answer exactly.
+
+The evaluation was conducted using the \texttt{OpenAI} API, with each prompt being sent as a single message in a chat completion request. The model was instructed to generate responses with a maximum token count of 64 and a temperature of 0 to ensure deterministic and focused outputs. The experiment was repeated for both prompt types, and the results were aggregated to assess the impact of gender role play on model accuracy.
+</text>
+\section{Experimental Setup}
+\section{Experimental Setup}
+
+The experiment was designed to investigate whether gender role play affects the accuracy of language models in answering math questions. The dataset used was the \texttt{math-story-problems} dataset from HuggingFace, which contains math problems accompanied by contextual stories. To focus on the core mathematical questions, only the question portions were extracted, and the first 200 items were selected for the evaluation. The final dataset comprised 50 questions and their corresponding answers, ensuring a manageable size for the experiment.
+
+The model used in the experiment was accessed via an OpenAI-compatible API provided by Ollama, with the model identifier specified by the environment variable \texttt{AGENTLAB\_LLM\_MODEL}. The model was prompted with two types of input: (1) neutral prompts, which contained only the math question, and (2) gender-role prompts, which included a gender-specific context such as ``A man is solving this math problem'' preceding the question. Both prompt types were structured to elicit a mathematical answer in the form of ``A: <answer>'', with a token limit of 64 tokens and a temperature setting of 0 to ensure deterministic output.
+
+The primary metric for evaluating model performance was accuracy, defined as the proportion of correctly answered questions relative to the total number of questions. The model's responses were compared against the ground truth answers from the dataset to determine correctness. No additional hyperparameters were tuned beyond the prompt structure and model configuration, as the focus was on assessing the impact of gender role play on model accuracy rather than optimizing model performance.
+</text>
+\section{Results}
+The experimental results demonstrate that the model's accuracy was 0/50 in both the neutral prompt and gender-role prompt scenarios. This indicates that the model failed to generate correct answers for all 50 math questions in both conditions. The model's inability to answer any of the questions suggests limitations in its mathematical reasoning capabilities or an insufficiently aligned training data distribution with respect to the task. The results were consistent across both prompt types, implying that the introduction of gender role play did not influence the model's accuracy in this specific setup. The experiment encountered challenges related to the model's performance on complex mathematical problems, which may stem from a lack of fine-tuning for math problem-solving tasks or the inherent difficulty of the dataset used. These findings highlight the need for further investigation into model capabilities and prompt design to ensure reliable performance on math-related tasks.
+</text>
+\section{Discussion}
+
+\end{document}

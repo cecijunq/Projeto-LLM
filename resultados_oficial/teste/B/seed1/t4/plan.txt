@@ -1,0 +1,7 @@
+1. Load the SST-2 dataset from HuggingFace, which contains 67,000 labeled sentences for sentiment analysis.
+2. Select 10 examples per class for few-shot learning, resulting in 20 examples total.
+3. Create multiple permutations of the few-shot examples to test different orderings (e.g., 5 permutations).
+4. Use the Ollama language model (via OpenAI API) to perform text classification on the test set, with each permutation of few-shot examples.
+5. Measure the classification accuracy for each permutation.
+6. Analyze the results to determine if the order of few-shot examples influences the model's accuracy.
+</final plan>

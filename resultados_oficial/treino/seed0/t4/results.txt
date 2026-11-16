@@ -1,0 +1,11 @@
+Average Accuracy Results:
+model       Gradient Boosting  Logistic Regression
+noise_rate                                        
+0.1                  0.900000             0.933333
+0.2                  0.866667             0.960000
+=== experiment output ===
+Average Accuracy Results:
+model       Gradient Boosting  Logistic Regression
+noise_rate                                        
+0.1                  0.940000             0.960000
+0.2                  0.846667             0.906667

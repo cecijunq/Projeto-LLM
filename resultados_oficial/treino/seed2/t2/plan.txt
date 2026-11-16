@@ -1,0 +1,12 @@
+Step 1: Prepare a small dataset of 20-50 math questions with known answers. These questions should be diverse in difficulty and topic (e.g., arithmetic, algebra, geometry).
+
+Step 2: Use the Ollama API to load a local language model (e.g., llama3) and set up two prompts: one where the model is prompted to answer as a male and another where it is prompted to answer as a female. For example:
+- "You are a male student. Please solve this math problem."
+- "You are a female student. Please solve this math problem."
+
+Step 3: For each question, run the model under both prompts and record the answers.
+
+Step 4: Compare the model's answers to the correct answers for each question under both conditions. Calculate the accuracy for each condition (male vs. female).
+
+Step 5: Analyze the results to determine if there is any statistically significant difference in accuracy between the two conditions, which would suggest that gender role play might affect the model's performance on math questions.
+</final plan>

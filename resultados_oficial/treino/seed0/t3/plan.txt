@@ -1,0 +1,32 @@
+{
+  "objective": "Evaluate whether chain-of-thought (CoT) prompting improves the accuracy of a small language model on grade-school math problems from the GSM8K dataset.",
+  "steps": [
+    {
+      "step": "Data Preparation",
+      "details": "Download the GSM8K dataset from HuggingFace using the identifier `git://github.com/google/gsm8k`. Select a subset of 100 problems for quick evaluation."
+    },
+    {
+      "step": "Model Setup",
+      "details": "Use a small language model from Ollama (e.g., `llama3` or `mistral`) that is compatible with the OpenAI API. Ensure the model is accessible and ready to be queried."
+    },
+    {
+      "step": "Prompting Strategies",
+      "details": "Design two prompting approaches: (1) Baseline: Directly ask the model to solve the math problem. (2) CoT: Prompt the model to first think through the problem step-by-step and then provide the answer."
+    },
+    {
+      "step": "Experiment Execution",
+      "details": "Run the model with both prompting strategies on the 100 GSM8K problems. Collect the answers and check for correctness using the provided solutions."
+    },
+    {
+      "step": "Evaluation and Analysis",
+      "details": "Calculate the accuracy of the model under both prompting methods. Compare the results to determine whether CoT prompting improves performance on grade-school math problems."
+    }
+  ],
+  "resources": {
+    "data": "GSM8K dataset (subset of 100 problems)",
+    "model": "Ollama (llama3 or mistral)",
+    "tools": "No external APIs, only model interaction via Ollama's API"
+  },
+  "time": "Few minutes (small dataset, lightweight model)",
+  "notes": "This experiment is lightweight and suitable for a single GPU. It focuses on evaluating the effectiveness of CoT prompting without requiring complex infrastructure."
+}

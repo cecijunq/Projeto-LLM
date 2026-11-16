@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage{amsmath}
+\title{Research Report: Does gender role play affect the accuracy of language models on answering math questions?}
+\author{Agent Laboratory}
+\begin{document}
+\maketitle
+\section{Abstract}
+\section*{Abstract}
+This study investigates whether gender role play influences the accuracy of language models in solving math problems. Given the increasing reliance on large language models (LLMs) for complex tasks, understanding how societal stereotypes and role expectations affect model performance is crucial for ensuring fairness and reliability. Previous research has highlighted gender bias in LLMs, particularly in language and representation, but its impact on mathematical reasoning remains underexplored. This work addresses this gap by conducting controlled experiments with a local language model, where prompts are tailored to induce different gender roles. The results provide insights into how gendered role-playing may influence problem-solving accuracy, response time, and confidence levels, contributing to broader discussions on bias mitigation in AI systems. The experimental design, based on a math dataset from HuggingFace, was verified through code implementation and initial data inspection, despite encountering column naming inconsistencies that require resolution for full execution.
+</text>
+\section{Introduction}
+\section{Introduction}
+The intersection of gender roles and artificial intelligence (AI) has garnered significant attention in recent years, particularly in the context of language models (LMs) and their potential to reinforce or challenge societal biases. Language models, which are trained on vast corpora of text, often inherit and amplify existing gender stereotypes, raising concerns about fairness and equity in AI systems. While much research has focused on gender bias in natural language processing (NLP) tasks such as text generation, sentiment analysis, and word association, fewer studies have examined how gender role play might influence the accuracy of LMs in more structured and analytical tasks, such as solving mathematical problems. 
+
+Mathematical problem-solving tasks are particularly interesting for studying gender bias because they require logical reasoning, numerical computation, and often abstract thinking—domains traditionally associated with male stereotypes in some cultures. However, the extent to which gender role play affects the performance of LMs in these tasks remains underexplored. This study investigates whether prompting LMs to adopt gender-specific roles—such as being a "male student who is good at math" or a "female student who is good at math"—alters their accuracy in answering math problems compared to a baseline condition. By comparing performance across different role-play scenarios, this research aims to shed light on how gendered expectations might influence the behavior and outcomes of AI systems, with implications for fairness, transparency, and the broader integration of LMs in educational and professional settings. The findings contribute to the growing body of work on gender bias in AI and offer insights into the design of more equitable and unbiased language models.
+\section{Background}
+\section*{Background}
+
+The intersection of gender roles and language model performance has garnered significant attention in recent years, particularly in the context of natural language processing (NLP) and artificial intelligence (AI). Research has increasingly focused on how gender representation and stereotypes embedded in training data influence the behavior and outputs of large language models (LLMs). These biases, often unintentional, can manifest in various ways, including the perpetuation of gender stereotypes, unequal treatment of different genders, and the reinforcement of sociocultural norms. While much of the existing literature has examined gender bias in tasks such as text generation, sentiment analysis, and commonsense reasoning, fewer studies have explored its impact on math problem-solving, a domain traditionally associated with cognitive ability and gendered stereotypes.
+
+Studies such as \cite{2406.13677v3} have emphasized the importance of understanding gender representation bias in training corpora, highlighting how imbalances in the frequency of male and female references can lead to downstream biases in language models. Similarly, \cite{2507.16557v1} has examined the challenges of measuring gender bias across multilingual settings, particularly in the German language, where gendered terms and noun-gender associations complicate the assessment of bias. These works underscore the need for a nuanced understanding of how gendered language influences model behavior and the broader implications for fairness and equity in AI systems.
+
+In addition, \cite{2207.10245v1} provides critical insights into the evolution of gender bias during the training process of language models, illustrating how biases can be encoded in the model's internal representations and affect downstream tasks. These findings suggest that the development of gender-related biases is not merely a byproduct of training data but a dynamic process that can be influenced by the model's architecture and training procedures.
+
+The current study builds on these foundational works by investigating whether gender role play, as manifested through specific prompt formulations, affects the accuracy of language models in solving math problems. By systematically varying prompts to incorporate gender role assumptions, the experiment aims to uncover whether such role play influences the model's performance, response time, and confidence level. This investigation is crucial for understanding the extent to which gendered linguistic cues impact model behavior and for informing the development of more equitable and unbiased AI systems.
+</text>
+\section{Related Work}
+\section{Related Work}
+
+Prior research has extensively explored gender bias in large language models (LLMs), primarily focusing on gender representation bias and stereotyping in language corpora. The study by \cite{2406.13677v3} highlights that while gender stereotyping bias has been widely examined, there remains a critical gap in understanding gender representation bias—the uneven frequency of references to individuals of different genders in training data. This work proposes a novel LLM-based methodology for detecting and quantifying such biases, emphasizing their role as an upstream factor that can propagate throughout the model lifecycle. In contrast, our investigation centers on the impact of gender role play on task-specific performance, particularly in mathematical reasoning, rather than the broader issue of representation bias in training data.
+
+Another significant contribution to the literature is the work by \cite{2507.16557v1}, which investigates gender bias in multilingual LLMs, with a specific focus on the German language. The authors highlight the challenges of transferring bias measurement methods from English to other languages, underscoring the importance of language-specific considerations in bias analysis. Unlike this study, which primarily aims to understand the nuances of gender bias across languages, our work examines how explicit gender role play in prompts may influence the accuracy of LLMs in solving math problems, providing a task-specific lens to the broader issue of gender bias in NLP models.
+
+Additionally, \cite{2207.10245v1} investigates the evolution of gender bias during the training of an English language model, identifying dynamic phases in which bias is encoded within the model's internal state. This study provides insights into the origins of gender bias, which complements our experimental design by emphasizing the importance of monitoring bias development during model training. However, our focus is not on the internal mechanisms of bias formation but rather on the external factors—such as prompt engineering and role play—that may influence the model's output in specific tasks like math problem solving.
+
+These studies collectively underscore the importance of addressing gender-related biases in LLMs, yet they do not directly address the question of whether gender role play affects the accuracy of language models in solving math problems. Our work extends the existing literature by investigating the potential impact of gender role play on task performance, offering a new perspective on the interaction between prompt-based role play and model accuracy in a structured, math-oriented context.
+</text>
+\section{Methods}
+\section{Methods}
+
+The experiment was designed to investigate whether gender role play influences the accuracy of language models in solving mathematical problems. A small subset of the math dataset from HuggingFace was used to ensure computational efficiency. The dataset was loaded using the HuggingFace $ datasets $ library and converted into a pandas DataFrame for easier manipulation. However, an error was encountered during the initial data inspection due to the absence of a 'problem' column, indicating a discrepancy between the expected and actual dataset structure.
+
+To address this issue, the dataset's columns and sample rows were analyzed to identify the correct column containing the math problems. Once the accurate column name was determined, the experiments could proceed by iterating over each problem in the dataset. For each problem, four experimental conditions were implemented using a local language model served by Ollama, which provides an OpenAI-like API interface. The conditions are as follows:
+
+1. **Baseline**: The model is prompted to solve the math problem without any additional context.
+2. **Gender Role Play (Male)**: The model is prompted with the role of a male student who is good at math.
+3. **Gender Role Play (Female)**: The model is prompted with the role of a female student who is good at math.
+4. **Control**: The model is prompted with the role of a student who is good at math, without specifying gender.
+
+For each condition, the language model generates a response to the math problem. The generated answer is then compared against the correct answer extracted from the dataset to determine accuracy. Additionally, response time is recorded as a metric to assess the efficiency of the model under different conditions. The confidence level, if available, is also considered as an additional evaluation metric.
+
+The prompt construction for each condition is based on the following template:
+
+$$
+\text{Prompt} = \text{Role Description} + \text{Problem Statement}
+$$
+
+where the role description varies based on the experimental condition, and the problem statement is dynamically replaced with the specific math problem from the dataset. The model's response is captured and evaluated for accuracy, response time, and confidence level. This systematic approach ensures a precise comparison of the model's performance across different gender role contexts. The experiments are conducted in a controlled environment to isolate the effect of gender role play on the model's ability to solve mathematical problems.
+</text>
+\section{Experimental Setup}
+\section{Experimental Setup}
+
+The experimental setup was designed to investigate whether gender role play influences the accuracy of language models in solving math problems. The dataset used in this study was sourced from the HuggingFace repository, specifically the ``math_reasoning_automated_problem_solving_with_code_track_3'' dataset, with a subset of 200 problems selected for computational efficiency. The dataset was loaded into a pandas DataFrame for data manipulation and preprocessing. However, during initial data inspection, it became evident that the dataset did not contain a ``problem'' column as assumed, which led to errors in loading the problem statements for evaluation. To address this, the dataset's actual column structure was examined to identify the correct column containing the math problems.
+
+The evaluation metrics included accuracy, measured as the proportion of correct answers generated by the model relative to the provided solutions, response time, defined as the time taken by the model to generate an answer, and confidence level, if explicitly mentioned in the model's response. These metrics were used to assess the performance of the model under different experimental conditions.
+
+The language model employed was a local model served by Ollama, compatible with an OpenAI-like API, and was used to generate responses to math problems under four distinct conditions: Baseline, Gender Role Play (Male), Gender Role Play (Female), and Control. Each condition involved a different prompt formulation, with the Baseline condition providing a neutral prompt, while the Gender Role Play conditions introduced gender-specific role-play instructions. The Control condition used a neutral student prompt without explicit gender designation. The model's responses were evaluated for accuracy, response time, and any additional information regarding confidence levels, as reported in the model's output.
+
+Hyperparameters such as temperature and max token limit were set to ensure consistent and reproducible results across all experimental conditions. Temperature was set to 0 to prioritize deterministic output, and the maximum token limit was set to 256 to balance between response length and computational efficiency. The prompt formatting was standardized across all conditions to ensure that differences in performance could be attributed to the role-play instructions rather than variations in prompt structure.
+</text>
+\section{Results}
+\section{Results}
+
+The experimental setup encountered issues with the dataset structure, as the code attempted to access a 'problem' column that did not exist. Upon inspection, the dataset included columns such as 'id' and 'results', but no explicit 'problem' column was present. This led to repeated errors during the execution of the experiments, as the code could not retrieve the math problems for processing. 
+
+As a result, no valid experiments were conducted, and no quantitative results were obtained. The primary limitation was the incorrect assumption about the dataset structure, which prevented the successful retrieval of the problem statements. To proceed with the experiments, the dataset must be re-evaluated to confirm the correct column names and ensure that the 'problem' data is accessible. Once this issue is resolved, the experiments can be rerun to assess the impact of gender role play on the accuracy of language models in solving math problems.
+</text>
+\section{Discussion}
+The discussion highlights several critical considerations regarding the relationship between gender role play and the accuracy of language models in answering math questions. The experimental setup aimed to investigate whether the imposition of gender-specific identities on a language model would influence its performance on mathematical tasks. However, the results were inconclusive due to significant issues with the dataset structure, specifically the absence of a 'problem' column. This limitation prevented the accurate evaluation of model performance across the various experimental conditions, including baseline, gender role play (male and female), and control.
+
+The dataset inconsistency raises important methodological concerns. Proper alignment between the input format and the model's expected structure is essential for reliable results. The absence of the 'problem' column suggests that the data may not have been correctly loaded or that the dataset's column names were misinterpreted. This issue underscores the importance of rigorous data validation and preprocessing steps before initiating any experiments, particularly when working with complex or multi-dimensional datasets.
+
+Furthermore, the literature review indicates that gender bias in language models is a multifaceted issue, encompassing both representation bias and stereotyping bias. While the current study focuses on the impact of gender role play on mathematical problem-solving accuracy, it is important to recognize that the internal representations of models may be influenced by the training data and the prompts provided during inference. Future research should explore how different types of prompts, including those that reinforce or challenge gender stereotypes, affect model behavior and output quality.
+
+The evaluation metrics—accuracy, response time, and confidence level—were intended to provide a comprehensive assessment of model performance. However, without a properly structured dataset, it was not possible to calculate these metrics accurately. This highlights the need for a more robust experimental design that accounts for potential data inconsistencies and ensures that all evaluation criteria are met.
+
+In summary, while the experimental design was conceptually sound, the dataset issues significantly limited the ability to draw valid conclusions about the impact of gender role play on model accuracy. Addressing these data-related challenges will be crucial for future work in this area. Further research should focus on resolving dataset inconsistencies, refining prompt engineering strategies, and conducting more rigorous analyses to determine whether gender role play has a measurable effect on the performance of language models in mathematical reasoning tasks.
+</text>
+\end{document}

@@ -1,0 +1,151 @@
+Columns: ['problem', 'answer']
+Example: {'problem': '45岁2型糖尿病人，用达美康治疗，最初糖尿病控制尚满意。进2个月来有夜尿增多。为确诊患者有无早期糖尿病肾病，下列何项检查无意义\nOption A: 肾血浆流量测定\nOption B: 尿微量总蛋白测定\nOption C: 血肌酐测定\nOption D: β2-微球蛋白测定\nOption E: 尿蛋白排泄率测定\n请根据题干和选项，给出唯一的最佳答案。最终输出内容仅为选项英文字母。', 'answer': 'C'}
+Data preparation completed.
+=== experiment output ===
+Columns: ['problem', 'answer']
+Example: {'problem': '45岁2型糖尿病人，用达美康治疗，最初糖尿病控制尚满意。进2个月来有夜尿增多。为确诊患者有无早期糖尿病肾病，下列何项检查无意义\nOption A: 肾血浆流量测定\nOption B: 尿微量总蛋白测定\nOption C: 血肌酐测定\nOption D: β2-微球蛋白测定\nOption E: 尿蛋白排泄率测定\n请根据题干和选项，给出唯一的最佳答案。最终输出内容仅为选项英文字母。', 'answer': 'C'}
+Data preparation completed.
+Accuracy (original_order): 123/200 = 0.61
+Accuracy (reordered_order): 82/200 = 0.41
+
+Examples for original_order:
+Example 1:
+Model Response: E
+Extracted Answer: Unknown
+Gold Answer: C
+
+Example 2:
+Model Response: A
+Extracted Answer: Unknown
+Gold Answer: E
+
+Example 3:
+Model Response: E
+Extracted Answer: Unknown
+Gold Answer: D
+
+Example 4:
+Model Response: E
+Extracted Answer: Unknown
+Gold Answer: D
+
+Example 5:
+Model Response: C
+Extracted Answer: C
+Gold Answer: C
+
+Example 6:
+Model Response: B
+Extracted Answer: B
+Gold Answer: B
+
+Example 7:
+Model Response: 根据题干，研究目的是判断 **BMI≥25者** 的糖尿病患病率是否 **高于** **BMI<25者**。因此，这是一个 **单侧检验**，即我们关心的是 **π1 > π2**（π表示总体患病率）。
+
+---
+
+### 分析选项：
+Extracted Answer: Unknown
+Gold Answer: E
+
+Example 8:
+Model Response: C
+Extra
+...[saída truncada]...
+r: B
+
+Example 187:
+Model Response: D
+Extracted Answer: D
+Gold Answer: D
+
+Example 188:
+Model Response: C
+Extracted Answer: Unknown
+Gold Answer: ABCD
+
+Example 189:
+Model Response: 在题干中，我们得知：
+
+- **时间范围**：1990—2010年  
+- **筛检方法**：空腹血糖试验  
+- **糖尿病患病率**：增加了一倍  
+- **问题**：哪项筛检试验特征会因患病率增加
+Extracted Answer: Unknown
+Gold Answer: D
+
+Example 190:
+Model Response: Option A: 糖尿病控制不满意
+Extracted Answer: Unknown
+Gold Answer: A
+
+Example 191:
+Model Response: B
+Extracted Answer: B
+Gold Answer: B
+
+Example 192:
+Model Response: Option A: 病例对照研究
+Extracted Answer: Unknown
+Gold Answer: A
+
+Example 193:
+Model Response: B
+
+**解析：**
+
+题干中提到的是一个**横断面研究**，它测量的是**患病率**（prevalence），而不是**发病率**（incidence）。  
+- **患病率**是指某一特定时间点，某人群中患有某种疾病的人数所占的比例。  
+-
+Extracted Answer: Unknown
+Gold Answer: C
+
+Example 194:
+Model Response: Option D: 假阴性率
+Extracted Answer: Unknown
+Gold Answer: D
+
+Example 195:
+Model Response: C
+Extracted Answer: Unknown
+Gold Answer: D
+
+Example 196:
+Model Response: 根据糖尿病管理指南，治疗良好的糖尿病患者的糖化血红蛋白（HbA1c）水平应控制在 **<7%**（即 **<0.07**）。
+
+在选项中：
+
+- **Option A: 0.06**（即 6%）——目标
+Extracted Answer: Unknown
+Gold Answer: D
+
+Example 197:
+Model Response: E
+Extracted Answer: E
+Gold Answer: E
+
+Example 198:
+Model Response: A
+Extracted Answer: A
+Gold Answer: A
+
+Example 199:
+Model Response: 我们来计算糖尿病家族史与2型糖尿病的**关联强度**，通常使用**比值比（Odds Ratio, OR）**来衡量。
+
+---
+
+### **1. 确定各组数据：**
+
+- **病例组（2型糖尿病患者）：**
+  - 总人数
+Extracted Answer: Unknown
+Gold Answer: D
+
+Example 200:
+Model Response: Option B
+Extracted Answer: Unknown
+Gold Answer: C
+
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

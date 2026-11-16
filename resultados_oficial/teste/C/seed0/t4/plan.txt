@@ -1,0 +1,15 @@
+1. **Dataset**: Use the "sst2" dataset from HuggingFace for binary text classification. 
+2. **Few-Shot Example Orders**:
+   - **Random Order**: Shuffle the few-shot examples.
+   - **Class-Sorted Order**: Group examples by class and present them in order (e.g., positive examples first, then negative).
+   - **Baseline**: No few-shot examples provided.
+3. **Model Interaction**: Use Ollama to interact with a local language model (e.g., "llama2" or "mistral").
+4. **Procedure**:
+   - For each example order, provide the model with the few-shot examples as a prompt.
+   - For the test set, ask the model to classify each text and record its responses.
+   - Extract the model's predicted labels and compare them to the true labels to compute accuracy.
+5. **Analysis**:
+   - Compare the accuracy across the three conditions (random order, class-sorted order, baseline).
+   - Use statistical tests (e.g., t-test) to determine if the differences in accuracy are significant.
+6. **Implementation**: Keep the dataset small (e.g., 10 examples per class) to ensure the experiment runs in under a minute on a single GPU.
+</final plan>

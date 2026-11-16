@@ -1,0 +1,14 @@
+1. **Objective**: Investigate if sentiment classifiers are sensitive to negation words in short movie reviews (SST-2).  
+2. **Model**: Use a pre-trained language model (e.g., `llama2` via Ollama) as a sentiment classifier.  
+3. **Data**: Use the SST-2 dataset, which includes short movie reviews with sentiment labels.  
+4. **Preprocessing**:  
+   - Load the SST-2 dataset.  
+   - For each review, create two versions: one with negation words (e.g., "not", "never") and one without (e.g., remove "not" from "not good" to get "good").  
+5. **Experiment**:  
+   - Train the model on the original dataset.  
+   - Evaluate the model's performance on both the original and negation-removed reviews.  
+   - Compare accuracy to determine sensitivity to negation words.  
+6. **Evaluation**: Focus on accuracy and F1-score for both datasets.  
+7. **Tools**: Use Ollama to serve the model locally, no external APIs or downloads.  
+8. **Constraints**: Keep the dataset small and the experiment simple to run within minutes on one GPU.  
+</final plan>

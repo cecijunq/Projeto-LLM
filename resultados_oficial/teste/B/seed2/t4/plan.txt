@@ -1,0 +1,33 @@
+{
+  "objective": "Investigate whether the order of few-shot examples affects the accuracy of a language model on text classification tasks.",
+  "data": {
+    "source": "HuggingFace 'imdb' dataset",
+    "subset_size": 20,
+    "test_set_size": 10
+  },
+  "model": {
+    "name": "llama2",
+    "provider": "Ollama (OpenAI-compatible API)"
+  },
+  "experimental_design": {
+    "version_a": {
+      "description": "Few-shot examples ordered by label (positive first, then negative)",
+      "prompt_template": "Classify the following text as positive or negative. Here are some examples:\n{examples}\nText: {text}\nLabel:"
+    },
+    "version_b": {
+      "description": "Few-shot examples ordered randomly",
+      "prompt_template": "Classify the following text as positive or negative. Here are some examples:\n{examples}\nText: {text}\nLabel:"
+    }
+  },
+  "evaluation": {
+    "metrics": ["accuracy"],
+    "test_set": "Randomly selected 10 examples from the 'imdb' dataset"
+  },
+  "statistical_analysis": {
+    "method": "t-test",
+    "significance_level": 0.05
+  },
+  "execution": {
+    "notes": "Ensure the experiment runs within a few minutes on a single GPU. Use a small dataset and limit the number of model queries to minimize computational load."
+  }
+}

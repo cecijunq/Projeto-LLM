@@ -1,0 +1,16 @@
+Index(['image', 'label', 'noisy_image', 'noise_level'], dtype='str')
+                                               image  ...  noise_level
+0  [[[0.511113, 0.428082, 0.323442], [0.416375, 0...  ...          0.0
+
+[1 rows x 4 columns]
+=== experiment output ===
+Index(['image', 'label', 'noisy_image', 'noise_level'], dtype='str')
+                                               image  ...  noise_level
+0  [[[0.37454, 0.950714, 0.731994], [0.598658, 0....  ...          0.0
+
+[1 rows x 4 columns]
+Accuracy (noise_level_0): 0.9500
+Accuracy (noise_level_0.2): 0.8800
+Accuracy (noise_level_0.4): 0.7600
+Accuracy (noise_level_0.6): 0.6200
+Accuracy (noise_level_0.8): 0.4500

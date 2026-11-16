@@ -1,0 +1,9 @@
+                                           question answer
+0                                    What is 2 + 2?      4
+1                               Solve for x: 2x = 8      4
+2  What is the area of a square with side length 5?     25
+3                          What is 10 divided by 2?      5
+4                          Solve for x: 3x + 2 = 11      3
+=== experiment output ===
+Male Accuracy: 0.0
+Female Accuracy: 0.0

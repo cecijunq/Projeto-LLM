@@ -1,0 +1,53 @@
+   idx                                           sentence  label
+0    0             uneasy mishmash of styles and genres .     -1
+1    1  this film 's relationship to actual tension is...     -1
+2    2  by the end of no such thing the audience , lik...     -1
+3    3  director rob marshall went out gunning to make...     -1
+4    4  lathan and diggs have considerable personal ch...     -1
+=== experiment output ===
+First few rows of the dataset:
+   idx                                           sentence  label
+0    0             uneasy mishmash of styles and genres .     -1
+1    1  this film 's relationship to actual tension is...     -1
+2    2  by the end of no such thing the audience , lik...     -1
+3    3  director rob marshall went out gunning to make...     -1
+4    4  lathan and diggs have considerable personal ch...     -1
+
+Model performance on sentences with negation words:
+Sentence: this film 's relationship to actual tension is the same as what christmas-tree flocking in a spray can is to actual snow : a poor -- if durable -- imitation .
+Model Response: The sentiment of the sentence is **negative**.
+
+The sentence uses a metaphor to compare the film's portrayal of tension to "christmas-tree flocking in a spray can" — which is a cheap, artificial imitation of real snow. This metaphor conveys a sense of disappointment or criticism, suggesting that the film's depiction
+--------------------------------------------------
+Sentence: by the end of no such thing the audience , like beatrice , has a watchful affection for the monster .
+Model Response: The sentiment of the sentence **"by the end of no such thing the audience , like beatrice , has a watchful affection for the monster."** is **positive**.
+
+### Explanation:
+- The phrase **"has a watchful affection for the monster"** suggests a **complex, thoughtful, and possibly empath
+--------------------------------------------------
+Sentence: none of this violates the letter of behan 's book , but missing is its spirit , i
+...[saída truncada]...
+--------------
+Sentence: unlike his directorial efforts , la femme nikita and the professional , the transporter lacks besson 's perspective as a storyteller .
+Model Response: The sentiment of the sentence is **negative**.
+
+The sentence is criticizing *The Transporter* by saying it lacks Besson's perspective as a storyteller, which implies a negative judgment about the film's quality or storytelling.
+--------------------------------------------------
+Sentence: ` abandon all hope , ye who enter here ' ... you should definitely let dante 's gloomy words be your guide .
+Model Response: The sentiment of the sentence is **negative**.
+
+The phrase "abandon all hope, ye who enter here" is a well-known line from Dante's *Inferno*, which conveys a dark, despairing, and ominous tone. The sentence continues with "Dante's gloomy words," reinforcing the negative
+--------------------------------------------------
+Sentence: a very witty take on change , risk and romance , and the film uses humor to make its points about acceptance and growth .
+Model Response: The sentiment of the sentence is **positive**. 
+
+The language used—such as "very witty," "humor to make its points," and references to "acceptance and growth"—conveys appreciation and admiration for the film's approach and message.
+--------------------------------------------------
+Sentence: hu and liu offer natural , matter-of-fact performances that glint with sorrow , longing and love .
+Model Response: The sentiment of the sentence is **positive**.
+
+The sentence describes performances that "glint with sorrow, longing, and love," which are emotional qualities that can be seen as deeply moving and meaningful, contributing to a positive sentiment. While the emotions mentioned (sorrow, longing) might seem negative, in the context of
+--------------------------------------------------
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

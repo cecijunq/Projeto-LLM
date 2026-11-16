@@ -1,0 +1,8 @@
+1. **Objective**: Compare the sensitivity of image transformers and convolutional networks to pixel noise.
+2. **Dataset**: Use CIFAR-10 for its standardization and ease of use.
+3. **Models**: Use a standard CNN (e.g., ResNet-18) and a vision transformer (e.g., ViT-B/16) via Ollama.
+4. **Noise Addition**: Add varying levels of Gaussian noise (0%, 10%, 20%, 30%, 40%) to images.
+5. **Evaluation**: Measure accuracy on clean and noisy data for both models.
+6. **Execution**: Run the experiment on a single GPU with minimal data (e.g., 5000 images per class).
+7. **Outcome**: Determine which model is more sensitive to pixel noise.
+</final plan>

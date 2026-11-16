@@ -1,0 +1,13 @@
+Does the order of few-shot examples change the accuracy of a language model on text classification?
+
+Plan:
+1. Use Ollama's local model (e.g., llama3) for all conditions.
+2. Use a test set of 200 text classification examples, with a balanced distribution across classes (e.g., 50 examples per class).
+3. For each example, create a few-shot prompt with 5 examples per class (e.g., 5 examples for class A, 5 for class B, etc.).
+4. Compare the model's accuracy across the following conditions:
+   - Random order of examples.
+   - Ascending order of class labels.
+   - Descending order of class labels.
+   - No few-shot examples (control condition).
+5. Evaluate the model's accuracy using the same metric (e.g., accuracy, F1 score) across all conditions.
+6. Record the accuracy for each condition and compare the results to determine if the order of few-shot examples significantly affects the model's performance.

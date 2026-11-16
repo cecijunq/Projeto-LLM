@@ -1,0 +1,73 @@
+{
+  "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+  "with_memory": false,
+  "review": {},
+  "overall": null,
+  "mle_score": 0.0,
+  "n_code_errors": 0,
+  "workflow_success": 0.667,
+  "usage": {
+    "calls": 56,
+    "prompt_tokens": 172741,
+    "completion_tokens": 4312
+  },
+  "elapsed_s": 486.5,
+  "metrics": {
+    "phase_steps": {
+      "literature_review": 13,
+      "plan_formulation": 1,
+      "data_preparation": 20
+    },
+    "phase_success": {
+      "literature_review": true,
+      "plan_formulation": true,
+      "data_preparation": false
+    },
+    "phase_time": {
+      "literature_review": 88.9,
+      "plan_formulation": 23.1,
+      "data_preparation": 374.6
+    },
+    "invalid_commands": {
+      "literature_review": 1
+    },
+    "hf_suggestions": {
+      "queries": [
+        "tabular classification",
+        "label noise impact",
+        "classification performance"
+      ],
+      "found": 5,
+      "verified": 4
+    }
+  },
+  "config": {
+    "model": "qwen3-nothink:8b",
+    "num_papers": 5,
+    "max_steps": 20,
+    "mle_steps": 3
+  },
+  "trace": {
+    "plan": "In this experiment, we will evaluate how label noise affects logistic regression and gradient boosting on a small tabular dataset. We will use the California Housing dataset from scikit-learn, convert it into a classification task by binning the target variable, and artificially introduce label noise. We will train logistic regression and gradient boosting models on both clean and noisy datasets and evaluate their performance using accuracy and F1-score. This will help us understand whether label noise hurts logistic regression more than gradient boosting on a small tabular classification dataset.\n</final plan>",
+    "exp_results": "",
+    "interpretation": "",
+    "errors": [],
+    "n_papers": 5,
+    "human_feedback": []
+  },
+  "failures": [
+    {
+      "fase": "data_preparation",
+      "categoria": "fase_falhou"
+    },
+    {
+      "fase": "literature_review",
+      "categoria": "formato_invalido",
+      "n": 1
+    },
+    {
+      "fase": "report_writing",
+      "categoria": "sem_relatorio"
+    }
+  ]
+}

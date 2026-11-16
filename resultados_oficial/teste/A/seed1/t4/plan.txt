@@ -1,0 +1,6 @@
+1. Load the SST-2 dataset and split it into training and test sets.
+2. Select 10 examples (5 positive, 5 negative) for few-shot learning.
+3. Generate multiple permutations of the 10 examples to test the impact of order.
+4. For each permutation, format the examples as a prompt and use the few-shot examples to classify the test set using the local language model served by Ollama.
+5. Measure the classification accuracy for each permutation and analyze the effect of example order on model performance.
+</final plan>

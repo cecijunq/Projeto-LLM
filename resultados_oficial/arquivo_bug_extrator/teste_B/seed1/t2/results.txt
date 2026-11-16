@@ -1,0 +1,27 @@
+Original Dataset Examples:
+Train Dataset:
+{'idx': [0, 1, 2, 3, 4], 'sentence': ['hide new secretions from the parental units ', 'contains no wit , only labored gags ', 'that loves its characters and communicates something rather beautiful about human nature ', 'remains utterly satisfied to remain the same throughout ', 'on the worst revenge-of-the-nerds clichés the filmmakers could dredge up '], 'label': [0, 0, 1, 0, 0]}
+Test Dataset:
+{'idx': [0, 1, 2, 3, 4], 'sentence': ['uneasy mishmash of styles and genres .', "this film 's relationship to actual tension is the same as what christmas-tree flocking in a spray can is to actual snow : a poor -- if durable -- imitation .", 'by the end of no such thing the audience , like beatrice , has a watchful affection for the monster .', 'director rob marshall went out gunning to make a great one .', 'lathan and diggs have considerable personal charm , and their screen rapport makes the old story seem new .'], 'label': [-1, -1, -1, -1, -1]}
+Test Dataset Version B Examples:
+{'idx': [0, 1, 2, 3, 4], 'sentence': ['uneasy mishmash of styles and genres .', "this film 's relationship to actual tension is the same as what christmas-tree flocking in a spray can is to actual snow : a poor -- if durable -- imitation .", 'by the end of such thing the audience , like beatrice , has a watchful affection for the monster .', 'director rob marshall went out gunning to make a great one .', 'lathan and diggs have considerable personal charm , and their screen rapport makes the old story seem new .'], 'label': [0, 0, 0, 0, 0]}
+=== experiment output ===
+Original Dataset Examples:
+Train Dataset:
+{'idx': [0, 1, 2, 3, 4], 'sentence': ['hide new secretions from the parental units ', 'contains no wit , only labored gags ', 'that loves its characters and communicates something rather beautiful about human nature ', 'remains utterly satisfied to remain the same throughout ', 'on the worst revenge-of-the-nerds clichés the filmmakers could dredge up '], 'label': [0, 0, 1, 0, 0]}
+Test Dataset:
+{'idx': [0, 1, 2, 3, 4], 'sentence': ['uneasy mishmash of styles and genres .', "this film 's relationship to actual tension is the same as what christmas-tree flocking in a spray can is to actual snow : a poor -- if durable -- imitation .", 'by the end of no such thing the audience , like beatrice , has a watchful affection for the monster .', 'director rob marshall went out gunning to make a great one .', 'lathan and diggs have considerable personal charm , and their screen rapport makes the old story seem new .'], 'label': [-1, -1, -1, -1, -1]}
+Test Dataset Version B Examples:
+{'idx': [0, 1, 2, 3, 4], 'sentence': ['uneasy mishmash of styles and genres .', "this film 's relationship to actual tension is the same as what christmas-tree flocking in a spray can is to actual snow : a poor -- if durable -- imitation .", 'by the end of such thing the audience , like beatrice , has a watchful affection for the monster .', 'director rob marshall went out gunning to make a great one .', 'lathan and diggs have considerable personal charm , and their screen rapport makes the old story seem new .'], 'label': [0, 0, 0, 0, 0]}
+Baseline Results:
+Version A (Original sentences): Accuracy = 0.49, F1 = 0.00
+Version B (Negation words removed): Accuracy = 0.53, F1 = 0.00
+Language Model Results:
+Version A (Original sentences): Accuracy = 0.47, F1 = 0.00
+Version B (Negation words removed): Accuracy = 0.46, F1 = 0.00
+Statistical Analysis:
+Accuracy: t-statistic = 0.40
+F1-score: t-statistic = 0.00
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

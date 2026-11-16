@@ -1,0 +1,18 @@
+{
+  "_nota": "10 temas pequenos: os 5 do artigo + 5 novos. A metade 'treino' forma a memória; a metade 'teste' compara A, B e C. Os temas misturam avaliação de LLMs, visão e ML clássico nas duas metades, para que as lições possam transferir.",
+  "treino": [
+    "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+    "Do language models improve accuracy on MedQA when asked to perform differential diagnosis?",
+    "Does gender role play affect the accuracy of language models on answering math questions?",
+    "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+    "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?"
+  ],
+  "teste": [
+    "Are image transformers more or less sensitive to pixel noise than convolutional networks?",
+    "Are language models sensitive to word order in multiple choice benchmarks?",
+    "Are sentiment classifiers sensitive to negation words on short movie reviews (SST-2)?",
+    "Does rotation data augmentation make a small CNN more robust to rotated images on CIFAR-10?",
+    "Does the order of few-shot examples change the accuracy of a language model on text classification?"
+  ],
+  "_do_artigo": "treino 1-3 e teste 1-2 são os 5 temas da Seção 4.1 do artigo; os demais são novos"
+}

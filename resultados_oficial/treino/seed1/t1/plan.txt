@@ -1,0 +1,6 @@
+The experiment will evaluate whether differential diagnosis prompts improve the accuracy of language models on MedQA. We will use the MedQA dataset from HuggingFace (dataset id: "allenai/medqa") and Ollama's Llama3 model. Steps:
+1. Load a small subset of MedQA questions that require differential diagnosis (e.g., questions asking for a list of possible diagnoses).
+2. For each question, generate two responses: one without any prompt and one with a differential diagnosis prompt.
+3. Compare the accuracy of both responses against the correct answers in the dataset.
+4. Analyze if the differential diagnosis prompt leads to improved performance.
+</final plan>

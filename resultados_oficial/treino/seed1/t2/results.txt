@@ -1,0 +1,84 @@
+First few rows of the dataset:
+   id  ...                                            results
+0   0  ...  {'Acres of Corn to plant': None, 'Acres of Pum...
+1   1  ...  {'Acres of Corn to plant': None, 'Acres of Pum...
+2   2  ...  {'Acres of Corn to plant': None, 'Acres of Pum...
+3   3  ...  {'Acres of Corn to plant': None, 'Acres of Pum...
+4   4  ...  {'Acres of Corn to plant': None, 'Acres of Pum...
+
+[5 rows x 3 columns]
+=== experiment output ===
+First few rows of the dataset:
+   id  ...                                            results
+0   0  ...  {'Acres of Corn to plant': None, 'Acres of Pum...
+1   1  ...  {'Acres of Corn to plant': None, 'Acres of Pum...
+2   2  ...  {'Acres of Corn to plant': None, 'Acres of Pum...
+3   3  ...  {'Acres of Corn to plant': None, 'Acres of Pum...
+4   4  ...  {'Acres of Corn to plant': None, 'Acres of Pum...
+
+[5 rows x 3 columns]
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column 
+...[saída truncada]...
+.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+Error: 'problem' column not found in the dataset.
+
+[stderr]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

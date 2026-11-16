@@ -1,0 +1,17 @@
+1. **Models**: 
+   - A small CNN (e.g., a 3-layer CNN with 32 filters in the first layer, 64 in the second, and 128 in the third, followed by global average pooling and a softmax classifier).
+   - A baseline model trained without rotation augmentation.
+
+2. **Data Source**: 
+   - CIFAR-10 dataset from HuggingFace (dataset id: 'torchvision/cifar10').
+
+3. **Experimental Steps**:
+   - Split the CIFAR-10 dataset into training and test sets (e.g., 50,000 training images and 10,000 test images).
+   - Generate rotated versions of the training images (e.g., 0°, 90°, 180°, 270°) for data augmentation.
+   - Train two models:
+     - Model A: Trained with rotation data augmentation (images rotated by 0°, 90°, 180°, 270° during training).
+     - Model B: Trained without any rotation augmentation.
+   - Test both models on a test set of rotated images (e.g., images rotated by 15°, 30°, 45°, 60°, 75°, and 90°).
+   - Evaluate the accuracy of both models on the rotated test images.
+   - Compare the performance of the two models to determine if rotation data augmentation improves robustness to rotated images.
+</final plan>

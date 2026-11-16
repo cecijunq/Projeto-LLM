@@ -1,0 +1,31 @@
+# Memória B (Memória + revisor LLM) · seed 1
+
+
+## seed1/t0 · Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?
+- **data_preparation** · Syntax errors in the code due to incorrect string formatting and unterminated string literals. → Carefully check string formatting and ensure all string literals are properly terminated. Use code linters or syntax checkers to catch errors before execution. (importância 0.9)
+- **running_experiments** · Insufficient detail in the experimental setup and lack of quantitative analysis. → Provide a detailed description of the prompts, experimental setup, and analysis methods. Use quantitative metrics to assess model behavior and ensure reproducibility. (importância 0.8)
+- **plan_formulation** · Limited scope due to absence of anchoring bias prompts and lack of systematic variation. → Design a comprehensive set of prompts that cover all intended biases and include systematic variation in input parameters to thoroughly test model behavior. (importância 0.7)
+- **results_interpretation** · Qualitative analysis without quantitative measures and limited discussion of limitations and ethical concerns. → Use both qualitative and quantitative analysis methods. Include a thorough discussion of limitations, ethical concerns, and the broader implications of the findings. (importância 0.7)
+
+## seed1/t1 · Do language models improve accuracy on MedQA when asked to perform differential diagnosis?
+- **running_experiments** · Syntax errors in code prevented the experiments from running correctly. → Thoroughly test and validate code syntax before running experiments. Use automated code linters and syntax checkers to catch errors early. (importância 0.9)
+- **data_preparation** · The dataset was too small and manually curated, limiting generalizability. → Use larger, publicly available datasets whenever possible. If manual curation is necessary, justify the sample size and provide details on the curation process. (importância 0.8)
+- **plan_formulation** · The experiment lacked a control group or baseline comparison, making it difficult to assess the impact of the differential diagnosis prompts. → Include a control group or baseline comparison in the experimental design to ensure that observed effects are attributable to the intervention being tested. (importância 0.8)
+
+## seed1/t2 · Does gender role play affect the accuracy of language models on answering math questions?
+- **data_preparation** · The dataset lacked the required 'problem' column, leading to execution errors and invalid results. → Before running experiments, validate the dataset structure to ensure all required columns (e.g., 'problem') are present and correctly named. (importância 0.9)
+- **running_experiments** · The code had an indentation error, which prevented the script from running and producing results. → Perform a code review and testing phase to catch syntax and formatting errors before executing experiments. (importância 0.8)
+- **plan_formulation** · The experimental design lacked justification for prompt formulations, which may have affected the validity of results. → Provide a clear rationale for how prompts are designed, including how they influence model behavior and outcomes. (importância 0.7)
+- **results_interpretation** · The project did not present quantitative results or detail the evaluation methodology, which limited its contribution and clarity. → Ensure all experimental results are quantified and clearly explained, including how accuracy is measured and how confidence levels are evaluated. (importância 0.8)
+
+## seed1/t3 · Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?
+- **data_preparation** · Syntax errors in the code prevented the data preparation phase from completing successfully. → Implement a code linter and syntax checker during the development phase to catch and fix syntax errors early. (importância 1.0)
+- **literature_review** · The literature review phase was not completed, which may have led to an incomplete understanding of existing research on CoT prompting and its effectiveness on math problems. → Ensure the literature review phase is completed before moving to data preparation and experiment design to build a solid foundation of prior work. (importância 0.8)
+- **report_writing** · The project did not reach the report writing stage, which is essential for communicating findings and lessons learned. → Plan for and ensure the completion of the report writing phase, even if the experiment is not fully successful, to document the process and outcomes. (importância 0.7)
+- **data_preparation** · Multiple errors in the data preparation phase suggest poor code quality and lack of testing during development. → Use automated testing and version control practices to ensure code reliability and traceability during data preparation. (importância 0.9)
+
+## seed1/t4 · Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?
+- **results_interpretation** · Insufficient statistical analysis was conducted, such as lack of confidence intervals and p-values. → Include statistical tests like t-tests or ANOVA, along with confidence intervals, to assess the significance of performance differences between models. (importância 0.9)
+- **plan_formulation** · No comparison with baseline methods or alternative noise handling techniques was performed. → Compare the proposed methods with baseline models and alternative noise handling techniques (e.g., noise-tolerant models) to establish the novelty and effectiveness of the approach. (importância 0.8)
+- **running_experiments** · Convergence warnings for logistic regression were not addressed in the analysis. → Investigate and address convergence issues by tuning hyperparameters such as max_iter, using appropriate solvers, or scaling the data as needed. (importância 0.7)
+- **data_preparation** · Syntax errors in the code prevented the experiments from running correctly. → Thoroughly review and test the code for syntax errors before running experiments, and use linters or code checkers to catch issues early. (importância 0.6)

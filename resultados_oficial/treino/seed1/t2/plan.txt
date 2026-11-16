@@ -1,0 +1,29 @@
+{
+  "task": "Does gender role play affect the accuracy of language models on answering math questions?",
+  "data_source": "math dataset from HuggingFace (small subset for fast execution)",
+  "model": "local language model served by Ollama (OpenAI-like API compatible)",
+  "experimental_design": [
+    {
+      "condition": "Baseline",
+      "prompt": "Solve the following math problem: [problem]"
+    },
+    {
+      "condition": "Gender Role Play (Male)",
+      "prompt": "You are a male student who is good at math. Solve the following math problem: [problem]"
+    },
+    {
+      "condition": "Gender Role Play (Female)",
+      "prompt": "You are a female student who is good at math. Solve the following math problem: [problem]"
+    },
+    {
+      "condition": "Control",
+      "prompt": "You are a student who is good at math. Solve the following math problem: [problem]"
+    }
+  ],
+  "evaluation_metrics": [
+    "Accuracy (correct answer vs. generated answer)",
+    "Response time",
+    "Confidence level (if available)"
+  ],
+  "analysis": "Compare accuracy across conditions to determine if gender role play affects math problem-solving performance. Explore patterns in responses and time taken."
+}

@@ -1,0 +1,2 @@
+Evaluate the effectiveness of language models in improving accuracy on MedQA tasks through differential diagnosis by comparing a fine-tuned language model (e.g., BERT-based) with a baseline model (e.g., random guessing) on the MedQA dataset. Use the MedQA dataset from HuggingFace, measure accuracy as the primary metric, and analyze results to determine if language models significantly improve diagnostic accuracy in differential diagnosis.
+</final plan>

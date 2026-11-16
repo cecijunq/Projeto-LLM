@@ -1,0 +1,7 @@
+1. Load the SST-2 dataset from HuggingFace.
+2. Split the dataset into training and test sets.
+3. Use a pre-trained language model (e.g., llama3) via Ollama to perform inference on the test set.
+4. Evaluate the model's performance by predicting sentiment for each review.
+5. Repeat the experiment by adding a negation marker (e.g., "NOT") to the beginning of each review containing negation words.
+6. Compare the accuracy and F1-score of the two experiments to assess the model's sensitivity to negation words.
+</final plan>

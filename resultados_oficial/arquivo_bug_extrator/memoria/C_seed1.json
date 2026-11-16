@@ -1,0 +1,197 @@
+{
+  "run_counter": 1,
+  "items": [
+    {
+      "content": "Problem: The data preparation phase included hardcoded model responses instead of actual model outputs, leading to incorrect conclusions. | How to avoid: Ensure that the data only contains prompts, and that the model's responses are obtained through a real API call during the experiment. Avoid hardcoding any responses.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "data_preparation",
+      "importance": 0.95,
+      "id": "23192127a2",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926621.0669243,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t0"
+      }
+    },
+    {
+      "content": "Problem: The anchoring bias experiment lacked a proper anchor and quantitative measurement, resulting in a qualitative analysis that cannot determine bias. | How to avoid: For anchoring bias, use the same estimation question with high anchor, low anchor, and no anchor, and measure how much the numerical response shifts from the anchor.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "data_preparation",
+      "importance": 0.85,
+      "id": "f6f80a99f7",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926621.0916667,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t0"
+      }
+    },
+    {
+      "content": "Problem: The code had multiple syntax errors due to incorrect string formatting and unterminated string literals. | How to avoid: Carefully check the syntax of string literals and ensure that all strings are properly terminated. Use code linters or syntax checkers to catch such errors early.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "data_preparation",
+      "importance": 0.75,
+      "id": "4f0280e06e",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926621.1019135,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t0"
+      }
+    },
+    {
+      "content": "Problem: The experiment failed to properly call the model, leading to the use of the agent's own text as the model's response, which invalidated the results. | How to avoid: Define a function to call the model using the appropriate API (e.g., OpenAI) and ensure that the model's responses are retrieved through this function, not hardcoded.",
+      "kind": "insight",
+      "topic": "Do language models exhibit cognitive biases, such as confirmation bias or anchoring bias?",
+      "phase": "running_experiments",
+      "importance": 0.9,
+      "id": "98aed166af",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926621.1134212,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t0"
+      }
+    },
+    {
+      "content": "Problem: Code contained invalid syntax due to incorrect use of markdown tags like </final python code>. | How to avoid: Ensure that only valid Python code is written within code blocks, avoiding any markdown syntax or tags.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "running_experiments",
+      "importance": 0.9,
+      "id": "7a99917eb0",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926680.8326657,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t3"
+      }
+    },
+    {
+      "content": "Problem: Unnecessary train-test split was performed, leading to incorrect data handling and subsequent failures. | How to avoid: Use the built-in test split from the dataset (e.g., load_dataset('openai/gsm8k', 'main', split='test[:200]')) instead of creating an unnecessary split. If splitting is required, use the train_test_split method correctly.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "data_preparation",
+      "importance": 0.8,
+      "id": "4040936f0b",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926680.853862,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t3"
+      }
+    },
+    {
+      "content": "Problem: Literature review was conducted without adding relevant articles, leading to an incomplete review. | How to avoid: After each search step in the literature review, add at least one relevant article to ensure comprehensive coverage of the topic.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "literature_review",
+      "importance": 0.7,
+      "id": "90f4cc7583",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926680.871864,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t3"
+      }
+    },
+    {
+      "content": "Problem: No report was generated, leading to a lack of documentation and understanding of the project. | How to avoid: Ensure that a report is created and properly documented, summarizing the methodology, findings, and conclusions of the project.",
+      "kind": "insight",
+      "topic": "Does chain-of-thought prompting improve the accuracy of a small language model on grade-school math (GSM8K)?",
+      "phase": "report_writing",
+      "importance": 0.8,
+      "id": "f3ef6da0c0",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926680.8934503,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t3"
+      }
+    },
+    {
+      "content": "Problem: The literature review failed to identify key issues such as the need for a baseline (0% noise) and proper normalization for logistic regression. | How to avoid: Conduct a thorough literature review that includes baseline experiments and preprocessing techniques relevant to the models being used.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "literature_review",
+      "importance": 0.9,
+      "id": "0e9df755ef",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926700.6442869,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t4"
+      }
+    },
+    {
+      "content": "Problem: The experiment lacked a baseline (0% noise) and repeated runs with fixed random seeds, leading to unreliable comparisons. | How to avoid: Include a 0% noise baseline and repeat experiments with fixed random seeds to ensure consistent and reliable results.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "plan_formulation",
+      "importance": 0.85,
+      "id": "15b32f9ab2",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926700.6694198,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t4"
+      }
+    },
+    {
+      "content": "Problem: The data was not normalized before training logistic regression, leading to convergence issues and poor performance. | How to avoid: Normalize the data using techniques like StandardScaler before training logistic regression to ensure convergence and better performance.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "data_preparation",
+      "importance": 0.9,
+      "id": "8604217643",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926700.6888025,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t4"
+      }
+    },
+    {
+      "content": "Problem: Syntax errors in the code prevented the experiments from running correctly, leading to invalid results. | How to avoid: Thoroughly test the code for syntax errors before running experiments to ensure all parts of the pipeline are functional.",
+      "kind": "insight",
+      "topic": "Does label noise hurt logistic regression more than gradient boosting on a small tabular classification dataset?",
+      "phase": "running_experiments",
+      "importance": 0.8,
+      "id": "630425adec",
+      "created_run": 1,
+      "last_access_run": 1,
+      "access_count": 0,
+      "created_at": 1793926700.710053,
+      "metadata": {
+        "source": "human",
+        "project": "seed1/t4"
+      }
+    }
+  ]
+}

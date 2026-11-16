@@ -1,0 +1,4 @@
+{'original_sentence': "The trophy doesn't fit in the box because it's too big.", 'manipulated_sentence': "The trophy doesn't fit in the box because it's too small.", 'options': ['The trophy', 'The box'], 'correct_answer': 'The box'}
+=== experiment output ===
+Original Accuracy: 1.0
+Manipulated Accuracy: 1.0

@@ -1,0 +1,42 @@
+{
+  "topic": "Does rotation data augmentation make a small CNN more robust to rotated images on CIFAR-10?",
+  "models": [
+    {
+      "name": "small_cnn",
+      "description": "A 3-layer CNN trained on CIFAR-10 with rotation augmentation during training."
+    }
+  ],
+  "conditions": [
+    {
+      "name": "baseline",
+      "description": "Evaluate the model on the original CIFAR-10 test set without any rotation."
+    },
+    {
+      "name": "rotated_90",
+      "description": "Evaluate the model on the same test set but with images rotated by 90°."
+    },
+    {
+      "name": "rotated_180",
+      "description": "Evaluate the model on the same test set but with images rotated by 180°."
+    },
+    {
+      "name": "rotated_270",
+      "description": "Evaluate the model on the same test set but with images rotated by 270°."
+    }
+  ],
+  "test_set_size": 10000,
+  "metrics": [
+    {
+      "name": "accuracy",
+      "description": "Percentage of correctly classified images on the test set."
+    }
+  ],
+  "experimental_steps": [
+    "Load the CIFAR-10 dataset from torchvision.",
+    "Load the pre-trained small CNN model.",
+    "Evaluate the model on the original test set (baseline).",
+    "Apply rotation transformations (90°, 180°, 270°) to the test images and evaluate the model's accuracy on each rotated version.",
+    "Compare the accuracy scores across all conditions to determine if rotation augmentation improves robustness to rotated images."
+  ],
+  "notes": "This experiment uses the full CIFAR-10 test set and evaluates the robustness of a small CNN to rotated images. The same model is used across all conditions, and the only variation is the input image rotation during inference."
+}

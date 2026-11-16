@@ -1,0 +1,25 @@
+{
+  "experiment_name": "Impact of Few-Shot Example Order on Text Classification Accuracy",
+  "task": "Text classification",
+  "model": "Local language model via Ollama (OpenAI-compatible API)",
+  "dataset": "IMDb (split into test set only)",
+  "setup": {
+    "data_preparation": {
+      "test_set": "Load IMDb test set and select 2 examples per class (positive and negative) as few-shot examples",
+      "permutations": "Randomly permute the order of few-shot examples to create multiple variations (e.g., 10 permutations)"
+    },
+    "model_prompting": {
+      "few_shot_format": "Use a prompt format that includes the few-shot examples followed by a query for an unseen text example",
+      "query_format": "Format each query as: 'Classify the following text as positive or negative: [text]'
+    },
+    "evaluation": {
+      "accuracy_metric": "Compute the accuracy of the model's predictions across all permutations",
+      "repetition": "Repeat the experiment 5 times to ensure statistical significance"
+    }
+  },
+  "analysis": {
+    "key_question": "Does the order of few-shot examples significantly affect the model's classification accuracy?",
+    "expected_outcome": "We aim to determine whether the order of examples has a measurable impact on the model's performance, supporting or refuting the hypothesis that example order impacts few-shot learning in text classification."
+  },
+  "notes": "This experiment uses minimal data and leverages the local model via Ollama for fast execution. The results will inform the broader understanding of few-shot learning in language models for text classification."
+}

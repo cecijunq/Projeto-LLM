@@ -1,0 +1,6 @@
+=== experiment output ===
+Permutation 1 Accuracy: 0.00
+Permutation 2 Accuracy: 0.00
+Permutation 3 Accuracy: 0.00
+Permutation 4 Accuracy: 0.00
+Permutation 5 Accuracy: 0.00

@@ -1,0 +1,5 @@
+[2201.11903v6] Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
+[2409.17904v1] Learning to Love Edge Cases in Formative Math Assessment: Using the AMMORE Dataset and Chain-of-Thought Prompting to Improve Grading Accuracy
+[2311.09277v1] Contrastive Chain-of-Thought Prompting
+[2309.11054v2] Design of Chain-of-Thought in Math Problem Solving
+[2609.39049v2] Structure vs. Chain-of-Thought: Evaluating LLM Criteria Extraction for Depression Severity
